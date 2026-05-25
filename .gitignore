@@ -23,3 +23,7 @@ node_modules/
 dist/
 build/
 
+# Local-only sensitive workbook holdbacks
+workbook/private_holdback/**
+!workbook/private_holdback/
+!workbook/private_holdback/.gitkeep

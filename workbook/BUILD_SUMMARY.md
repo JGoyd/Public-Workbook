@@ -35,7 +35,7 @@ Date: 2026-05-25
 
 ## Existing Files Indexed
 
-0
+1
 
 ## Files Copied
 
@@ -43,13 +43,10 @@ Date: 2026-05-25
 
 ## Files Held Back
 
-0
+1
 
 ## Next Command To Run
 
-After GitHub CLI authentication is repaired:
-
 ```powershell
-gh repo create Public-Workbook --private --source . --remote origin --push
+git push
 ```
-
