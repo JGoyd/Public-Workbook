@@ -1,14 +1,9 @@
-# TOPIC_NAME
+# TOPIC NAME
 
-Topic ID: TOPIC_ID
+Date: YYYY-MM-DD
 
-Topic slug: TOPIC_SLUG
-
-First seen date: YYYY-MM-DD
-
-Last updated date: YYYY-MM-DD
+Selected work outputs for this topic.
 
 ## Outputs
 
-| Date | Output Title | Output Type | File Path | Notes |
-|---|---|---|---|---|
+- Output label - output type

@@ -1,10 +1,4 @@
-# Output Manifest: TOPIC_NAME
+# Output Manifest
 
-Date: YYYY-MM-DD
-
-Topic ID: TOPIC_ID
-
-Topic slug: TOPIC_SLUG
-
-| Output ID | Output Title | Output Type | File Name | File Path | Source Folder | Notes |
-|---|---|---|---|---|---|---|
+| Output ID | Date | Topic ID | Topic Slug | Output Title | Output Type | File Name | File Path | Source Folder | Public Range Safe | Held Back | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

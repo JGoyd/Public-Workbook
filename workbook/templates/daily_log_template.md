@@ -1,14 +1,9 @@
-# Daily Log: YYYY-MM-DD
+# Daily Log - YYYY-MM-DD
 
-## Topics Touched
+## Topics touched
 
-- TOPIC_NAME
+## Outputs added
 
-## Outputs Added
-
-| Topic | Output Title | Output Type | File Path |
-|---|---|---|---|
+## Files held back
 
 ## Notes
-
-Short neutral notes only.

@@ -1,21 +1,22 @@
-# Cyber Range Research Output Workbook
+# Public Workbook
 
 Last updated: 2026-05-25
 
-Recent work outputs, organized by topic and date.
+A compact record of recent work outputs, organized by topic and date.
 
 ## Topics
 
-- Codex Work Sessions
-
-See: [Topic Index](../topics/_topic_index.md)
+- [Thiel Local Scrape and Context Dossier](../outputs/2026/05/25/thiel-local-scrape/README.md)
 
 ## Latest Outputs
 
-- 2026-05-24 - Codex Work Sessions - Session reference 019e5d33-dd7c-7d51-bc7f-a7736f278503
+- [Decoder run summary](../workbook/outputs/2026/05/25/thiel-local-scrape/reports/DECODER_RUN_SUMMARY.md)
+- [ICE and Palantir drill note](../workbook/outputs/2026/05/25/thiel-local-scrape/reports/THIEL_ICE_PALANTIR_DRILL_20260525.md)
+- [Next drill lead sheet](../workbook/outputs/2026/05/25/thiel-local-scrape/reports/THIEL_NEXT_DRILL_LEAD_SHEET_20260525.md)
+- [Dossier data build map](../workbook/outputs/2026/05/25/thiel-local-scrape/reports/DOSSIER_DATA_BUILD_MAP_20260525.md)
+- [Working dossier skeleton](../workbook/outputs/2026/05/25/thiel-local-scrape/reports/THIEL_WORKING_DOSSIER_SKELETON_20260525.md)
 
-See: [Latest Outputs](latest_outputs.md)
+## Indexes
 
-## Master Output Index
-
-See: [Master Output Index](../indexes/master_output_index.md)
+- [Master output index](../indexes/master_output_index.md)
+- [Topic output index](../indexes/topic_output_index.md)

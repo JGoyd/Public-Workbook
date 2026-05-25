@@ -1,4 +1,4 @@
-# Master Output Index
+# Output Manifest
 
 | Output ID | Date | Topic ID | Topic Slug | Output Title | Output Type | File Name | File Path | Source Folder | Public Range Safe | Held Back | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

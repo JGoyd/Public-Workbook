@@ -5,6 +5,9 @@ desktop.ini
 .vscode/
 .idea/
 .local/
+workbook/private_holdback/**
+!workbook/private_holdback/
+!workbook/private_holdback/.gitkeep
 
 # Build/cache folders
 __pycache__/

@@ -2,45 +2,29 @@
 
 Date: 2026-05-25
 
-## Folders Created
+Workbook path: `workbook/`
 
-- `workbook/topics`
-- `workbook/outputs`
-- `workbook/daily`
-- `workbook/indexes`
-- `workbook/templates`
-- `workbook/public_view`
+## Counts
 
-## Files Created
+- Selected artifacts found: 8
+- Artifacts copied/indexed: 8
+- Artifacts held back: 0
+- Bulk files skipped by compact-entry rule: 4218
+- Large tables compacted to selected rows
 
-- `README.md`
-- `.gitignore`
-- `workbook/public_view/index.md`
-- `workbook/public_view/latest_outputs.md`
-- `workbook/public_view/topics.md`
-- `workbook/topics/_topic_index.md`
-- `workbook/topics/_topic_index.csv`
-- `workbook/indexes/master_output_index.csv`
-- `workbook/indexes/master_output_index.md`
-- `workbook/indexes/topic_output_index.csv`
-- `workbook/indexes/topic_output_index.md`
-- `workbook/daily/2026-05-25.md`
-- `workbook/templates/topic_readme_template.md`
-- `workbook/templates/daily_log_template.md`
-- `workbook/templates/output_manifest_template.csv`
-- `workbook/templates/output_manifest_template.md`
-- `workbook/outputs/.gitkeep`
+## Topics Created
 
-## Existing Files Indexed
+- Thiel Local Scrape and Context Dossier (8)
 
-1
+## Artifacts By Type
 
-## Files Copied
-
-0
+- report: 5
+- table: 3
 
 ## Next Command To Run
 
 ```powershell
+git add -A
+git commit --no-gpg-sign -m "Rebuild workbook as compact selected outputs"
 git push
 ```
