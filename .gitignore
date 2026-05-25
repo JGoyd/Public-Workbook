@@ -1,0 +1,25 @@
+# Local/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Secrets and machine-local config
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*token*
+*secret*
+*credential*
+
+# Build/cache folders
+__pycache__/
+.pytest_cache/
+node_modules/
+dist/
+build/
+
