@@ -1,16 +1,18 @@
 # Public Workbook
 
-Private setup repository for the Cyber Range Research Output Workbook.
+Cyber Range Research Output Workbook.
 
-This repository stores neutral, dated work outputs by topic. It is not a claims ledger, disclosure report, evidence framework, or methodology document.
+This is a running record of recent work outputs, organized by topic and date.
 
 Primary entry point:
 
 - [workbook/public_view/index.md](workbook/public_view/index.md)
 
-Operating rule:
+What goes here:
 
-- Keep public-range-safe output in `workbook/`.
-- Hold credentials, tokens, private prompts, hidden source paths, and operationally sensitive material in `workbook/private_holdback/`.
-- Do not delete originals when adding outputs.
-
+- generated reports
+- notes and summaries
+- tool outputs
+- tables, CSVs, and JSON files
+- screenshots or image references
+- Codex-exported work products

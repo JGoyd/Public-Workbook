@@ -6,15 +6,9 @@
 
 ## Outputs Added
 
-| Topic | Output Title | Output Type | File Path | Held Back |
-|---|---|---|---|---|
-
-## Files Held Back
-
-| File Name | Reason | Holdback Path |
-|---|---|---|
+| Topic | Output Title | Output Type | File Path |
+|---|---|---|---|
 
 ## Notes
 
 Short neutral notes only.
-

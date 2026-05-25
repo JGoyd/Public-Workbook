@@ -4,17 +4,7 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
-
-# Secrets and machine-local config
-.env
-.env.*
-*.pem
-*.key
-*.p12
-*.pfx
-*token*
-*secret*
-*credential*
+.local/
 
 # Build/cache folders
 __pycache__/
@@ -22,8 +12,3 @@ __pycache__/
 node_modules/
 dist/
 build/
-
-# Local-only sensitive workbook holdbacks
-workbook/private_holdback/**
-!workbook/private_holdback/
-!workbook/private_holdback/.gitkeep

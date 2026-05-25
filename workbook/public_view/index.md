@@ -2,17 +2,17 @@
 
 Last updated: 2026-05-25
 
-This workbook stores dated raw work outputs by topic using short neutral labels.
+Recent work outputs, organized by topic and date.
 
 ## Topics
 
-- Codex Session Exports
+- Codex Work Sessions
 
 See: [Topic Index](../topics/_topic_index.md)
 
 ## Latest Outputs
 
-- 2026-05-24 - Codex Session Exports - Codex session log 019e5d33-dd7c-7d51-bc7f-a7736f278503 - held back
+- 2026-05-24 - Codex Work Sessions - Session reference 019e5d33-dd7c-7d51-bc7f-a7736f278503
 
 See: [Latest Outputs](latest_outputs.md)
 

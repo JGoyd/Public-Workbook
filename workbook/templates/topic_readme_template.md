@@ -10,6 +10,5 @@ Last updated date: YYYY-MM-DD
 
 ## Outputs
 
-| Date | Output Title | Output Type | File Path | Held Back | Notes |
-|---|---|---|---|---|---|
-
+| Date | Output Title | Output Type | File Path | Notes |
+|---|---|---|---|---|

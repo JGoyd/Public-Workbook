@@ -1,8 +1,0 @@
-interface:
-  display_name: "Raw Output Workbook"
-  short_description: "Update neutral dated workbook outputs"
-  default_prompt: "Use $raw-output-workbook to update the workbook with the latest outputs from this project."
-
-policy:
-  allow_implicit_invocation: true
-

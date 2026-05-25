@@ -10,7 +10,6 @@ Date: 2026-05-25
 - `workbook/indexes`
 - `workbook/templates`
 - `workbook/public_view`
-- `workbook/private_holdback`
 
 ## Files Created
 
@@ -31,7 +30,6 @@ Date: 2026-05-25
 - `workbook/templates/output_manifest_template.csv`
 - `workbook/templates/output_manifest_template.md`
 - `workbook/outputs/.gitkeep`
-- `workbook/private_holdback/.gitkeep`
 
 ## Existing Files Indexed
 
@@ -40,10 +38,6 @@ Date: 2026-05-25
 ## Files Copied
 
 0
-
-## Files Held Back
-
-1
 
 ## Next Command To Run
 
