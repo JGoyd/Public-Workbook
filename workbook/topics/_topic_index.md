@@ -1,3 +1,4 @@
-# Topic Index
+# All Topics
 
-- Thiel Local Scrape and Context Dossier
+- [Thiel Reveal](thiel-reveal.md)
+- [Zorro Ranch](zorro-ranch.md)

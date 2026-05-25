@@ -1,17 +1,5 @@
-# Local/editor noise
+*.log
 .DS_Store
-Thumbs.db
-desktop.ini
-.vscode/
-.idea/
-.local/
-workbook/private_holdback/**
-!workbook/private_holdback/
-!workbook/private_holdback/.gitkeep
-
-# Build/cache folders
 __pycache__/
-.pytest_cache/
+.venv/
 node_modules/
-dist/
-build/

@@ -1,5 +1,4 @@
 # Topic Output Index
 
-| Topic ID | Topic Slug | Topic Name | Date | Output Count | Folder Path |
-| --- | --- | --- | --- | --- | --- |
-| TOPIC-20260525-001 | thiel-local-scrape | Thiel Local Scrape and Context Dossier | 2026-05-25 | 8 | workbook/outputs/2026/05/25/thiel-local-scrape |
+- [Thiel Reveal](../topics/thiel-reveal.md)
+- [Zorro Ranch](../topics/zorro-ranch.md)
