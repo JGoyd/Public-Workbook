@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zorro NM Presence Inquiry Packet</title>
+  <style>
+    :root {
+      --ink: #101010;
+      --muted: #555;
+      --paper: #fff;
+      --navy: #0b1f3a;
+      --line: #d8dde4;
+      --wash: #f6f7f9;
+      --soft: #eef2f6;
+      --mono: Consolas, "Courier New", monospace;
+      --sans: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; }
+    @page { size: A4; margin: 11mm; }
+    body { margin: 0; background: #f0f2f4; color: var(--ink); font-family: var(--sans); line-height: 1.38; }
+    .page {
+      max-width: 1040px;
+      min-height: 1320px;
+      margin: 18px auto;
+      padding: 42px 52px 46px;
+      background: var(--paper);
+      border: 1px solid #d5d9df;
+      break-after: page;
+      position: relative;
+    }
+    .page:last-child { break-after: auto; }
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+    }
+    h1 { margin: 0; color: var(--navy); text-transform: uppercase; font-size: 2.0rem; line-height: 1.04; }
+    h2 { margin: 24px 0 10px; color: var(--navy); text-transform: uppercase; font-size: 1.02rem; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+    h3 { margin: 0 0 7px; color: var(--navy); text-transform: uppercase; font-size: 0.83rem; }
+    p { margin: 0 0 10px; }
+    .dek { margin: 12px 0 22px; color: #303030; font-family: var(--serif); font-size: 1.08rem; max-width: 880px; }
+    .identity-strip {
+      margin: -6px 0 22px;
+      padding-top: 9px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.61rem;
+      line-height: 1.35;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+    .identity-strip strong { color: var(--navy); }
+    .identity-strip span { display: block; }
+    .front-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0; }
+    .front-card { border: 1px solid var(--line); padding: 15px; min-height: 170px; }
+    .front-card strong { display: block; color: var(--navy); text-transform: uppercase; font-size: 0.74rem; letter-spacing: 0.75px; margin-bottom: 8px; }
+    .front-card p { margin: 0; font-size: 0.91rem; }
+    .claim-box { border-left: 6px solid var(--navy); background: var(--wash); padding: 16px 18px; margin: 20px 0; }
+    .claim-box strong { display: block; color: var(--navy); text-transform: uppercase; font-size: 0.76rem; letter-spacing: 0.8px; margin-bottom: 8px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+    .source-card { border: 1px solid var(--line); background: #fff; padding: 12px; margin-bottom: 11px; }
+    .source-label { font-family: var(--mono); color: var(--muted); font-size: 0.65rem; text-transform: uppercase; margin-bottom: 7px; }
+    .source-card p { font-family: var(--mono); font-size: 0.68rem; color: #272727; line-height: 1.28; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin: 12px 0 18px; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; vertical-align: top; }
+    th { background: var(--soft); color: var(--navy); text-align: left; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.35px; }
+    .small { color: var(--muted); font-size: 0.81rem; }
+    .status { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); margin: 19px 0; }
+    .status div { padding: 11px; border-right: 1px solid var(--line); }
+    .status div:last-child { border-right: 0; }
+    .status strong { display: block; color: var(--navy); text-transform: uppercase; font-size: 0.68rem; margin-bottom: 5px; }
+    .footer {
+      position: absolute; left: 52px; right: 52px; bottom: 22px;
+      display: flex; justify-content: flex-end; color: #707070;
+      border-top: 1px solid var(--line); padding-top: 7px;
+      font-family: var(--mono); font-size: 0.61rem; text-transform: uppercase; letter-spacing: 0.25px;
+    }
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; border: 0; max-width: none; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="kicker"><span>Official Source Evidence Packet</span><span>Working Date: 2026-05-26</span></div>
+    <h1>Zorro Ranch Records, Presence, And New Mexico Registration Inquiry</h1>
+    <p class="dek">A source-anchored packet for a New Mexico truth-commission-style inquiry into post-conviction guest access, staff-managed lodging, operational record systems, aviation corroboration, and registration/presence thresholds.</p>
+    <div class="identity-strip">
+      <span><strong>Prepared by:</strong> Joseph Goydish II</span>
+      <span><strong>PGP Fingerprint:</strong> 4A04 1F50 6D89 4F5E E391 7438 6487 8B56 A2EB 2D11</span>
+    </div>
+    <div class="front-grid">
+      <div class="front-card"><strong>What This Is</strong><p>A Bates-anchored inquiry packet. It does not allege guest misconduct. It identifies records, custodians, and threshold facts that can test Zorro Ranch presence, lodging, and reporting duties.</p></div>
+      <div class="front-card"><strong>What It Shows</strong><p>The source pages show post-conviction guest logistics, staff-managed lodging, Ranch Central systems, gate/phone/lodge lines, telecom infrastructure, aviation access, and New Mexico registration relevance.</p></div>
+      <div class="front-card"><strong>What Can Be Done</strong><p>Demand guest logs, staff instructions, gate and phone records, pilot manifests, aircraft logs, FBO records, NM DPS/county files, vendor records, and original task/checklist metadata.</p></div>
+    </div>
+    <div class="claim-box"><strong>Controlled Position</strong><p>The record crosses the subpoena and witness-interview floor. It does not yet cross the violation floor for New Mexico registration, spoliation, or misconduct by named guests.</p></div>
+    <div class="status">
+      <div><strong>Core Window</strong>2009-2015 guest and operations records</div>
+      <div><strong>Primary Lane</strong>Zorro Ranch / New Mexico</div>
+      <div><strong>Source Type</strong>DOJ/EFTA Bates text</div>
+      <div><strong>Posture</strong>Documentary inquiry packet</div>
+    </div>
+    <div class="footer">Zorro Ranch Inquiry Packet</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 1</span><span>Post-Conviction Guest Logistics</span></div>
+    <h2>Guest Access Was Routed Through Staff And Facilities</h2>
+    <div class="claim-box"><strong>Why This Matters</strong><p>These records create date windows and custodian targets: lodge and bunkhouse occupancy, room turnover, travel details, airport routing, staff instructions, phone logs, vehicle records, and guest communications.</p></div>
+    <div class="grid-3">
+      <div class="source-card">
+        <div class="source-label">EFTA00740021 p.0</div>
+        <h3>Jarecki lodging logistics</h3>
+        <p>From: Jeffrey Epstein &lt;jeevacationggmail.com&gt; To: Subject: Re: New mexico Date: Mon, 28 Sep 2009 17:51:56 +0000 yes , tell warren and linda to move to bunkhouse for last day On Mon, Sep 28, 2009 at 11:41 AM, Hi Are you OK with us contacting Nicholas directly and get his travel details etc? Brice On 9/28/09 1:35 PM, &quot;J Epstein&quot; &lt;jeevacation@gmail.com&gt; wrote: either On Mon, Sep 28, 2009 at 11:36 AM, Hi wrote: wrote: Only...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00732601 p.0</div>
+        <h3>Ribis guest lodge / staff access</h3>
+        <p>From: Jeffrey Epstein &lt;jeevacation@gmail.com&gt; To: &quot;Nicholas L.Ribis&quot; Subject: Re: Date: Wed, 06 Oct 2010 16:04:40 +0000 nick you can go to my ranch you will have staff horse back riding, and stay in the guest lodge.. its very comfortable and fun. the main house staff is not there , but should not be a problem if you want to swim indoors etc. On Wed, Oct 6, 2010 at 1:39 PM, Nicholas L.Ribis &lt; &gt; wrote: Ok talk later thanks...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA02490930 p.0</div>
+        <h3>Thiel airport routing / ranch invite</h3>
+        <p>puting - seth lloyd . 4. china josh cooper ramo., 5. four wheel atvs horse back riding, or just hiking or noth=ng by lounging. -- If you are flying commercial alberque=ue, if private your choices are alberqueque or santa fe, ( a littlcloser ) or moriarty, only 10 minutes from ranch, ./div&gt; On Thu, Aug=13, 2015 at 8:18 PM, Peter Thiel &lt; &gt; wrote: Who would be there on Sunday? C=n only take a day off, then out of commission...</p>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Guest Window</th><th>Use In Packet</th><th>Limit</th></tr></thead>
+      <tbody>
+        <tr><td>Jarecki, Sept. 27-Oct. 2, 2009</td><td>Shows lodge/bunkhouse logistics and Brice travel-detail role.</td><td>Does not prove Epstein was physically present.</td></tr>
+        <tr><td>Ribis, Oct. 6-9, 2010</td><td>Shows guest lodge, staff, horseback riding, and indoor-pool access language.</td><td>Does not prove legal trigger or misconduct.</td></tr>
+        <tr><td>Thiel, Aug. 2015</td><td>Shows late-period invite and airport routing to Albuquerque, Santa Fe, and Moriarty.</td><td>Does not prove the trip occurred.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer">Guest Logistics</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 2</span><span>Records And Custodians</span></div>
+    <h2>Ranch Systems Point To Subpoenaable Records</h2>
+    <div class="grid-2">
+      <div class="source-card">
+        <div class="source-label">EFTA02040184 p.1</div>
+        <h3>Ranch Central / lodge line topology</h3>
+        <p>: 49 Zorro Ranch Road 87056 Region: NM Postal Code: Country: X-ABADR us Comment Line 1 (office) + Line 2 (office) + 1 505 938 921 Ranch Central Office Line 2 Office Fax + Ranch Central Office Fax JE private line JE Sarah Line + Sarah Fax Guests Main House Lodge Line &amp; Fax + Log + Larry Visoski &amp; Eileen Home:: Red House- Brice (Altell) + Karen (Altell) + Wendy(Alltel) Manoilito (Allte +1 Renee (Altel) + 1 10 Steve 505 991 00 6...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00334167 p.0</div>
+        <h3>2015 office / gate / lodge contact map</h3>
+        <p>From: Lesley Groff To: Darren Indyke Cc: Bebe Avdiu Subject: JE Zorro Date: Wed, 25 Nov 2015 16:01:39 +0000 OFFICE NUMBERS: Office: Office Rollover/gate: Office Fax: MAIN HOUSE: JE 1st line: JE 2nd lin(Rollover): Guests: Private/Staff: Emergency MH STAFF CELLS: BUNKHOUSE: Bunkhouse: LODGE: Lodge: LOG CABIN: Log: STAFF HOUSES: Larry, Eileen &amp; Family: Adobe: SERVICE AREAS: Gate: Fire Alarm 1: Fire Alarm 2: Jeffrey must email...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00627582 p.0</div>
+        <h3>Staffing and facility duties</h3>
+        <p>lf sufficient, much work can be accomplished by us here and we only have to buy material. As we see it, we would like to hire: (1)Main housekeeper (to live in the staff cottage). She will be responsible for the upkeep of the house. Salary of $25,000/yr (1)Carpenter (to possibly live in staff house at Ranch central). Will help with all building, repairing, painting, drywall, fencing. Salary of $30,000/yr.( Depends on living...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00672499 p.1</div>
+        <h3>Facility maintenance burden</h3>
+        <p>It takes most of my time just to maintain things at some sort of level that I am actually not happy with. With taking care of the Main House, Lodge, Bunkhouse, Greenhouse, Stables, Yurt(in need of repair), caboose, and Log Cabin, I am not able to keep things as clean and tidy as I once did. I also see things in Mano&#x27;s areas that he tends to that are in need of attention, However; he is spread so thin keeping all mechanically...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00586048 p.0</div>
+        <h3>Maintenance schedule / gate / bunkhouse</h3>
+        <p>MAINTENANCE SCHEDULE RANCH CENTRAL MANOLITO EVERYDAY K Dumpster is checked for blown trash K Fuel tanks are visually checked for leaks K Equipment and vehicles are checked visually for low tires K Roads are checked for wash outs K North gate entrance is checked K Ranch is checked for coyotes K Visual check of gun cabinet K Work on any pen</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA01092673 p.3</div>
+        <h3>Fiber / VoIP / Ranch Central infrastructure</h3>
+        <p>rest to the pedestal near Highway 41 Provide additional Internet bandwidth Extended carrier services over fiber to the Main House Provide VoIP and Internet at Ranch Central Elliminate buried copper wires at Zorro Ranch 2.0 Communciations System Equipment and Services Description: Install and outdoor cabinet near the Centurlink pedestal with fiber mux Connect a Centurylink Voice T-1 PRI and three data T-1 circuits from the...</p>
+      </div>
+    </div>
+    <div class="footer">Records And Custodians</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 2 Continued</span><span>Custodian Targets</span></div>
+    <h2>Record Types The Packet Can Demand</h2>
+    <table>
+      <thead><tr><th>System</th><th>Records To Demand</th><th>What It Tests</th></tr></thead>
+      <tbody>
+        <tr><td>Ranch Central / Zorro office</td><td>Office email, phone/fax logs, staff instructions, guest communications, line logs.</td><td>Who handled guest stays, directions, and internal routing.</td></tr>
+        <tr><td>Guest lodge / bunkhouse / main house</td><td>Occupancy logs, room prep, turnover notes, maintenance requests, housekeeping records.</td><td>Who stayed, where, and on what dates.</td></tr>
+        <tr><td>Gate / vehicle / security / fire alarm</td><td>Gate logs, service tickets, access records, alarm/HVAC records, vehicle use logs.</td><td>Arrival/departure and facility-use corroboration.</td></tr>
+        <tr><td>Task lists and maintenance schedules</td><td>Original files, metadata, full folders, missing periods, staff signoffs, vendor invoices.</td><td>Custody, continuity, and whether routine logs existed for key windows.</td></tr>
+        <tr><td>Telecom vendors</td><td>CenturyLink, Time Warner/tw telecom, Advanced Communications, VoIP/fiber service records.</td><td>Line ownership, call/fax/log systems, retention, and service topology.</td></tr>
+      </tbody>
+    </table>
+    <div class="claim-box"><strong>Do Not Overstate</strong><p>Telecom, gate, and maintenance infrastructure are record-system evidence. They do not by themselves prove surveillance misuse, concealment, abuse, or destruction.</p></div>
+    <div class="footer">Custodian Targets</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 3</span><span>Aviation / Presence / Duration</span></div>
+    <h2>Aviation Records Are The Cleanest Presence Test</h2>
+    <div class="claim-box"><strong>Why This Matters</strong><p>Presence and duration are the facts needed to test any New Mexico registration or reporting theory. Flight and FBO records are stronger than guest-invite emails because they can show actual arrival, passengers, aircraft, fuel, parking, crew, and departure.</p></div>
+    <div class="grid-3">
+      <div class="source-card">
+        <div class="source-label">EFTA00068582 p.24</div>
+        <h3>Ranch Central layout and guest/pilot rooms</h3>
+        <p>anley, New Mexico. So you drove down a dirt road approximately a half mile and you would enter an area which the ranch called the Ranch Central, and that housed many buildings. Just to the left, there were two homes, and that was mainly for the ranch staff that lived on the ranch for support. So there were two homes to the left. To the right, there was a small office for the ranch. And then you continued, you&#x27;re still in the...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">EFTA00068582 p.25</div>
+        <h3>Runway, hangar, lodge, log cabin</h3>
+        <p>pass by, during that drive, a runway we had on the property, which, as you saw, the twin-engine Cessna was parked on. So we had a runway and a hangar to house the aircraft. So you pass the runway and you continued up the road to -- it was called the lodge. It was actually the first home site that was selected to build the main house, and that was a triple-wide trailer that also had a western faux facade built around it. Once...</p>
+      </div>
+    
+
+      <div class="source-card">
+        <div class="source-label">DOJ-OGR-00013279 p.113</div>
+        <h3>Pilot records: manifests, aircraft log, logbook</h3>
+        <p>ing your time working as a pilot for Mr. Epstein, what, 4 if any, records did you keep about the flights that you 5 piloted? 6 A. We kept a passenger manifest which we filled out after 7 every flight. And then at the end of the day, we had an 8 aircraft log that we put down flight times that we flew on that 9 particular day. And then I also kept a personal logbook. 10 Q. Walking through each of those, starting with the flight...</p>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Demand</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Passenger manifests and aircraft logs</td><td>Can identify who traveled, departure/destination, flight time, fuel, and aircraft-use dates.</td></tr>
+        <tr><td>Pilot personal logbooks</td><td>Independent corroboration of aircraft movements and duty dates.</td></tr>
+        <tr><td>FBO / airport records</td><td>Fuel, hangar, parking, tie-down, service, crew, vehicle, and catering records at Santa Fe, Albuquerque, and Moriarty-area facilities.</td></tr>
+        <tr><td>Ground transport records</td><td>Tests whether guests, staff, pilots, chefs, or Epstein were moved from airports to Zorro.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer">Aviation Presence Test</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 4</span><span>New Mexico Registration Question</span></div>
+    <h2>The Sharp Legal Theory Is Conditional</h2>
+    
+      <div class="source-card">
+        <div class="source-label">EFTA00074029 p.20</div>
+        <h3>New Mexico DPS registration context</h3>
+        <p>Defense Counsel has submitted a letter, dated August 19, 2010, from Assistant Bureau Chief, Law Enforcement Record Bureau of the New Mexico Department of Public Safety, which states that Mr. Epstein &quot;is not required to register [as a sex offender] with the State of New Mexico at this time for [his] 2008 Florida conviction of Procuring [a] Person Under 18 for Prostitution.&quot; Dkt. 25, Ex. A. The Court requested from the Defense...</p>
+      </div>
+    
+    <div class="claim-box"><strong>Controlled Position</strong><p>The registration question is investigation-worthy because it was legally salient in later litigation and because Zorro records may test presence and duration. A violation should not be alleged unless the applicable New Mexico trigger and physical-presence facts are established.</p></div>
+    <table>
+      <thead><tr><th>Question</th><th>Needed Proof</th></tr></thead>
+      <tbody>
+        <tr><td>Did Epstein have to register or notify New Mexico?</td><td>Year-specific statute, DPS/county correspondence, any legal determination, and travel/presence facts.</td></tr>
+        <tr><td>Did temporary lodging or residence trigger a duty?</td><td>Exact arrival/departure dates, overnight stays, total days, and whether visitor/residence provisions applied.</td></tr>
+        <tr><td>Did another jurisdiction notify New Mexico?</td><td>Florida, New York, Virgin Islands, NM DPS, and county sheriff records.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer">Registration Question</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Lead 5</span><span>Preservation / Missing Records</span></div>
+    <h2>Preservation Is A Demand, Not Yet A Spoliation Claim</h2>
+    <div class="claim-box"><strong>Use This Carefully</strong><p>The records show that log-bearing systems likely existed. That supports preservation demands and retention-policy questions. It does not yet support claims of deletion, purge, shredding, altered metadata, or missing-month concealment.</p></div>
+    <table>
+      <thead><tr><th>Record Family</th><th>Preservation Demand</th><th>Threshold Tested</th></tr></thead>
+      <tbody>
+        <tr><td>Guest lodge line/fax/log</td><td>Original books/files, phone/fax records, scan archives, custodians, retention policies.</td><td>Guest presence and lodging dates.</td></tr>
+        <tr><td>Task lists / checklists</td><td>Native files, version history, missing periods, signoff sheets, staff circulation.</td><td>Continuity of routine ranch records.</td></tr>
+        <tr><td>Telecom / gate / HVAC / fire alarm</td><td>Vendor service tickets, logs, exports, support contracts, system migrations.</td><td>Facility use, access, and retention.</td></tr>
+        <tr><td>Aviation records</td><td>Passenger manifests, aircraft logs, personal pilot logbooks, FBO invoices.</td><td>Presence/duration and passenger identity.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer">Preservation Questions</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Action Matrix</span><span>Truth Commission / AG-Style Follow-Up</span></div>
+    <h2>What To Ask For First</h2>
+    <table>
+      <thead><tr><th>Recipient</th><th>Demand / Interview Topic</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>NM DPS / county sheriff</td><td>Registration, non-registration, inquiries, determinations, correspondence, and notice records for Zorro Ranch.</td><td>Tests the legal registration/presence theory.</td></tr>
+        <tr><td>Zorro staff / managers</td><td>Guest logs, lodge/bunkhouse assignments, travel details, directions, room prep, gate records, staff instructions.</td><td>Tests who stayed, when, and who arranged it.</td></tr>
+        <tr><td>Pilots / aircraft custodians</td><td>Passenger manifests, aircraft logs, personal logbooks, tail numbers, fuel, flight planning, weather, maintenance.</td><td>Tests physical presence and duration.</td></tr>
+        <tr><td>FBOs / airports</td><td>Santa Fe, Albuquerque, and Moriarty-area fuel, hangar, tie-down, parking, ground transport, catering, crew records.</td><td>Corroborates arrivals/departures and passengers.</td></tr>
+        <tr><td>Telecom/security vendors</td><td>Phone/fax logs, guest line records, gate/fire/HVAC/camera systems, retention policies, service tickets.</td><td>Tests whether log systems existed and what remains.</td></tr>
+        <tr><td>Property/vendors</td><td>Task/checklist originals, metadata, staff rosters, payroll, maintenance, HVAC, mechanical, gate, vehicle records.</td><td>Identifies custodians and missing record families.</td></tr>
+      </tbody>
+    </table>
+    <h2>Bottom Line</h2>
+    <p>Zorro Ranch should be treated as a records-and-witness inquiry with a specific legal target: physical presence and duration sufficient to test New Mexico registration or reporting obligations. The present record supports subpoenas and interviews. It does not support a completed allegation of violation or guest misconduct.</p>
+    <div class="footer">Action Matrix</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker"><span>Integrity Addendum</span><span>PGP / SHA-256 Verification</span></div>
+    <h2>Public-Key And Signature Verification</h2>
+    <div class="claim-box"><strong>Verification Position</strong><p>This packet is intended to travel with a detached PGP signature, a SHA-256 checksum, and the public key used to verify the signature. The detached signature is the integrity control; this page states the identity and verification method.</p></div>
+    <table>
+      <thead><tr><th>Field</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Signer</td><td>Joseph Goydish II</td></tr>
+        <tr><td>OpenPGP fingerprint</td><td><code>4A04 1F50 6D89 4F5E E391 7438 6487 8B56 A2EB 2D11</code></td></tr>
+        <tr><td>Detached signature file</td><td><code>ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf.asc</code></td></tr>
+        <tr><td>Public key sidecar</td><td><code>Joseph_Gs_Public_Key.asc</code></td></tr>
+        <tr><td>Checksum sidecar</td><td><code>ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf.sha256</code></td></tr>
+      </tbody>
+    </table>
+    <h2>Verification Command</h2>
+    <div class="source-card">
+      <div class="source-label">Windows / PowerShell</div>
+      <p>gpg --verify ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf.asc ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf</p>
+    </div>
+    <p class="small">A successful verification confirms that the PDF bytes match the detached signature made with the listed key. SHA-256 confirms file identity; PGP confirms signer control of the signing key. If the PDF is changed after signing, verification should fail.</p>
+    <div class="footer">PGP Verification Addendum</div>
+  </section>
+</body>
+</html>

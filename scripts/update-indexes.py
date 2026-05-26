@@ -136,9 +136,12 @@ def artifact_summary(entry_dir: Path) -> str:
         if table_files:
             labels.insert(1 if labels and labels[0] == "reports" else 0, "IOC tables" if any("ioc" in p.name.lower() for p in table_files) else "tables")
     other = entry_dir / "other"
-    if other.exists() and any(p.suffix.lower() in {".yar", ".yara"} for p in other.rglob("*")):
+    other_files = [p for p in other.rglob("*") if p.is_file()] if other.exists() else []
+    if any(p.suffix.lower() in {".asc", ".sig", ".sha256", ".sha512"} for p in other_files):
+        labels.append("verification files")
+    if any(p.suffix.lower() in {".yar", ".yara"} for p in other_files):
         labels.append("YARA")
-    elif other.exists() and any(p.is_file() for p in other.rglob("*")):
+    elif other_files and not any(p.suffix.lower() in {".asc", ".sig", ".sha256", ".sha512"} for p in other_files):
         labels.append("other")
     return ", ".join(labels) if labels else "entry README"
 

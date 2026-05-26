@@ -18,16 +18,10 @@ _Last updated: 2026-05-26_
 
 ## Today / Latest
 
-### 2026-05-25 - Mon - Three entries
+### 2026-05-26 - Tue - One entry
 
-**RemoteRAT / RATtrap** - Public threat-research entry for `REMOTERAT-2026-05`: repository write-up, SMTP header notes, payload notes, IOC tables, YARA rule, and GitHub Pages export.
-[Read full entry](workbook/outputs/2026/05/25/remoterat-rattrap/README.md)
-
-**Thiel Reveal** - Notes on documented contact patterns involving Peter Thiel: 2014 scheduling, a Valar Ventures introduction, later logistics, and earlier attendee context.
-[Read full entry](workbook/outputs/2026/05/25/thiel-reveal/README.md)
-
-**Zorro Ranch** - Notes on Zorro Ranch records and witness context: guest access after conviction, staff logistics, property operations, aviation access, and the New Mexico registration question.
-[Read full entry](workbook/outputs/2026/05/25/zorro-ranch/README.md)
+**Zorro Ranch** - Official New Mexico presence inquiry packet with the HTML version, detached signature, SHA-256 checksum, and public key for verification.
+[Read full entry](workbook/outputs/2026/05/26/zorro-ranch/README.md)
 
 ---
 
@@ -36,6 +30,7 @@ _Last updated: 2026-05-26_
 <!-- daily-log:start -->
 | Date | Day | Topic | Headline | Open |
 | --- | --- | --- | --- | --- |
+| 2026-05-26 | Tue | Zorro Ranch | Official NM presence inquiry packet, HTML version, detached signature, checksum, and public key | [open](workbook/outputs/2026/05/26/zorro-ranch/README.md) |
 | 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
 | 2026-05-25 | Mon | Thiel Reveal | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
 | 2026-05-25 | Mon | Zorro Ranch | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
@@ -52,7 +47,7 @@ _New rows land at the top each day._
 | --- | ---: | --- | --- |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
-| Zorro Ranch | 1 | 2026-05-25 | [topic page](workbook/topics/zorro-ranch.md) |
+| Zorro Ranch | 2 | 2026-05-26 | [topic page](workbook/topics/zorro-ranch.md) |
 <!-- topic-index:end -->
 
 ---

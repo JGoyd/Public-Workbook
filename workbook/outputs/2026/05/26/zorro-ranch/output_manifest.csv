@@ -1,0 +1,6 @@
+Type,File,Description
+PDF packet,reports/ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf,Official inquiry packet
+HTML export,exports/ZORRO_NM_PRESENCE_INQUIRY_PACKET.html,HTML version of the packet
+Signature,other/ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf.asc,Detached signature for the official PDF
+Checksum,other/ZORRO_NM_PRESENCE_INQUIRY_PACKET_OFFICIAL.pdf.sha256,SHA-256 sidecar
+Public key,other/Joseph_Gs_Public_Key.asc,Public key for verification

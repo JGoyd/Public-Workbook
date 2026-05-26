@@ -22,6 +22,7 @@ class UpdateIndexesTest(unittest.TestCase):
             (root / "scripts").mkdir()
             (root / "workbook" / "outputs" / "2026" / "05" / "25" / "remoterat-rattrap").mkdir(parents=True)
             (root / "workbook" / "outputs" / "2026" / "05" / "24" / "zorro-ranch").mkdir(parents=True)
+            (root / "workbook" / "outputs" / "2026" / "05" / "25" / "remoterat-rattrap" / "other").mkdir()
 
             (root / "README.md").write_text(
                 textwrap.dedent(
@@ -63,6 +64,17 @@ class UpdateIndexesTest(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            (
+                root
+                / "workbook"
+                / "outputs"
+                / "2026"
+                / "05"
+                / "25"
+                / "remoterat-rattrap"
+                / "other"
+                / "packet.pdf.asc"
+            ).write_text("signature", encoding="utf-8")
 
             (root / "workbook" / "outputs" / "2026" / "05" / "24" / "zorro-ranch" / "README.md").write_text(
                 textwrap.dedent(
@@ -86,6 +98,7 @@ class UpdateIndexesTest(unittest.TestCase):
 
             master = (root / "workbook" / "indexes" / "master_output_index.md").read_text(encoding="utf-8")
             self.assertIn("| 2026-05-25 | RemoteRAT / RATtrap | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) |", master)
+            self.assertIn("verification files", master)
 
             topic_index = (root / "workbook" / "topics" / "_topic_index.md").read_text(encoding="utf-8")
             self.assertIn("| Zorro Ranch | 1 | 2026-05-24 | [open](zorro-ranch.md) |", topic_index)
