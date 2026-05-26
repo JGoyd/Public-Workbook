@@ -2,6 +2,10 @@
 date: 2026-05-26
 slug: topic-slug
 title: Topic Title
+entry_type: research note
+covers: source window or submission date
+event_date: YYYY-MM-DD
+date_range:
 headline: One-line summary that shows up in the index.
 tags: []
 status: draft

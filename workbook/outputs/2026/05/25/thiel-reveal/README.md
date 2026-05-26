@@ -2,6 +2,9 @@
 date: 2026-05-25
 slug: thiel-reveal
 title: Thiel Reveal
+entry_type: research note
+covers: 2012-03 to 2017-12 source-document context
+date_range: 2012-03 to 2017-12
 headline: 2014 scheduling, Valar intro, later logistics, earlier attendee context
 tags: []
 status: initial pass complete

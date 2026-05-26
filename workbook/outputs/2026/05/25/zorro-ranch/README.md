@@ -2,6 +2,9 @@
 date: 2026-05-25
 slug: zorro-ranch
 title: Zorro Ranch
+entry_type: research note
+covers: 2009 to 2015 source-document context
+date_range: 2009 to 2015
 headline: Guest access, staff logistics, property operations, aviation, registration context
 tags: []
 status: initial pass complete

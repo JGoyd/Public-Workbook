@@ -1,6 +1,6 @@
 # Topic Output Index
 
-| Topic | Entries | Most recent | Topic page |
+| Topic | Entries | Latest work | Topic page |
 | --- | ---: | --- | --- |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [open](../topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [open](../topics/sec-ito-referral.md) |

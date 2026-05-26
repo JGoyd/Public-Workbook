@@ -2,6 +2,10 @@
 date: 2026-05-24
 slug: uhaul-evidence-transfer
 title: U-Haul Evidence Transfer
+entry_type: manual transcription
+covers: 2025-02-27 to 2025-03-25 records-handling sequence
+event_date: 2025-03-11
+date_range: 2025-02-27 to 2025-03-25
 headline: WFO-to-IMD transfer sequence, ERT photo logs, item-level transcription, and release-processing context
 tags: [epstein, uhaul, evidence-transfer]
 status: published

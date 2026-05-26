@@ -1,8 +1,8 @@
-date,topic_slug,topic,entry_path,main_artifacts
-2026-05-26,zorro-ranch,Zorro Ranch,workbook/outputs/2026/05/26/zorro-ranch/README.md,"reports, HTML exports, verification files"
-2026-05-25,remoterat-rattrap,RemoteRAT / RATtrap,workbook/outputs/2026/05/25/remoterat-rattrap/README.md,"reports, IOC tables, raw source files, HTML exports, YARA"
-2026-05-25,thiel-reveal,Thiel Reveal,workbook/outputs/2026/05/25/thiel-reveal/README.md,"reports, tables"
-2026-05-25,zorro-ranch,Zorro Ranch,workbook/outputs/2026/05/25/zorro-ranch/README.md,reports
-2026-05-24,uhaul-evidence-transfer,U-Haul Evidence Transfer,workbook/outputs/2026/05/24/uhaul-evidence-transfer/README.md,"reports, tables"
-2026-05-13,sec-ito-referral,SEC Ito Referral,workbook/outputs/2026/05/13/sec-ito-referral/README.md,"reports, raw source files, verification files"
-2026-05-06,sec-ito-referral,SEC Ito Referral,workbook/outputs/2026/05/06/sec-ito-referral/README.md,"reports, verification files"
+work_date,day,topic_slug,topic,entry_type,covers,entry_path,main_artifacts
+2026-05-26,Tue,zorro-ranch,Zorro Ranch,packet,2026-05-26 NM presence inquiry packet,workbook/outputs/2026/05/26/zorro-ranch/README.md,"reports, HTML exports, verification files"
+2026-05-25,Mon,remoterat-rattrap,RemoteRAT / RATtrap,public writeup,2026-05-25 source EML and public repo artifacts,workbook/outputs/2026/05/25/remoterat-rattrap/README.md,"reports, IOC tables, raw source files, HTML exports, YARA"
+2026-05-25,Mon,thiel-reveal,Thiel Reveal,research note,2012-03 to 2017-12 source-document context,workbook/outputs/2026/05/25/thiel-reveal/README.md,"reports, tables"
+2026-05-25,Mon,zorro-ranch,Zorro Ranch,research note,2009 to 2015 source-document context,workbook/outputs/2026/05/25/zorro-ranch/README.md,reports
+2026-05-24,Sun,uhaul-evidence-transfer,U-Haul Evidence Transfer,manual transcription,2025-02-27 to 2025-03-25 records-handling sequence,workbook/outputs/2026/05/24/uhaul-evidence-transfer/README.md,"reports, tables"
+2026-05-13,Wed,sec-ito-referral,SEC Ito Referral,supplement,2026-05-13 supplement and 2026-05-14 receipt,workbook/outputs/2026/05/13/sec-ito-referral/README.md,"reports, raw source files, verification files"
+2026-05-06,Wed,sec-ito-referral,SEC Ito Referral,submission,2026-05-06 SEC TCR submission,workbook/outputs/2026/05/06/sec-ito-referral/README.md,"reports, verification files"

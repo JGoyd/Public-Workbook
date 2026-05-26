@@ -1,6 +1,6 @@
 # All Topics
 
-| Topic | Entries | Most recent | Open |
+| Topic | Entries | Latest work | Open |
 | --- | ---: | --- | --- |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [open](remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [open](sec-ito-referral.md) |

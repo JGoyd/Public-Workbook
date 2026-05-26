@@ -2,6 +2,9 @@
 date: 2026-05-26
 slug: zorro-ranch
 title: Zorro Ranch
+entry_type: packet
+covers: 2026-05-26 NM presence inquiry packet
+event_date: 2026-05-26
 headline: Official NM presence inquiry packet, HTML version, detached signature, checksum, and public key
 tags: []
 status: packet complete

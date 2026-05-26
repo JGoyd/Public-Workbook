@@ -2,6 +2,9 @@
 date: 2026-05-25
 slug: remoterat-rattrap
 title: RemoteRAT / RATtrap
+entry_type: public writeup
+covers: 2026-05-25 source EML and public repo artifacts
+event_date: 2026-05-25
 headline: Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export
 tags: [security, remoterat, rattrap]
 status: published

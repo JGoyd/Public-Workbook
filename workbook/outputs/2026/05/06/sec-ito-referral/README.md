@@ -2,6 +2,9 @@
 date: 2026-05-06
 slug: sec-ito-referral
 title: SEC Ito Referral
+entry_type: submission
+covers: 2026-05-06 SEC TCR submission
+event_date: 2026-05-06
 headline: Initial SEC TCR evidence packet for submission 17780-976-067-126
 tags: []
 status: initial packet complete

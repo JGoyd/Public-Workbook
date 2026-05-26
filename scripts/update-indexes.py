@@ -24,6 +24,8 @@ class Entry:
     day: str
     slug: str
     title: str
+    entry_type: str
+    covers: str
     headline: str
     rel_path: str
     artifacts: str
@@ -117,6 +119,28 @@ def fallback_headline(body: str) -> str:
     return headline[:180].rstrip()
 
 
+def frontmatter_text(frontmatter: dict[str, object], key: str, default: str = "") -> str:
+    value = frontmatter.get(key)
+    if value is None:
+        return default
+    if isinstance(value, list):
+        return ", ".join(str(item) for item in value)
+    return str(value).strip() or default
+
+
+def coverage_text(frontmatter: dict[str, object], entry_date: str) -> str:
+    covers = frontmatter_text(frontmatter, "covers")
+    if covers:
+        return covers
+    date_range = frontmatter_text(frontmatter, "date_range")
+    if date_range:
+        return date_range
+    event_date = frontmatter_text(frontmatter, "event_date")
+    if event_date:
+        return event_date
+    return entry_date
+
+
 def artifact_summary(entry_dir: Path) -> str:
     labels: list[str] = []
     checks = [
@@ -164,6 +188,8 @@ def find_entries(root: Path) -> list[Entry]:
         frontmatter, body = parse_frontmatter(text)
         title = str(frontmatter.get("title") or fallback_title(slug, body)).strip()
         headline = str(frontmatter.get("headline") or fallback_headline(body)).strip()
+        entry_type = frontmatter_text(frontmatter, "entry_type", "entry")
+        covers = coverage_text(frontmatter, entry_date)
         rel_path = readme.relative_to(root).as_posix()
         rows.append(
             Entry(
@@ -171,6 +197,8 @@ def find_entries(root: Path) -> list[Entry]:
                 day=weekday,
                 slug=str(frontmatter.get("slug") or slug),
                 title=title,
+                entry_type=entry_type,
+                covers=covers,
                 headline=headline,
                 rel_path=rel_path,
                 artifacts=artifact_summary(readme.parent),
@@ -182,10 +210,16 @@ def find_entries(root: Path) -> list[Entry]:
     return rows
 
 
-def daily_table(entries: list[Entry]) -> str:
-    out = ["| Date | Day | Topic | Headline | Open |", "| --- | --- | --- | --- | --- |"]
+def work_timeline_table(entries: list[Entry]) -> str:
+    out = [
+        "| Work Date | Day | Topic | Type | Covers | What changed | Open |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
     for entry in entries:
-        out.append(f"| {entry.date} | {entry.day} | {entry.title} | {entry.headline} | [open]({entry.rel_path}) |")
+        out.append(
+            f"| {entry.date} | {entry.day} | {entry.title} | {entry.entry_type} | "
+            f"{entry.covers} | {entry.headline} | [open]({entry.rel_path}) |"
+        )
     return "\n".join(out)
 
 
@@ -209,7 +243,7 @@ def topic_rollup(entries: list[Entry]) -> list[dict[str, object]]:
 
 
 def topic_table(entries: list[Entry]) -> str:
-    out = ["| Topic | Entries | Most recent | Jump in |", "| --- | ---: | --- | --- |"]
+    out = ["| Topic | Entries | Latest work | Jump in |", "| --- | ---: | --- | --- |"]
     for topic in topic_rollup(entries):
         slug = str(topic["slug"])
         out.append(
@@ -229,21 +263,29 @@ def replace_block(text: str, marker: str, body: str) -> str:
 
 def update_readme(text: str, entries: list[Entry], today: str) -> str:
     text = re.sub(r"_Last updated:.*?_", f"_Last updated: {today}_", text)
-    text = replace_block(text, "daily-log", daily_table(entries))
+    text = replace_block(text, "work-timeline", work_timeline_table(entries))
     text = replace_block(text, "topic-index", topic_table(entries))
     return text
 
 
 def master_output_index_md(entries: list[Entry]) -> str:
-    out = ["# Master Output Index", "", "| Date | Topic | Entry | Main artifacts |", "| --- | --- | --- | --- |"]
+    out = [
+        "# Master Output Index",
+        "",
+        "| Work Date | Topic | Type | Covers | Entry | Main artifacts |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
     for entry in entries:
         rel = (Path("..") / Path(entry.rel_path).relative_to("workbook")).as_posix()
-        out.append(f"| {entry.date} | {entry.title} | [open]({rel}) | {entry.artifacts} |")
+        out.append(
+            f"| {entry.date} | {entry.title} | {entry.entry_type} | {entry.covers} | "
+            f"[open]({rel}) | {entry.artifacts} |"
+        )
     return "\n".join(out) + "\n"
 
 
 def topic_output_index_md(entries: list[Entry]) -> str:
-    out = ["# Topic Output Index", "", "| Topic | Entries | Most recent | Topic page |", "| --- | ---: | --- | --- |"]
+    out = ["# Topic Output Index", "", "| Topic | Entries | Latest work | Topic page |", "| --- | ---: | --- | --- |"]
     for topic in topic_rollup(entries):
         out.append(
             f"| {topic['title']} | {topic['count']} | {topic['latest']} | "
@@ -253,7 +295,7 @@ def topic_output_index_md(entries: list[Entry]) -> str:
 
 
 def topic_index_md(entries: list[Entry]) -> str:
-    out = ["# All Topics", "", "| Topic | Entries | Most recent | Open |", "| --- | ---: | --- | --- |"]
+    out = ["# All Topics", "", "| Topic | Entries | Latest work | Open |", "| --- | ---: | --- | --- |"]
     for topic in topic_rollup(entries):
         out.append(f"| {topic['title']} | {topic['count']} | {topic['latest']} | [open]({topic['slug']}.md) |")
     return "\n".join(out) + "\n"
@@ -276,12 +318,24 @@ def generated_files(root: Path, entries: list[Entry], today: str) -> dict[Path, 
         readme_path: readme,
         root / "workbook" / "indexes" / "master_output_index.md": master_output_index_md(entries),
         root / "workbook" / "indexes" / "master_output_index.csv": csv_text(
-            ["date", "topic_slug", "topic", "entry_path", "main_artifacts"],
-            [[entry.date, entry.slug, entry.title, entry.rel_path, entry.artifacts] for entry in entries],
+            ["work_date", "day", "topic_slug", "topic", "entry_type", "covers", "entry_path", "main_artifacts"],
+            [
+                [
+                    entry.date,
+                    entry.day,
+                    entry.slug,
+                    entry.title,
+                    entry.entry_type,
+                    entry.covers,
+                    entry.rel_path,
+                    entry.artifacts,
+                ]
+                for entry in entries
+            ],
         ),
         root / "workbook" / "indexes" / "topic_output_index.md": topic_output_index_md(entries),
         root / "workbook" / "indexes" / "topic_output_index.csv": csv_text(
-            ["topic_slug", "topic", "entries", "most_recent", "topic_page"],
+            ["topic_slug", "topic", "entries", "latest_work", "topic_page"],
             [
                 [
                     topic["slug"],
@@ -295,7 +349,7 @@ def generated_files(root: Path, entries: list[Entry], today: str) -> dict[Path, 
         ),
         root / "workbook" / "topics" / "_topic_index.md": topic_index_md(entries),
         root / "workbook" / "topics" / "_topic_index.csv": csv_text(
-            ["topic_slug", "topic_name", "entries", "most_recent", "topic_page"],
+            ["topic_slug", "topic_name", "entries", "latest_work", "topic_page"],
             [
                 [
                     topic["slug"],

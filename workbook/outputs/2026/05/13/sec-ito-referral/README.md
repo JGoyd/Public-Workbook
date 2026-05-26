@@ -2,6 +2,9 @@
 date: 2026-05-13
 slug: sec-ito-referral
 title: SEC Ito Referral
+entry_type: supplement
+covers: 2026-05-13 supplement and 2026-05-14 receipt
+date_range: 2026-05-13 to 2026-05-14
 headline: Supplement 01, OMMS update PDF, receipt EML, and hashes for submission 17780-976-067-126
 tags: []
 status: update packet complete
