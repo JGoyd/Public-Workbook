@@ -1,0 +1,12 @@
+file,type,path,description
+README.md,markdown,workbook/outputs/2026/05/25/remoterat-rattrap/README.md,Workbook entry page
+remoterat-readme.md,report,workbook/outputs/2026/05/25/remoterat-rattrap/reports/remoterat-readme.md,Public repository README
+smtp-headers.md,report,workbook/outputs/2026/05/25/remoterat-rattrap/reports/smtp-headers.md,SMTP header analysis note
+payload-notes.md,report,workbook/outputs/2026/05/25/remoterat-rattrap/reports/payload-notes.md,RATtrap payload notes
+cluster-linkage.md,report,workbook/outputs/2026/05/25/remoterat-rattrap/reports/cluster-linkage.md,SILENTCONNECT cluster linkage note
+iocs-high-confidence.csv,table,workbook/outputs/2026/05/25/remoterat-rattrap/tables/iocs-high-confidence.csv,High-confidence IOC table
+iocs-medium-confidence.csv,table,workbook/outputs/2026/05/25/remoterat-rattrap/tables/iocs-medium-confidence.csv,Medium-confidence IOC table
+domains.txt,raw,workbook/outputs/2026/05/25/remoterat-rattrap/raw/domains.txt,Defanged domain list
+rattrap_jscript_dropper.yar,other,workbook/outputs/2026/05/25/remoterat-rattrap/other/rattrap_jscript_dropper.yar,YARA rule
+github-pages-index.html,source export,workbook/outputs/2026/05/25/remoterat-rattrap/exports/github-pages-index.html,GitHub Pages export
+incident-map.html,source export,workbook/outputs/2026/05/25/remoterat-rattrap/exports/incident-map.html,Incident map HTML export

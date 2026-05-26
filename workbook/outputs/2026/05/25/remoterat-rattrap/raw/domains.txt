@@ -1,0 +1,10 @@
+# RemoteRAT / RATtrap -- Defanged domain blocklist
+# REMOTERAT-2026-05
+# Author: Joseph Goydish II
+# Date: 2026-05-25
+
+dgs.brimis[.]org
+brimis[.]org
+tigecarllc[.]de
+newoneazu[.]com
+bumptobabeco[.]top

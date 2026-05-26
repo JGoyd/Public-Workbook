@@ -1,0 +1,15 @@
+type,indicator,confidence,context,case_id
+IPv4,207[.]189[.]26[.]195,HIGH,Hyonix VPS HY-52556 SMTP origin,REMOTERAT-2026-05
+Domain,dgs.brimis[.]org,HIGH,ScreenConnect dropper host,REMOTERAT-2026-05
+Domain,brimis[.]org,HIGH,Parent domain registered 2026-05-08,REMOTERAT-2026-05
+URL,hxxps://dgs.brimis[.]org/Bin/bremis.ClientSetup.msi?e=Access&y=Guest&c=Misky,HIGH,Live MSI endpoint,REMOTERAT-2026-05
+Filename,Business-Invitation.js,HIGH,RATtrap dropper,REMOTERAT-2026-05
+Filename,bremis.ClientSetup.msi,HIGH,ScreenConnect MSI payload,REMOTERAT-2026-05
+String,Inatllation,HIGH,Actor typo fingerprint (x2 in payload),REMOTERAT-2026-05
+URL_param,c=Misky,HIGH,ScreenConnect operator group,REMOTERAT-2026-05
+Email,cigardah287[@]gmail[.]com,HIGH,Attacker sender account,REMOTERAT-2026-05
+Message-ID,6a14b765.dbd6c068.4730f.84a6@mx.google.com,HIGH,Unique pivot ID,REMOTERAT-2026-05
+SMTP_session,46e09a7af769-7e60648257csm7912345a34,HIGH,Google abuse report ID,REMOTERAT-2026-05
+DKIM_fragment,b=PteO1gbs,HIGH,Signature verification,REMOTERAT-2026-05
+Telegram_bot,@Damisky001bot (ID 8970330885),HIGH,C2 bot confirmed live,REMOTERAT-2026-05
+Telegram_chat,6687082236,HIGH,Operator receive channel,REMOTERAT-2026-05

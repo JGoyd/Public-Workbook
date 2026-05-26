@@ -1,0 +1,6 @@
+type,indicator,confidence,context,case_id
+Domain,tigecarllc[.]de,MEDIUM,SILENTCONNECT cluster node 1 (2026-01-02),REMOTERAT-2026-05
+Domain,newoneazu[.]com,MEDIUM,SILENTCONNECT cluster node 2 (2026-01-26),REMOTERAT-2026-05
+Domain,bumptobabeco[.]top,MEDIUM,SILENTCONNECT cluster node 3 (2026-03-29),REMOTERAT-2026-05
+IPv4,45[.]81[.]23[.]155,MEDIUM,Alsycon B.V. NL -- newoneazu.com host,REMOTERAT-2026-05
+IPv4,86[.]38[.]225[.]59,MEDIUM,Majestic Hosting VA -- bumptobabeco.top host,REMOTERAT-2026-05

@@ -1,13 +1,13 @@
 # Public Workbook
 
 A daily record of current work, organized by date and topic.
-Each entry keeps the findings, source context, and related write-ups in one place.
+Each entry keeps the findings, source context, tables, and related artifacts in one place.
 
 _Last updated: 2026-05-25 (Mon)_
 
 ---
 
-## Where to start
+## Where to Start
 
 - [Today / Latest entries](#today--latest)
 - [Daily log](#daily-log)
@@ -18,20 +18,24 @@ _Last updated: 2026-05-25 (Mon)_
 
 ## Today / Latest
 
-### 2026-05-25 · Mon · Two entries
+### 2026-05-25 - Mon - Three entries
 
-**Thiel Reveal** — Notes on documented contact patterns involving Peter Thiel: 2014 scheduling, a Valar Ventures introduction, later logistics, and earlier attendee context.
-→ [Read full entry](workbook/outputs/2026/05/25/thiel-reveal/README.md)
+**RemoteRAT / RATtrap** - Public threat-research entry for `REMOTERAT-2026-05`: repository write-up, SMTP header notes, payload notes, IOC tables, YARA rule, and GitHub Pages export.
+[Read full entry](workbook/outputs/2026/05/25/remoterat-rattrap/README.md)
 
-**Zorro Ranch** — Notes on Zorro Ranch records and witness context: guest access after conviction, staff logistics, property operations, aviation access, and the New Mexico registration question.
-→ [Read full entry](workbook/outputs/2026/05/25/zorro-ranch/README.md)
+**Thiel Reveal** - Notes on documented contact patterns involving Peter Thiel: 2014 scheduling, a Valar Ventures introduction, later logistics, and earlier attendee context.
+[Read full entry](workbook/outputs/2026/05/25/thiel-reveal/README.md)
+
+**Zorro Ranch** - Notes on Zorro Ranch records and witness context: guest access after conviction, staff logistics, property operations, aviation access, and the New Mexico registration question.
+[Read full entry](workbook/outputs/2026/05/25/zorro-ranch/README.md)
 
 ---
 
-## Daily log
+## Daily Log
 
 | Date | Day | Topic | Headline | Open |
 | --- | --- | --- | --- | --- |
+| 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
 | 2026-05-25 | Mon | Thiel Reveal | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
 | 2026-05-25 | Mon | Zorro Ranch | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
 
@@ -39,38 +43,39 @@ _New rows land at the top each day._
 
 ---
 
-## By topic
+## By Topic
 
 | Topic | Entries | Most recent | Jump in |
 | --- | ---: | --- | --- |
+| RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
 | Zorro Ranch | 1 | 2026-05-25 | [topic page](workbook/topics/zorro-ranch.md) |
 
 ---
 
-## Entry format
+## Entry Format
 
-Each entry keeps the useful pieces close together:
+Each entry is meant to be easy to browse:
 
-1. Short lead summary.
-2. Findings grouped by theme.
-3. Source documents and one-line context.
-4. Tables with supporting details.
-5. Related reports and write-ups.
+1. Snapshot - the short case card.
+2. Findings by lane - grouped context, not one long block of text.
+3. Artifact map - what files were added and where they live.
+4. Tables and detection material - CSVs, rules, exports, and raw lists.
+5. Links out - public repo, rendered page, or related entries when present.
 
 This repository is the workbook. Daily entries and topic pages are the main paths through it.
 
 ---
 
-## Repo map
+## Repo Map
 
-```
+```text
 workbook/
-├── outputs/YYYY/MM/DD/<topic>/   ← daily entries (the main thing)
-├── topics/                        ← per-topic rollups
-├── indexes/                       ← master + topic indexes
-├── daily/                         ← raw daily notes
-└── templates/                     ← entry templates
+|-- outputs/YYYY/MM/DD/<topic>/   daily entries
+|-- topics/                       per-topic rollups
+|-- indexes/                      master + topic indexes
+|-- daily/                        daily notes
+`-- templates/                    entry templates
 ```
 
 ---

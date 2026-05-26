@@ -1,0 +1,4 @@
+date,topic_slug,topic,entry_path,main_artifacts
+2026-05-25,remoterat-rattrap,RemoteRAT / RATtrap,workbook/outputs/2026/05/25/remoterat-rattrap/README.md,"reports, IOC tables, YARA, HTML exports"
+2026-05-25,thiel-reveal,Thiel Reveal,workbook/outputs/2026/05/25/thiel-reveal/README.md,"reports, tables"
+2026-05-25,zorro-ranch,Zorro Ranch,workbook/outputs/2026/05/25/zorro-ranch/README.md,reports
