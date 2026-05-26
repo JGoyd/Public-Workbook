@@ -3,7 +3,7 @@
 A daily record of current work, organized by date and topic.
 Each entry keeps the findings, source context, tables, and related artifacts in one place.
 
-_Last updated: 2026-05-25 (Mon)_
+_Last updated: 2026-05-26_
 
 ---
 
@@ -33,11 +33,13 @@ _Last updated: 2026-05-25 (Mon)_
 
 ## Daily Log
 
+<!-- daily-log:start -->
 | Date | Day | Topic | Headline | Open |
 | --- | --- | --- | --- | --- |
 | 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
 | 2026-05-25 | Mon | Thiel Reveal | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
 | 2026-05-25 | Mon | Zorro Ranch | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
+<!-- daily-log:end -->
 
 _New rows land at the top each day._
 
@@ -45,11 +47,13 @@ _New rows land at the top each day._
 
 ## By Topic
 
+<!-- topic-index:start -->
 | Topic | Entries | Most recent | Jump in |
 | --- | ---: | --- | --- |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
 | Zorro Ranch | 1 | 2026-05-25 | [topic page](workbook/topics/zorro-ranch.md) |
+<!-- topic-index:end -->
 
 ---
 
@@ -75,6 +79,7 @@ workbook/
 |-- topics/                       per-topic rollups
 |-- indexes/                      master + topic indexes
 |-- daily/                        daily notes
+|-- _meta/                        build notes and operational files
 `-- templates/                    entry templates
 ```
 

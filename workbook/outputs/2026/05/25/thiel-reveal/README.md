@@ -1,3 +1,13 @@
+---
+date: 2026-05-25
+slug: thiel-reveal
+title: Thiel Reveal
+headline: 2014 scheduling, Valar intro, later logistics, earlier attendee context
+tags: []
+status: initial pass complete
+sources: []
+---
+
 # 2026-05-25 · Thiel Reveal
 
 A consolidated read of source documents around Peter Thiel,

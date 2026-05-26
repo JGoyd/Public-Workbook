@@ -1,44 +1,57 @@
-# YYYY-MM-DD · <Topic Title>
+---
+date: 2026-05-26
+slug: topic-slug
+title: Topic Title
+headline: One-line summary that shows up in the index.
+tags: []
+status: draft
+sources: []
+---
 
-One-paragraph headline. Plain language. What this entry is about.
+# Topic Title
 
-Day: <Mon/Tue/...>
-Topic: <Topic Title>
-Status: <Initial pass / In progress / Closed>
+Short opening paragraph. What this is, in plain language.
 
 ---
 
-## What I found
+## Snapshot
 
-### 1. <Theme name>
+Short case card. Three or four lines.
+
+---
+
+## Findings
+
+Grouped notes. Not one long block.
+
+### 1. Theme Name
 
 Short paragraph describing the theme.
 
-- <DocID> — one-line summary.
-
-### 2. <Theme name>
-
-...
+- Source or artifact - one-line context.
 
 ---
 
-## Source documents at a glance
+## Artifacts
 
-| ID | Date | One-liner |
+| Type | File | Description |
 | --- | --- | --- |
+| report | [file.md](reports/file.md) | short neutral label |
 
 ---
 
-## Tables
+## Tables and Detection Material
 
-- [<table name>](tables/<file>.csv)
-
----
-
-## Reports
-
-- [<report name>](reports/<file>.md)
+- [table name](tables/file.csv)
+- [rule name](other/file.yar)
 
 ---
 
-_← [Back to workbook home](../../../../../../README.md)_
+## Links Out
+
+- [public repo](https://example.com)
+- [rendered page](https://example.com)
+
+---
+
+[Back to workbook home](../../../../../../README.md)

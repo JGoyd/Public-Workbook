@@ -1,3 +1,13 @@
+---
+date: 2026-05-25
+slug: zorro-ranch
+title: Zorro Ranch
+headline: Guest access, staff logistics, property operations, aviation, registration context
+tags: []
+status: initial pass complete
+sources: []
+---
+
 # 2026-05-25 · Zorro Ranch
 
 A records-and-witness read on Zorro Ranch in New Mexico, focused on what

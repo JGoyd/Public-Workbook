@@ -1,3 +1,15 @@
+---
+date: 2026-05-25
+slug: remoterat-rattrap
+title: RemoteRAT / RATtrap
+headline: Public campaign write-up, IOC tables, YARA rule, and Pages export
+tags: [security, remoterat, rattrap]
+status: published
+sources:
+  - https://github.com/JGoyd/RemoteRAT
+  - https://jgoyd.github.io/RemoteRAT/
+---
+
 # 2026-05-25 - RemoteRAT / RATtrap
 
 Public threat-research workbook entry for `REMOTERAT-2026-05`.
