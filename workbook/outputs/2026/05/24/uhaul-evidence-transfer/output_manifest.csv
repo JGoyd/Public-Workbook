@@ -1,0 +1,6 @@
+file,type,path,description
+README.md,markdown,workbook/outputs/2026/05/24/uhaul-evidence-transfer/README.md,Workbook entry page
+evidence-transfer-sequence-2026-05-24.md,report,workbook/outputs/2026/05/24/uhaul-evidence-transfer/reports/evidence-transfer-sequence-2026-05-24.md,Clean sequence note for the U-Haul transfer lane
+uhaul-photo-log-manual-transcription-2026-05-24.md,report,workbook/outputs/2026/05/24/uhaul-evidence-transfer/reports/uhaul-photo-log-manual-transcription-2026-05-24.md,Manual transcription of selected U-Haul photo-log pages
+uhaul-photo-log-manual-transcription-2026-05-24.csv,table,workbook/outputs/2026/05/24/uhaul-evidence-transfer/tables/uhaul-photo-log-manual-transcription-2026-05-24.csv,CSV version of the manual photo-log transcription
+uhaul-photo-log-lead-map-2026-05-23.csv,table,workbook/outputs/2026/05/24/uhaul-evidence-transfer/tables/uhaul-photo-log-lead-map-2026-05-23.csv,Lead map for the U-Haul and case-bucket photo-log sections

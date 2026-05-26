@@ -6,5 +6,6 @@
 | 2026-05-25 | RemoteRAT / RATtrap | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) | reports, IOC tables, raw source files, HTML exports, YARA |
 | 2026-05-25 | Thiel Reveal | [open](../outputs/2026/05/25/thiel-reveal/README.md) | reports, tables |
 | 2026-05-25 | Zorro Ranch | [open](../outputs/2026/05/25/zorro-ranch/README.md) | reports |
+| 2026-05-24 | U-Haul Evidence Transfer | [open](../outputs/2026/05/24/uhaul-evidence-transfer/README.md) | reports, tables |
 | 2026-05-13 | SEC Ito Referral | [open](../outputs/2026/05/13/sec-ito-referral/README.md) | reports, raw source files, verification files |
 | 2026-05-06 | SEC Ito Referral | [open](../outputs/2026/05/06/sec-ito-referral/README.md) | reports, verification files |

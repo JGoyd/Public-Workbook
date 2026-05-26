@@ -6,16 +6,20 @@ The workbook is a flat, date-organized public log. Each `outputs/YYYY/MM/DD/<top
 
 | Date | Entries |
 | --- | ---: |
+| 2026-05-26 | 1 |
 | 2026-05-25 | 3 |
+| 2026-05-24 | 1 |
+| 2026-05-13 | 1 |
+| 2026-05-06 | 1 |
 
 ## Latest Update
 
-Added `RemoteRAT / RATtrap` as one structured workbook entry:
+Added `U-Haul Evidence Transfer` as one structured workbook entry:
 
-- Entry path: `workbook/outputs/2026/05/25/remoterat-rattrap/`
-- Reports copied: 4
+- Entry path: `workbook/outputs/2026/05/24/uhaul-evidence-transfer/`
+- Reports copied/created: 2
 - Tables copied: 2
-- Raw lists copied: 1
-- Detection rules copied: 1
-- HTML exports copied: 2
+- Raw files copied: 0
+- JSON files copied: 0
+- Source-image bundles copied: 0
 - Files held back: 0
