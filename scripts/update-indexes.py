@@ -121,7 +121,7 @@ def artifact_summary(entry_dir: Path) -> str:
     labels: list[str] = []
     checks = [
         ("reports", "reports"),
-        ("raw", "raw lists"),
+        ("raw", "raw source files"),
         ("json", "JSON"),
         ("screenshots", "screenshots"),
         ("exports", "HTML exports"),

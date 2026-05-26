@@ -1,0 +1,81 @@
+﻿Return-Path: <cigardah287@gmail.com>
+X-Original-To: josephgoyd@proton.me
+Delivered-To: josephgoyd@proton.me
+Authentication-Results: mail.protonmail.ch; dkim=pass (Good 2048 bit
+    rsa-sha256 signature) header.d=gmail.com header.a=rsa-sha256
+Authentication-Results: mail.protonmail.ch; dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+Authentication-Results: mail.protonmail.ch; spf=pass smtp.mailfrom=gmail.com
+Authentication-Results: mail.protonmail.ch; arc=none smtp.remote-ip=209.85.210.49
+Authentication-Results: mail.protonmail.ch; dkim=pass (2048-bit key) header.d=gmail.com
+ header.i=@gmail.com header.b="PteO1gbs"
+Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com [209.85.210.49]) (using
+ TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256) (No
+ client certificate requested) by mailinosl106.protonmail.ch (Postfix) with ESMTPS id
+ 4gPSpb4ZmFz3V for <josephgoyd@proton.me>; Mon, 25 May 2026 20:56:07 +0000 (UTC)
+Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-7e582b3bcaaso8473729a34.3
+        for <josephgoyd@proton.me>; Mon, 25 May 2026 13:56:07 -0700 (PDT)
+Received: from HY-52556 ([207.189.26.195])
+        by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-7e60648257csm7912345a34.9.2026.05.25.13.56.05
+        for <josephgoyd@proton.me>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 May 2026 13:56:05 -0700 (PDT)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779742566; x=1780347366; darn=proton.me;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=7odBaUNR4tiN/XSx+knOHO5qfL2wNLuK7GgjllxaHz8=;
+        b=PteO1gbsB+1G1kPa+SuP27epedhTJBCKxYpnJPL/ZDFghSwc9iqyBhWJ2kOX+fU3hx
+         Ik+uL3hL//ze+7cZaPKldRoZv4GJ2CrEYGcnx61Kxw/mY0Rp8wkdVeTZuGB4iyIXTlWM
+         wCEn8GVCehkoEDLmjZJVeoNkBJFd06Z+G9ClYMCtAhsHj21ufDkR67/8i/6pbRyfVlex
+         Uj6CZQUkRzj52FCK6iVCrkZNsJ3vCbHGfmckiw6r86r4bRigd7889gB5lP5vS0gsQLkx
+         9xi3brSoLlxylfMVBl4WzLsEXgf5FeKvEsoPGXQD01sXuoQ8oSCGOU1n9AEYbWaiAkGN
+         l6Kg==
+X-Google-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779742566; x=1780347366;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7odBaUNR4tiN/XSx+knOHO5qfL2wNLuK7GgjllxaHz8=;
+        b=hB2hpYem6LjxFB+hE1wQPZ8RltwVLFQ6kp4Q2UC8EByTcjlS7IroXusIm82pWx/mf+
+         +jUt1JwZxaSQC+fbApAdEWNo2n+pErj7k1sOt7oS9dV0yqcYI2p41PExJh0DSUrgwL5x
+         9fGQLw+wB3IINKfrucG9p8fzt175u+VNhJiH8MWmGmOJ/SQsKSy0eWyYkox5827r5sz3
+         dKw5sWUeFvdN9AADFl56vtgRgxds+IByCZO5y5VXp6BmQoRBzzL2+acDWma8wGkb4F+I
+         YGFZ0vte32Mp/PDMZsmyGoUa113OEgaQmoYaB4UhQa+LU/mlJvTpTyKTmj0JRUrrCLdY
+         mhGg==
+X-Gm-Message-State: AOJu0YzgzoY3XACYKGaQffwpXOAp0OAZUvjDl+mwXkuoy8XOdfJkbXts
+ yP9UyYSmcsX30uu1wjvnuOwPhiYVVbmBu29YcECwo5IWFOH0dGleBffByTedh1OU
+X-Gm-Gg: Acq92OF9nt0PRpzoNJ+2AirXdyISCSxemMwLhJ1X9Rlc5bOsar67dG3/qTm36mkc9f6
+ NT3qlGNpkl1kVwGIWztZFMdl5NLaxZPcJEb1EsX1VpywBeXG0h4Ew/7yFvQHK+uxhn2zXrZ9EVs
+ M3AFWcaa2o7g74fy0DcfVwcbCvUFMBGKJ6CIS2X4TcFk82jaNCHQGh6BWEM4wAIolrTJpxr7PeP
+ 2aGE8BM3ceAmZT6UeW7jwexLwpCNjW9z4ddYjkTI5XBjH7+ld/n6/dPjtASSOJdgapXbQG/BTT3
+ i+ltTPJH254Adm6bugLsXIJBnkncAC0Kxg1nMtFSI7qwDwCzyaWhp+iBcws4YnUA+e2dqVRPf2K
+ sjgP4ferJFn7DPBEL+Ybv3ZB/TjXc8h0eHXW+aKHKraycxVm8Vm5SX1LdGyTEjhRqML6tmnDJgL
+ HkPXIVlBRTC3iui/gvNW3r200W6KyxoJJbThnA9nG+EN2dqdGurWoAo7g=
+X-Received: by 2002:a05:6830:4414:b0:7e4:163:49d9 with SMTP id
+ 46e09a7af769-7e5feef9df1mr10375509a34.17.1779742566037;
+        Mon, 25 May 2026 13:56:06 -0700 (PDT)
+Message-Id: <6a14b765.dbd6c068.4730f.84a6@mx.google.com>
+Date: Mon, 25 May 2026 13:56:05 -0700
+X-Google-Original-Date: 25 May 2026 15:56:05 -0500
+Mime-Version: 1.0
+From: "Growth Strategies LLC" <cigardah287@gmail.com>
+To: josephgoyd@proton.me
+Subject: Business Meeting Invitation
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-Pm-Spam: 0yezJI6cihyJeYR3pi42biOpJJvbmsCIeI1msjN3X3blJp7IjSlBITQ0ix0iOCNiwJPU
+ FQF9RUVkEUNUSUSO9owIjSCJLUIy604yMiMiwRlX2nnVYXl2ui8mZnOisJPUF6CIReJypnFWbVZu91
+ lYWijoIaNH0rNWY2XpZVfbmuHVdZRWffVHcjMyAAzNjiDMMLJCtslWYzXwN9tcll2RbbIC6h1mIWaz
+ wItcHwTILMYjw2ATMnL0BwiIipWFbb8FzfJHcHcvJI6YiwC4MMADz5YTMTO5kgxOT0zYNNAz0tJCLW
+ YslV4dGlF9dbJWlpRGZmbfd9kbWiWwZOJipmRnbGbh99tdC0WxdaxWp1dmbWYtwUtZTh21cbwGiwJC
+ L3XwN0iYWujAONcDy0kzMTOzQM3Mj0zAMNwyiz9FcGctFJhX2i2UcOAjuycDNzM0kQzOT3jMMMAz0i
+ wyNFcz9l0d2f2hYd9GfphGc2cphcibmujAOOITyzIjNjM2cEwNzwTENMwyiuVnc2Xh5UibWhiJObwG
+ thVmZHdyVMtZXfHVccd3poNGdnI91wifSp3JcZIC6hZjITMiRY4Nz4GQNYFzkzMGOmZ2UYxYT9iJYf Q==
+X-Pm-Origin: external
+X-Pm-Transfer-Encryption: TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+X-Pm-Content-Encryption: on-delivery
+X-Pm-Spamscore: 0
+X-Pm-Spam-Action: inbox

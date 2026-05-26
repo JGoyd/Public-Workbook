@@ -7,6 +7,8 @@ cluster-linkage.md,report,workbook/outputs/2026/05/25/remoterat-rattrap/reports/
 iocs-high-confidence.csv,table,workbook/outputs/2026/05/25/remoterat-rattrap/tables/iocs-high-confidence.csv,High-confidence IOC table
 iocs-medium-confidence.csv,table,workbook/outputs/2026/05/25/remoterat-rattrap/tables/iocs-medium-confidence.csv,Medium-confidence IOC table
 domains.txt,raw,workbook/outputs/2026/05/25/remoterat-rattrap/raw/domains.txt,Defanged domain list
+business-meeting-invitation-2026-05-25.eml,raw,workbook/outputs/2026/05/25/remoterat-rattrap/raw/business-meeting-invitation-2026-05-25.eml,Source EML
+business-meeting-invitation-proton-headers.txt,raw,workbook/outputs/2026/05/25/remoterat-rattrap/raw/business-meeting-invitation-proton-headers.txt,Proton header export
 rattrap_jscript_dropper.yar,other,workbook/outputs/2026/05/25/remoterat-rattrap/other/rattrap_jscript_dropper.yar,YARA rule
 github-pages-index.html,source export,workbook/outputs/2026/05/25/remoterat-rattrap/exports/github-pages-index.html,GitHub Pages export
 incident-map.html,source export,workbook/outputs/2026/05/25/remoterat-rattrap/exports/incident-map.html,Incident map HTML export

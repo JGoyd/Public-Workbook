@@ -10,6 +10,8 @@
 | [iocs-high-confidence.csv](tables/iocs-high-confidence.csv) | table | High-confidence IOC table |
 | [iocs-medium-confidence.csv](tables/iocs-medium-confidence.csv) | table | Medium-confidence IOC table |
 | [domains.txt](raw/domains.txt) | raw | Defanged domain list |
+| [business-meeting-invitation-2026-05-25.eml](raw/business-meeting-invitation-2026-05-25.eml) | raw | Source EML |
+| [business-meeting-invitation-proton-headers.txt](raw/business-meeting-invitation-proton-headers.txt) | raw | Proton header export |
 | [rattrap_jscript_dropper.yar](other/rattrap_jscript_dropper.yar) | other | YARA rule |
 | [github-pages-index.html](exports/github-pages-index.html) | source export | GitHub Pages export |
 | [incident-map.html](exports/incident-map.html) | source export | Incident map HTML export |

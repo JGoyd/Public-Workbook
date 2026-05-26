@@ -11,7 +11,7 @@ Published page: [RemoteRAT Pages](https://jgoyd.github.io/RemoteRAT/)
 
 | Date | Day | Headline | Open |
 | --- | --- | --- | --- |
-| 2026-05-25 | Mon | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) |
+| 2026-05-25 | Mon | Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) |
 
 ---
 
@@ -19,7 +19,7 @@ Published page: [RemoteRAT Pages](https://jgoyd.github.io/RemoteRAT/)
 
 | Theme | Current entry context |
 | --- | --- |
-| Delivery and headers | Gmail-authenticated delivery and Hyonix VPS origin in SMTP notes |
+| Delivery and headers | Source EML, Proton header export, Gmail-authenticated delivery, and Hyonix VPS origin |
 | RATtrap payload | JScript dropper, custom string decoding, Telegram beaconing, dual-RMM installer |
 | Detection material | High-confidence IOC CSV, medium-confidence cluster CSV, domain list, YARA rule |
 | Cluster context | SILENTCONNECT-compatible URL grammar and ScreenConnect setup pattern |

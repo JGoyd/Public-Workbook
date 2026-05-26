@@ -2,7 +2,7 @@
 date: 2026-05-25
 slug: remoterat-rattrap
 title: RemoteRAT / RATtrap
-headline: Public campaign write-up, IOC tables, YARA rule, and Pages export
+headline: Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export
 tags: [security, remoterat, rattrap]
 status: published
 sources:
@@ -14,7 +14,7 @@ sources:
 
 Public threat-research workbook entry for `REMOTERAT-2026-05`.
 
-This entry groups the public RemoteRAT repository artifacts into one dated workbook page: the campaign write-up, SMTP header notes, payload notes, cluster linkage note, IOC tables, domain list, YARA rule, and GitHub Pages export.
+This entry groups the public RemoteRAT repository artifacts into one dated workbook page: the campaign write-up, source EML, SMTP header export, payload notes, cluster linkage note, IOC tables, domain list, YARA rule, and GitHub Pages export.
 
 ## Snapshot
 
@@ -27,7 +27,7 @@ This entry groups the public RemoteRAT repository artifacts into one dated workb
 | Published page | [RemoteRAT Pages](https://jgoyd.github.io/RemoteRAT/) |
 | Initial commit | [`329b40f`](https://github.com/JGoyd/RemoteRAT/commit/329b40f3ce6ec719ff5a9235b5ce7105d5cbb377) |
 | Repo commit status | GitHub-verified signed commit |
-| Main artifact types | Markdown reports, IOC CSVs, domain list, YARA rule, HTML page export |
+| Main artifact types | Markdown reports, source EML, header export, IOC CSVs, domain list, YARA rule, HTML page export |
 
 ## What This Entry Contains
 
@@ -35,7 +35,7 @@ This entry groups the public RemoteRAT repository artifacts into one dated workb
 | --- | ---: | --- |
 | Reports | 4 | [RemoteRAT repo README](reports/remoterat-readme.md) |
 | IOC tables | 2 | [High-confidence IOCs](tables/iocs-high-confidence.csv) |
-| Raw lists | 1 | [Domain blocklist](raw/domains.txt) |
+| Raw source files | 3 | [Source EML](raw/business-meeting-invitation-2026-05-25.eml) |
 | Detection rule | 1 | [RATtrap YARA rule](other/rattrap_jscript_dropper.yar) |
 | HTML exports | 2 | [GitHub Pages export](exports/github-pages-index.html) |
 
@@ -48,6 +48,8 @@ The SMTP header note records authenticated Gmail delivery routed through a Hyoni
 Open:
 
 - [SMTP header analysis](reports/smtp-headers.md)
+- [Source EML](raw/business-meeting-invitation-2026-05-25.eml)
+- [Proton header export](raw/business-meeting-invitation-proton-headers.txt)
 
 Useful anchors:
 
@@ -138,6 +140,8 @@ Open:
 | Table | [iocs-high-confidence.csv](tables/iocs-high-confidence.csv) | High-confidence IOC table |
 | Table | [iocs-medium-confidence.csv](tables/iocs-medium-confidence.csv) | Medium-confidence IOC table |
 | Raw | [domains.txt](raw/domains.txt) | Defanged domain list |
+| Raw | [business-meeting-invitation-2026-05-25.eml](raw/business-meeting-invitation-2026-05-25.eml) | Source EML |
+| Raw | [business-meeting-invitation-proton-headers.txt](raw/business-meeting-invitation-proton-headers.txt) | Proton header export |
 | Rule | [rattrap_jscript_dropper.yar](other/rattrap_jscript_dropper.yar) | YARA rule |
 | HTML export | [github-pages-index.html](exports/github-pages-index.html) | Copied GitHub Pages page |
 | HTML export | [incident-map.html](exports/incident-map.html) | Copied incident map page |

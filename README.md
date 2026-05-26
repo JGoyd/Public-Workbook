@@ -31,7 +31,7 @@ _Last updated: 2026-05-26_
 | Date | Day | Topic | Headline | Open |
 | --- | --- | --- | --- | --- |
 | 2026-05-26 | Tue | Zorro Ranch | Official NM presence inquiry packet, HTML version, detached signature, checksum, and public key | [open](workbook/outputs/2026/05/26/zorro-ranch/README.md) |
-| 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
+| 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
 | 2026-05-25 | Mon | Thiel Reveal | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
 | 2026-05-25 | Mon | Zorro Ranch | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
 <!-- daily-log:end -->
@@ -59,7 +59,7 @@ Each entry is meant to be easy to browse:
 1. Snapshot - the short case card.
 2. Findings by lane - grouped context, not one long block of text.
 3. Artifact map - what files were added and where they live.
-4. Tables and detection material - CSVs, rules, exports, and raw lists.
+4. Tables and detection material - CSVs, rules, exports, and raw source files.
 5. Links out - public repo, rendered page, or related entries when present.
 
 This repository is the workbook. Daily entries and topic pages are the main paths through it.
