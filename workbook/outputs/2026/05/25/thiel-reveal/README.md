@@ -1,7 +1,7 @@
 # 2026-05-25 · Thiel Reveal
 
 A consolidated read of source documents around Peter Thiel,
-organized into four themes. Findings only — no run mechanics.
+organized into four themes.
 
 Day: Monday
 Topic: Thiel Reveal
@@ -61,10 +61,6 @@ A 2012 attendee list placing Thiel in the network earlier than 2014.
 | EFTA02507068 | 2015-04-09 | Short note: Myhrvold + payment wording |
 | EFTA02587944 | — | Epstein → Summers: "peter thiel with me weekend, ny" |
 | EFTA02024389 | 2012-03 | Money-conference attendee list including Thiel |
-
-OCR text for each document is in [`ocr_text/`](ocr_text/).
-
----
 
 ## Tables
 

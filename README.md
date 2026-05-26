@@ -1,8 +1,7 @@
 # Public Workbook
 
-A daily, in-the-open log of what I'm working on.
-Each entry is one day, one topic, one set of findings.
-No process logs, no run noise — just what was found and why it matters.
+A daily record of current work, organized by date and topic.
+Each entry keeps the findings, source context, and related write-ups in one place.
 
 _Last updated: 2026-05-25 (Mon)_
 
@@ -21,10 +20,10 @@ _Last updated: 2026-05-25 (Mon)_
 
 ### 2026-05-25 · Mon · Two entries
 
-**Thiel Reveal** — A consolidated read of source documents around Peter Thiel's contact patterns, organized into four themes: direct contact in 2014, a Valar Ventures financial introduction, continued logistics after 2014, and early network context from 2012.
+**Thiel Reveal** — Notes on documented contact patterns involving Peter Thiel: 2014 scheduling, a Valar Ventures introduction, later logistics, and earlier attendee context.
 → [Read full entry](workbook/outputs/2026/05/25/thiel-reveal/README.md)
 
-**Zorro Ranch** — A records-and-witness read on Zorro Ranch in New Mexico: post-conviction guest access, staff-managed logistics, structured operations, aviation access, and the New Mexico registration question. Subpoena-ready, not violation-proven.
+**Zorro Ranch** — Notes on Zorro Ranch records and witness context: guest access after conviction, staff logistics, property operations, aviation access, and the New Mexico registration question.
 → [Read full entry](workbook/outputs/2026/05/25/zorro-ranch/README.md)
 
 ---
@@ -33,8 +32,8 @@ _Last updated: 2026-05-25 (Mon)_
 
 | Date | Day | Topic | Headline | Open |
 | --- | --- | --- | --- | --- |
-| 2026-05-25 | Mon | Thiel Reveal | Four themes; 2014 channel + Valar intro stand out | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
-| 2026-05-25 | Mon | Zorro Ranch | Records-and-witness inquiry: subpoena-ready, not violation-proven | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
+| 2026-05-25 | Mon | Thiel Reveal | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
+| 2026-05-25 | Mon | Zorro Ranch | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
 
 _New rows land at the top each day._
 
@@ -49,17 +48,17 @@ _New rows land at the top each day._
 
 ---
 
-## How this workbook is built
+## Entry format
 
-Each daily entry follows the same skeleton so it's easy to scan:
+Each entry keeps the useful pieces close together:
 
-1. Headline — one paragraph, plain language.
-2. Themes — the actual findings, grouped.
-3. Source documents — what backs each theme.
-4. Tables — the evidence in structured form.
-5. Reports — longer write-ups and follow-ups.
+1. Short lead summary.
+2. Findings grouped by theme.
+3. Source documents and one-line context.
+4. Tables with supporting details.
+5. Related reports and write-ups.
 
-The repo is the public view. There is no separate private or internal version of any entry linked here — what you see is the work.
+This repository is the workbook. Daily entries and topic pages are the main paths through it.
 
 ---
 
@@ -76,4 +75,4 @@ workbook/
 
 ---
 
-_Built openly. Updated when there's something worth posting._
+_Updated as new entries are added._
