@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track A — Epstein Network: London Banking Conduct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root,[data-theme="light"]{
+  --bg:#f7f6f2;--surface:#f9f8f5;--surface2:#fbfbf9;--offset:#f0ede8;--offset2:#e8e4de;
+  --divider:#dcd9d5;--border:rgba(40,37,29,0.12);
+  --text:#28251d;--muted:#7a7974;--faint:#bab9b4;
+  --primary:#01696f;--primary-h:#0c4e54;--primary-hl:#d0ddd9;
+  --warn:#964219;--warn-hl:#ddd0c6;
+  --success:#437a22;--success-hl:#d4dfcc;
+  --blue:#006494;--blue-hl:#c6d8e4;
+  --red:#a12c3a;--red-hl:#e0cece;
+  --shadow-sm:0 1px 3px rgba(40,37,29,0.07);
+  --shadow-md:0 4px 16px rgba(40,37,29,0.10);
+  --r-sm:0.375rem;--r-md:0.5rem;--r-lg:0.75rem;--r-xl:1rem;--r-full:9999px;
+  --tr:180ms cubic-bezier(0.16,1,0.3,1);
+  --font-body:'Inter',sans-serif;
+  --font-display:'Instrument Serif',Georgia,serif;
+}
+[data-theme="dark"]{
+  --bg:#131211;--surface:#1a1917;--surface2:#1f1e1c;--offset:#242220;--offset2:#2c2a27;
+  --divider:#252320;--border:rgba(205,204,202,0.10);
+  --text:#cdccca;--muted:#7a7876;--faint:#4e4c4a;
+  --primary:#4f98a3;--primary-h:#227f8b;--primary-hl:#1e3032;
+  --warn:#bb653b;--warn-hl:#3a2518;
+  --success:#6daa45;--success-hl:#1e2f12;
+  --blue:#5591c7;--blue-hl:#182638;
+  --red:#d1636b;--red-hl:#351a1a;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.28);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.42);
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{min-height:100dvh;font-family:var(--font-body);font-size:1rem;color:var(--text);background:var(--bg);display:flex;flex-direction:column}
+svg{display:block}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{text-wrap:balance;line-height:1.2}
+p,li{text-wrap:pretty;max-width:70ch}
+::selection{background:rgba(1,105,111,0.2)}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:var(--r-sm)}
+
+/* LAYOUT */
+.app{display:flex;min-height:100dvh}
+.sidebar{width:250px;min-width:250px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100dvh;overflow-y:auto;z-index:10}
+.main{flex:1;min-width:0;overflow-y:auto;height:100dvh}
+.page{display:none;padding:clamp(1.25rem,4vw,2.5rem) clamp(1rem,4vw,2.25rem);max-width:840px}
+.page.active{display:block}
+
+/* SIDEBAR */
+.sb-head{padding:1.25rem 1.1rem .85rem;border-bottom:1px solid var(--border)}
+.sb-mark{display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem}
+.sb-icon{width:24px;height:24px;background:var(--primary-hl);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-wordmark{font-family:var(--font-display);font-size:.93rem;font-style:italic;line-height:1.2}
+.sb-sub{font-size:.66rem;color:var(--muted);line-height:1.5}
+.sb-nav{padding:.55rem 0;flex:1}
+.sb-group{padding:.4rem 1.1rem .18rem;font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin-top:.25rem}
+.sb-btn{display:flex;align-items:center;gap:.5rem;width:100%;padding:.48rem 1.1rem;font-size:.82rem;color:var(--muted);text-align:left;border:none;background:none;cursor:pointer;position:relative;transition:color var(--tr),background var(--tr)}
+.sb-btn:hover{color:var(--text);background:var(--offset)}
+.sb-btn.on{color:var(--primary);background:var(--primary-hl);font-weight:600}
+.sb-btn.on::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2.5px;background:var(--primary);border-radius:0 2px 2px 0}
+.sb-btn svg{width:13px;height:13px;flex-shrink:0;opacity:.6}
+.sb-btn.on svg{opacity:1}
+.sb-foot{padding:.8rem 1.1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.sb-foot-note{font-size:.63rem;color:var(--faint);line-height:1.4}
+.theme-btn{width:27px;height:27px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);color:var(--muted);transition:color var(--tr),background var(--tr)}
+.theme-btn:hover{color:var(--text);background:var(--offset)}
+
+/* FCA STATUS BAR — slim, neutral, top of relevant pages */
+.fca-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:.55rem .875rem;font-size:.75rem;color:var(--muted);line-height:1.5;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.fca-bar .dot{width:7px;height:7px;border-radius:50%;background:var(--success);flex-shrink:0}
+.fca-bar strong{color:var(--text);font-weight:600}
+
+/* PAGE HEADER */
+.pg-tag{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--primary);background:var(--primary-hl);padding:.17rem .55rem;border-radius:var(--r-full);margin-bottom:.45rem}
+.pg-title{font-family:var(--font-display);font-size:clamp(1.45rem,3vw,2rem);color:var(--text);margin-bottom:.4rem;font-style:italic}
+.pg-sub{font-size:.86rem;color:var(--muted);max-width:60ch;line-height:1.65;margin-bottom:1.65rem}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.25rem 1.35rem;box-shadow:var(--shadow-sm);margin-bottom:1rem}
+.card-t{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.65}
+.card p+p{margin-top:.65rem}
+
+/* ENTITY CARDS */
+.entity-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:560px){.entity-pair{grid-template-columns:1fr}}
+.ent{border-radius:var(--r-xl);padding:1.2rem 1.3rem;border:1px solid transparent}
+.ent.declined{background:var(--success-hl);border-color:rgba(67,122,34,.18)}
+.ent.accepted{background:var(--warn-hl);border-color:rgba(150,66,25,.18)}
+.ent.pep{background:var(--blue-hl);border-color:rgba(0,100,148,.15)}
+.ent.broker{background:var(--offset2);border-color:var(--border)}
+.ent-role{font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.3rem}
+.ent.declined .ent-role{color:var(--success)}
+.ent.accepted .ent-role{color:var(--warn)}
+.ent.pep .ent-role{color:var(--blue)}
+.ent.broker .ent-role{color:var(--muted)}
+.ent-name{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--text);margin-bottom:.6rem;line-height:1.3}
+.ent-body{font-size:.8rem;color:var(--muted);line-height:1.7}
+.ent-body li{list-style:none;padding-left:.9rem;position:relative;margin-bottom:.1rem}
+.ent-body li::before{content:'—';position:absolute;left:0;color:var(--faint)}
+
+/* VERDICT ROW */
+.verdict-row{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.verdict{flex:1;min-width:180px;border-radius:var(--r-xl);padding:1rem 1.1rem;border:1px solid transparent;display:flex;flex-direction:column;gap:.3rem}
+.verdict.green{background:var(--success-hl);border-color:rgba(67,122,34,.15)}
+.verdict.red{background:var(--warn-hl);border-color:rgba(150,66,25,.15)}
+.verdict-label{font-size:.63rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.verdict.green .verdict-label{color:var(--success)}
+.verdict.red .verdict-label{color:var(--warn)}
+.verdict-value{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.2}
+.verdict-note{font-size:.74rem;color:var(--muted);line-height:1.45}
+
+/* CONCERN BLOCK */
+.concerns{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1rem;margin-bottom:1rem}
+.concern{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm)}
+.cn-n{font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--primary);margin-bottom:.25rem}
+.concern h3{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.3rem;line-height:1.3}
+.cn-bates{font-family:'Courier New',monospace;font-size:.66rem;font-weight:600;color:var(--blue);background:var(--blue-hl);padding:.1rem .4rem;border-radius:var(--r-sm);display:inline-block;margin-bottom:.4rem}
+.concern p{font-size:.79rem;color:var(--muted);line-height:1.6}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:1.3rem}
+.tl::before{content:'';position:absolute;left:.32rem;top:0;bottom:0;width:1px;background:var(--divider)}
+.tl-item{position:relative;margin-bottom:1rem}
+.tl-dot{position:absolute;left:-.98rem;top:.33rem;width:8px;height:8px;border-radius:50%;border:2px solid var(--surface)}
+.tl-dot.g{background:var(--success)}
+.tl-dot.p{background:var(--primary)}
+.tl-dot.a{background:var(--warn)}
+.tl-dot.b{background:var(--blue)}
+.tl-date{font-size:.64rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:.12rem}
+.tl-title{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.tl-body{font-size:.79rem;color:var(--muted);line-height:1.6;max-width:58ch}
+
+/* QUOTE */
+.quote{background:var(--offset);border-left:3px solid var(--primary);border-radius:0 var(--r-lg) var(--r-lg) 0;padding:.8rem 1rem;margin:.75rem 0;font-size:.85rem;color:var(--text);line-height:1.65;font-style:italic}
+.quote cite{display:block;margin-top:.4rem;font-style:normal;font-size:.69rem;color:var(--muted);font-weight:600}
+
+/* EXHIBIT */
+.exhibit{background:var(--offset);border:1px solid var(--border);border-radius:var(--r-lg);padding:.9rem 1rem;margin:.75rem 0}
+.ex-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;flex-wrap:wrap;gap:.3rem}
+.ex-bates{font-family:'Courier New',monospace;font-size:.66rem;font-weight:700;color:var(--primary);background:var(--primary-hl);padding:.1rem .4rem;border-radius:var(--r-sm)}
+.ex-meta{font-size:.68rem;color:var(--muted)}
+.ex-body{font-size:.8rem;color:var(--text);line-height:1.65;border-top:1px solid var(--border);padding-top:.5rem}
+.ex-body em{font-style:italic;color:var(--muted)}
+
+/* TABLE */
+.dt{width:100%;border-collapse:collapse;font-size:.79rem;margin:.65rem 0}
+.dt th{text-align:left;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:.4rem .6rem;border-bottom:1px solid var(--border)}
+.dt td{padding:.45rem .6rem;border-bottom:1px solid var(--divider);color:var(--text);vertical-align:top;line-height:1.5}
+.dt tr:last-child td{border-bottom:none}
+
+/* ESTABLISHED / NOT */
+.est-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:1rem}
+@media(max-width:500px){.est-grid{grid-template-columns:1fr}}
+.est{border-radius:var(--r-xl);padding:1rem 1.1rem;border:1px solid transparent}
+.est.yes{background:var(--success-hl);border-color:rgba(67,122,34,.15)}
+.est.no{background:var(--warn-hl);border-color:rgba(150,66,25,.15)}
+.est-label{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem}
+.est.yes .est-label{color:var(--success)}
+.est.no .est-label{color:var(--warn)}
+.est ul{padding-left:.85rem;font-size:.79rem;color:var(--muted);line-height:1.75}
+
+/* DIVIDER */
+.sec-h{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:1.35rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--divider)}
+
+/* MOBILE */
+.mob-btn{display:none;position:fixed;bottom:1rem;right:1rem;z-index:50;background:var(--primary);color:#fff;width:40px;height:40px;border-radius:var(--r-full);box-shadow:var(--shadow-md);align-items:center;justify-content:center}
+@media(max-width:768px){
+  .sidebar{position:fixed;left:-256px;top:0;height:100dvh;transition:left var(--tr);z-index:100;box-shadow:var(--shadow-md)}
+  .sidebar.open{left:0}
+  .mob-btn{display:flex}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sb-head">
+    <div class="sb-mark">
+      <div class="sb-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 9.5V5L6 2.5 10.5 5v4.5M4 9.5V7h4v2.5" stroke="var(--primary)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="sb-wordmark">London Banking Conduct</span>
+    </div>
+    <div class="sb-sub">Track A · Epstein Network · FCA Supervisory Query</div>
+  </div>
+
+  <div class="sb-nav">
+    <div class="sb-group">Entities</div>
+    <button class="sb-btn on" onclick="show('overview',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="1" width="3.5" height="3.5" rx=".5"/><rect x="7.5" y="1" width="3.5" height="3.5" rx=".5"/><rect x="1" y="7.5" width="3.5" height="3.5" rx=".5"/><rect x="7.5" y="7.5" width="3.5" height="3.5" rx=".5"/></svg>
+      All Entities: Overview
+    </button>
+    <button class="sb-btn" onclick="show('epstein',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="4" r="2.5"/><path d="M1.5 11c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/></svg>
+      Jeffrey Epstein
+    </button>
+    <button class="sb-btn" onclick="show('stern',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="4" r="2.5"/><path d="M1.5 11c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/></svg>
+      David Stern
+    </button>
+    <button class="sb-btn" onclick="show('boc',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4.5L6 2l5 2.5v6H1z"/><path d="M4 10.5V8h4v2.5"/></svg>
+      Bank of China (UK)
+    </button>
+    <button class="sb-btn" onclick="show('stanchart',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4.5L6 2l5 2.5v6H1z"/><path d="M4 10.5V8h4v2.5"/></svg>
+      Standard Chartered
+    </button>
+    <button class="sb-btn" onclick="show('pep',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="4" r="2.5"/><path d="M1.5 11c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/></svg>
+      The PEP Family
+    </button>
+
+    <div class="sb-group">The Conduct</div>
+    <button class="sb-btn" onclick="show('placement',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10V3.5L6 1.5l4 2V10M4.5 10V7.5h3V10"/></svg>
+      The Placement Request
+    </button>
+    <button class="sb-btn" onclick="show('aml',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.5V6.5l2 1"/></svg>
+      AML / EDD / Inducements
+    </button>
+    <button class="sb-btn" onclick="show('sources',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 1h4l3 3v7a.75.75 0 0 1-.75.75H3A.75.75 0 0 1 2.25 11V1.75A.75.75 0 0 1 3 1z"/><path d="M7 1v3h3M4 7h4M4 9.5h2.5"/></svg>
+      Source Documents
+    </button>
+
+    <div class="sb-group">Status</div>
+    <button class="sb-btn" onclick="show('status',this)">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.5v3M6 8v.5"/></svg>
+      FCA Receipt &amp; Scope
+    </button>
+  </div>
+
+  <div class="sb-foot">
+    <div class="sb-foot-note">Track A only<br>No Track B</div>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main" id="main">
+
+<!-- ══ OVERVIEW ══ -->
+<section class="page active" id="page-overview">
+  <div class="pg-tag">All Entities</div>
+  <h1 class="pg-title">The London Banking Conduct — Who Did What</h1>
+  <p class="pg-sub">An Epstein-network placement request targeting a PEP minor reached two FCA-regulated banks. One CEO flagged it as a known bribery risk and declined. The other is alleged to have accepted.</p>
+
+  <div class="entity-pair" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+    <div class="ent broker" style="cursor:pointer" onclick="show('epstein',document.querySelector('[onclick*=epstein]'))">
+      <div class="ent-role">Orchestrator</div>
+      <div class="ent-name">Jeffrey Epstein</div>
+      <div class="ent-body"><ul>
+        <li>Directed placement via Stern</li>
+        <li>Relayed CV request to PEP's father</li>
+        <li>Paid concurrent financial inducements</li>
+      </ul></div>
+    </div>
+    <div class="ent broker" style="cursor:pointer" onclick="show('stern',document.querySelector('[onclick*=stern]'))">
+      <div class="ent-role">Intermediary (Hong Kong)</div>
+      <div class="ent-name">David Stern</div>
+      <div class="ent-body"><ul>
+        <li>Approached Bill Winters (StanChart)</li>
+        <li>Forwarded refusal email to Epstein</li>
+        <li>Proposed undeclared London front office</li>
+      </ul></div>
+    </div>
+    <div class="ent declined" style="cursor:pointer" onclick="show('stanchart',document.querySelector('[onclick*=stanchart]'))">
+      <div class="ent-role">Declined — Risk-Aware</div>
+      <div class="ent-name">Standard Chartered</div>
+      <div class="ent-body"><ul>
+        <li>CEO Winters cited internship-as-bribery risk</li>
+        <li>Declined outside formal HR channels</li>
+        <li>Response documented: EFTA00664435</li>
+      </ul></div>
+    </div>
+    <div class="ent accepted" style="cursor:pointer" onclick="show('boc',document.querySelector('[onclick*=boc]'))">
+      <div class="ent-role">Accepted — AML Concern</div>
+      <div class="ent-name">Bank of China (UK)</div>
+      <div class="ent-body"><ul>
+        <li>Alleged to have accepted PEP minor placement</li>
+        <li>No EDD documentation identified</li>
+        <li>Concurrent inducements to candidate's family</li>
+      </ul></div>
+    </div>
+    <div class="ent pep" style="cursor:pointer" onclick="show('pep',document.querySelector('[onclick*=pep]'))">
+      <div class="ent-role">PEP Minor (Candidate)</div>
+      <div class="ent-name">Edward Rød-Larsen</div>
+      <div class="ent-body"><ul>
+        <li>Son of Norway's UK Ambassador (Mona Juul)</li>
+        <li>Son of former UN USG (Terje Rød-Larsen)</li>
+        <li>Qualifies as PEP under FCA Handbook</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">The Sequence in One Paragraph</div>
+    <p>In July 2017, <strong style="color:var(--text)">David Stern</strong> — Jeffrey Epstein's Hong Kong intermediary — contacted <strong style="color:var(--text)">Standard Chartered Group CEO Bill Winters</strong> to arrange a 5-day London work placement for the 16-year-old son of Norway's UK Ambassador. Winters explicitly identified the pattern as a known regulatory risk for internship-as-bribery and declined to proceed outside formal HR channels. Stern forwarded Winters' refusal to Epstein on the same day. The request then moved to <strong style="color:var(--text)">Bank of China (UK) Limited</strong>, which is alleged to have accepted the candidate. The candidate — <strong style="color:var(--text)">Edward Rød-Larsen</strong> — is identifiable as a Politically Exposed Person (PEP) under FCA Handbook definitions, triggering mandatory Enhanced Due Diligence that has not been documented.</p>
+    <p>Concurrent with the placement, Epstein's office paid medical invoices for Edward's father <strong style="color:var(--text)">Terje Rød-Larsen</strong> (March 2018) and purchased Apple products for other family children (January 2019), transforming the arrangement from an isolated favour into a documented financial relationship. Separately, a 2011 email from Stern proposes an undeclared London front office for "European &amp; China deals" where "nobody knows you [Epstein] are behind it," raising third-party due diligence concerns about Bank of China (UK)'s introducer controls. <strong style="color:var(--text)">A supervisory query on these matters was filed with the FCA and referred by the FCA to the relevant supervisory team in May 2026.</strong></p>
+  </div>
+
+  <div class="fca-bar">
+    <div class="dot"></div>
+    <span>This matter was reported to the FCA (ref <strong>00Db00K8yP</strong>). The FCA confirmed receipt and referred the information to the BoC (UK) supervisory team on 13 May 2026. No finding or enforcement action has been announced.</span>
+  </div>
+</section>
+
+<!-- ══ EPSTEIN ══ -->
+<section class="page" id="page-epstein">
+  <div class="pg-tag">Orchestrator</div>
+  <h1 class="pg-title">Jeffrey Epstein</h1>
+  <p class="pg-sub">Epstein's role was to direct the placement attempt and manage the concurrent financial relationship with the PEP family. He is the principal behind the network that engaged both banks.</p>
+
+  <div class="card">
+    <div class="card-t">Role in This Conduct</div>
+    <p>Epstein received Stern's forwarded email chain — including Bill Winters' explicit bribery-risk warning — on 18 July 2017. On 19 July, Epstein relayed Stern's request for a CV directly to <strong style="color:var(--text)">Terje Rød-Larsen</strong>, the candidate's father. This places Epstein as the active intermediary between Stern's outward-facing requests and the PEP family.</p>
+    <p>Separately, Epstein's office is the entity documented in the decrypted ledger records paying medical invoices for Terje Rød-Larsen (March 2018) and purchasing Apple products for other family children (January 2019). These payments are documented during the same window the BoC (UK) placement was active.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Documented Financial Transfers</div>
+    <table class="dt">
+      <thead><tr><th>Date</th><th>Payment Type</th><th>Recipient</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Mar 2018</td><td>Medical invoice payments</td><td>Terje Rød-Larsen (father)</td><td style="font-family:'Courier New',monospace;font-size:.69rem;color:var(--blue)">EFTA02238618</td></tr>
+        <tr><td>Jan 2019</td><td>Apple product purchases</td><td>Family children (other)</td><td style="font-family:'Courier New',monospace;font-size:.69rem;color:var(--blue)">EFTA02269722</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="fca-bar"><div class="dot"></div><span>FCA query filed and referred. No finding against Epstein's estate is stated here.</span></div>
+</section>
+
+<!-- ══ STERN ══ -->
+<section class="page" id="page-stern">
+  <div class="pg-tag">Intermediary — Hong Kong</div>
+  <h1 class="pg-title">David Stern</h1>
+  <p class="pg-sub">Stern was Epstein's Hong Kong-based intermediary who made the direct approach to Standard Chartered's CEO and subsequently relayed the refusal. He also proposed what appears to be an undeclared London front office.</p>
+
+  <div class="card">
+    <div class="card-t">The Approach to Standard Chartered</div>
+    <p>On 15 July 2017, Stern contacted Bill Winters (StanChart Group CEO) directly, requesting a 5-day London work-experience placement for a "16-year-old." In a follow-up the same day, Stern disclosed: <em>"his mother is Ambassador to the UK."</em> This disclosure is what establishes the candidate's PEP status at the point of first contact with the bank.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-t">After the StanChart Refusal</div>
+    <p>When Winters declined (18 July 2017), Stern forwarded the complete email chain — including Winters' explicit bribery-risk warning — to Epstein on the same day. On 19 July, Stern separately requested the candidate's CV via Epstein's channel to the father. The request then moved to Bank of China (UK), which is alleged to have accepted the placement without equivalent EDD controls.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Proposed Undeclared London Front — March 2011</div>
+    <div class="exhibit">
+      <div class="ex-head">
+        <span class="ex-bates">EFTA01778968</span>
+        <span class="ex-meta">Stern → Epstein · 10 Mar 2011</span>
+      </div>
+      <div class="ex-body">
+        <p>Stern proposes: <strong>"E&amp;S Investment office in London for European &amp; China deals … fronted/headed by me and <em>nobody knows you are behind it.</em>"</strong></p>
+        <p style="margin-top:.5rem;font-size:.78rem;color:var(--muted)">If this office was operational during 2017–2019, it may constitute an undisclosed principal relationship relevant to BoC (UK)'s introducer and third-party due diligence obligations (FCA SYSC 6.3).</p>
+      </div>
+    </div>
+  </div>
+  <div class="fca-bar"><div class="dot"></div><span>FCA query filed and referred. No finding against Stern is stated here.</span></div>
+</section>
+
+<!-- ══ BOC ══ -->
+<section class="page" id="page-boc">
+  <div class="pg-tag">FCA-Regulated Bank — AML Concern Raised</div>
+  <h1 class="pg-title">Bank of China (UK) Limited</h1>
+  <p class="pg-sub">BoC (UK) is alleged to have accepted the placement of a PEP minor after Standard Chartered's CEO declined the same request on explicit bribery-risk grounds. No Enhanced Due Diligence documentation has been identified in the public corpus for this business relationship.</p>
+
+  <div class="verdict-row">
+    <div class="verdict red">
+      <div class="verdict-label">Alleged Action</div>
+      <div class="verdict-value">Accepted PEP Minor Placement</div>
+      <div class="verdict-note">Arranged via Epstein–Stern network after StanChart's decline</div>
+    </div>
+    <div class="verdict red">
+      <div class="verdict-label">EDD Documentation</div>
+      <div class="verdict-value">None Identified</div>
+      <div class="verdict-note">No EDD record identified in public corpus for a PEP family relationship</div>
+    </div>
+    <div class="verdict red">
+      <div class="verdict-label">Introducer Due Diligence</div>
+      <div class="verdict-value">Potentially Absent</div>
+      <div class="verdict-note">If Stern's proposed London front was active, undisclosed principal issue</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">The AML / Regulatory Concern</div>
+    <p>The candidate — Edward Rød-Larsen — is a PEP family member under FCA and JMLSG definitions: his mother was Norway's Ambassador to the UK; his father a former UN Under-Secretary-General. Any FCA-regulated firm entering a business relationship with a PEP or their close family member is required under the Money Laundering Regulations 2017 to conduct Enhanced Due Diligence, obtain senior management approval, and perform enhanced ongoing monitoring. None of these steps has been documented for BoC (UK)'s acceptance of the placement.</p>
+    <p>Concurrent with the placement, Epstein's office paid medical invoices for the candidate's father (March 2018) and purchased Apple products for other family children (January 2019). This documented financial relationship with the same PEP family, during the same window, is precisely the pattern that Bill Winters identified as a known regulatory risk when he declined the placement for Standard Chartered.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Relevant Regulatory Obligations</div>
+    <table class="dt">
+      <thead><tr><th>Obligation</th><th>Basis</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Enhanced Due Diligence (PEP)</td><td>MLR 2017 / JMLSG</td><td style="color:var(--warn);font-weight:600">Not documented</td></tr>
+        <tr><td>Senior management approval</td><td>MLR 2017 Reg. 35</td><td style="color:var(--warn);font-weight:600">Not documented</td></tr>
+        <tr><td>Source of funds / wealth check</td><td>MLR 2017 / FCA SYSC 6.3</td><td style="color:var(--warn);font-weight:600">Not documented</td></tr>
+        <tr><td>Third-party / introducer CDD</td><td>FCA SYSC 6.3</td><td style="color:var(--muted)">Unclear — front office question</td></tr>
+        <tr><td>Bribery prevention procedures</td><td>Bribery Act 2010</td><td style="color:var(--muted)">No documented assessment identified</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="fca-bar"><div class="dot"></div><span>FCA supervisory query specifically references BoC (UK). The FCA confirmed it referred the information to the BoC (UK) supervisory team on 13 May 2026. No enforcement action or finding has been announced.</span></div>
+</section>
+
+<!-- ══ STANCHART ══ -->
+<section class="page" id="page-stanchart">
+  <div class="pg-tag">FCA-Regulated Bank — Declined</div>
+  <h1 class="pg-title">Standard Chartered Bank</h1>
+  <p class="pg-sub">Standard Chartered's Group CEO Bill Winters declined the placement request and explicitly identified the pattern as a known regulatory risk. His written response is the primary source document establishing that the bribery-risk nature of the request was recognized at CEO level.</p>
+
+  <div class="verdict-row">
+    <div class="verdict green">
+      <div class="verdict-label">Response</div>
+      <div class="verdict-value">Declined</div>
+      <div class="verdict-note">CEO Winters refused the informal placement route</div>
+    </div>
+    <div class="verdict green">
+      <div class="verdict-label">Bribery Risk Identified</div>
+      <div class="verdict-value">Yes — Explicitly</div>
+      <div class="verdict-note">Cited known regulatory sanctions for internships-as-bribery</div>
+    </div>
+    <div class="verdict green">
+      <div class="verdict-label">Action Taken</div>
+      <div class="verdict-value">Formal HR Route Only</div>
+      <div class="verdict-note">Would only process via compliant HR channel</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Bill Winters' Email — 18 July 2017 (EFTA00664435)</div>
+    <div class="quote">"Hi David, For all the obvious reasons, we are pretty careful to go about allocating internships and work experiences in a proper way — <strong>you will have seen the various cases of firms being sanctioned for using internships for children of clients as a form of bribery.</strong> If you send me a CV I can get it to our HR team and then can process it in an appropriate way."<cite>Bill Winters, Group Chief Executive, Standard Chartered Bank · 18 July 2017 · Source: EFTA00664435</cite></div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Why Standard Chartered Is Named in the Query</div>
+    <p>Standard Chartered is named not because it engaged in the alleged misconduct, but because <strong style="color:var(--text)">EFTA00664435 is the primary source document</strong> demonstrating that the bribery-risk nature of the placement pattern was explicitly recognised at the highest level of a peer FCA-regulated institution. Winters' email establishes the standard of awareness against which BoC (UK)'s alleged acceptance — without equivalent risk controls — is evaluated. Both banks received identical placement requests via the same intermediary network.</p>
+  </div>
+
+  <div class="fca-bar"><div class="dot"></div><span>Standard Chartered is referenced in the FCA query solely as the source of the primary evidence document (EFTA00664435). No misconduct allegation is made against StanChart.</span></div>
+</section>
+
+<!-- ══ PEP FAMILY ══ -->
+<section class="page" id="page-pep">
+  <div class="pg-tag">PEP — Politically Exposed Person</div>
+  <h1 class="pg-title">The Rød-Larsen Family</h1>
+  <p class="pg-sub">The candidate and his parents are central to the AML / EDD concern. Their roles establish both the PEP classification and the financial inducement pattern.</p>
+
+  <div class="entity-pair">
+    <div class="ent pep">
+      <div class="ent-role">PEP Minor — Placement Candidate</div>
+      <div class="ent-name">Edward Rød-Larsen</div>
+      <div class="ent-body"><ul>
+        <li>Age 16 at time of placement request (July 2017)</li>
+        <li>Son of Norwegian Ambassador to UK (Mona Juul)</li>
+        <li>Son of former UN Under-Secretary-General (Terje Rød-Larsen)</li>
+        <li>PEP family member under FCA / JMLSG definitions</li>
+        <li>Identified in corpus: EFTA01039905 / EFTA01039908</li>
+      </ul></div>
+    </div>
+    <div class="ent pep">
+      <div class="ent-role">PEP — Ambassador (Mother)</div>
+      <div class="ent-name">Mona Juul</div>
+      <div class="ent-body"><ul>
+        <li>Norway's Ambassador to the United Kingdom at time of placement</li>
+        <li>Disclosed by Stern to Bill Winters in July 2017 email</li>
+        <li>Her role establishes Edward as a PEP family member</li>
+        <li>Source: EFTA00664435 (Stern's follow-up: "his mother is Ambassador to the UK")</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="entity-pair">
+    <div class="ent pep" style="grid-column:1/-1">
+      <div class="ent-role">PEP — Former UN Under-Secretary-General (Father)</div>
+      <div class="ent-name">Terje Rød-Larsen</div>
+      <div class="ent-body" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem">
+        <ul>
+          <li>Former UN Under-Secretary-General</li>
+          <li>Senior UN official — independently establishes PEP status</li>
+          <li>Epstein relayed CV request to him directly (19 Jul 2017)</li>
+        </ul>
+        <ul>
+          <li>Medical invoices paid by Epstein's office (Mar 2018) — EFTA02238618</li>
+          <li>These payments are the concurrent inducement documented in the ledger records</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">Why PEP Status Matters for BoC (UK)</div>
+    <p>Under the FCA Handbook and the Money Laundering Regulations 2017, a "Politically Exposed Person" includes family members and close associates of individuals who hold or have held prominent public functions — which encompasses both a serving ambassador and a former UN Under-Secretary-General. A bank entering into any business relationship (including an internship placement) with a PEP or their close family member must apply Enhanced Due Diligence, which requires establishing source of wealth, obtaining senior management approval for the relationship, and conducting enhanced ongoing monitoring. No such documentation has been identified for BoC (UK)'s alleged acceptance of this placement.</p>
+  </div>
+</section>
+
+<!-- ══ PLACEMENT ══ -->
+<section class="page" id="page-placement">
+  <div class="pg-tag">The Conduct</div>
+  <h1 class="pg-title">The Placement Request: Full Sequence</h1>
+  <p class="pg-sub">A step-by-step account of the placement attempt, sourced to specific Bates-numbered documents from the DOJ public-release Epstein corpus.</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot b"></div>
+      <div class="tl-date">15 Jul 2017</div>
+      <div class="tl-title">Stern approaches Bill Winters (StanChart CEO)</div>
+      <div class="tl-body">Requests "5-day work experience in the last week of August in London" for a "16-year-old." Follow-up same day discloses: <em>"his mother is Ambassador to the UK."</em> This disclosure triggers PEP-family status at the point of first contact. Source: EFTA00664435.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <div class="tl-date">18 Jul 2017</div>
+      <div class="tl-title">Winters declines — cites internship-as-bribery risk</div>
+      <div class="tl-body">"you will have seen the various cases of firms being sanctioned for using internships for children of clients as a form of bribery." Offers formal HR route only. Stern forwards the complete email chain to Epstein the same day. Source: EFTA00664435.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot b"></div>
+      <div class="tl-date">19 Jul 2017</div>
+      <div class="tl-title">Epstein relays CV request to candidate's father</div>
+      <div class="tl-body">Stern requests Edward Rød-Larsen's CV via Epstein's direct channel to Terje Rød-Larsen. Identity of candidate now confirmed as PEP family member. Sources: EFTA01039905 / EFTA01039908.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot a"></div>
+      <div class="tl-date">Late 2017 (placement window)</div>
+      <div class="tl-title">Bank of China (UK) accepts the placement — alleged</div>
+      <div class="tl-body">Following StanChart's refusal, BoC (UK) is alleged to have accepted the PEP candidate. No EDD, no senior management approval, no source-of-funds check documented. The bank had, or should have had, the same information about the candidate's PEP status that Stern disclosed to StanChart.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot a"></div>
+      <div class="tl-date">Mar 2018</div>
+      <div class="tl-title">Epstein pays medical invoices for candidate's father</div>
+      <div class="tl-body">Decrypted ledger records document payment of medical invoices by Epstein's office to Terje Rød-Larsen. Source: EFTA02238618.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot a"></div>
+      <div class="tl-date">Jan 2019</div>
+      <div class="tl-title">Epstein purchases Apple products for family's other children</div>
+      <div class="tl-body">Further documented financial transaction by Epstein's office to the Rød-Larsen family. Source: EFTA02269722.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AML ══ -->
+<section class="page" id="page-aml">
+  <div class="pg-tag">The Conduct — AML / EDD</div>
+  <h1 class="pg-title">AML, EDD, and Inducement Concerns</h1>
+  <p class="pg-sub">Three independent AML / regulatory concerns arise from the documented conduct, each sourced to specific Bates IDs.</p>
+
+  <div class="concerns">
+    <div class="concern">
+      <div class="cn-n">Concern 1</div>
+      <h3>PEP Minor — No EDD Documented</h3>
+      <div class="cn-bates">EFTA01039905 · EFTA01039908</div>
+      <p>Edward Rød-Larsen is a PEP family member (ambassador's son; UN official's son). MLR 2017 requires EDD, senior management approval, and enhanced monitoring for any regulated firm's business relationship with a PEP family member. None has been documented for BoC (UK)'s acceptance of the placement.</p>
+    </div>
+    <div class="concern">
+      <div class="cn-n">Concern 2</div>
+      <h3>Concurrent Financial Inducements</h3>
+      <div class="cn-bates">EFTA02238618 · EFTA02269722</div>
+      <p>Epstein's office paid medical invoices for the candidate's father (Mar 2018) and purchased Apple products for other family children (Jan 2019) — during the same window the BoC (UK) placement was active. This is precisely the "child internship as form of financial advantage" pattern Winters identified at StanChart.</p>
+    </div>
+    <div class="concern">
+      <div class="cn-n">Concern 3</div>
+      <h3>Undeclared London Front Office</h3>
+      <div class="cn-bates">EFTA01778968</div>
+      <p>Stern proposed an "E&amp;S Investment office in London for European &amp; China deals" in 2011, explicitly structured so "nobody knows you [Epstein] are behind it." If active during 2017–2019, this is a potential undisclosed principal relationship relevant to BoC (UK)'s third-party and introducer due diligence obligations (FCA SYSC 6.3).</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">What Standard Chartered's Response Establishes</div>
+    <p>Winters' email (EFTA00664435) is significant not merely as a refusal, but as a contemporaneous CEO-level statement that the pattern — <em>informal internship placement for a client's child, arranged through a third-party intermediary, outside formal HR channels</em> — was recognized as carrying known regulatory sanctions risk. This is the standard of awareness that was available to a peer institution receiving the identical request at the same time.</p>
+  </div>
+</section>
+
+<!-- ══ SOURCES ══ -->
+<section class="page" id="page-sources">
+  <div class="pg-tag">Primary Documents</div>
+  <h1 class="pg-title">Source Documents</h1>
+  <p class="pg-sub">Near-verbatim excerpts from the six Bates-numbered DOJ corpus documents cited in the supplement. All are publicly available and independently verifiable.</p>
+
+  <div class="sec-h">EFTA00664435 — The Standard Chartered CEO Refusal</div>
+  <div class="exhibit">
+    <div class="ex-head">
+      <span class="ex-bates">EFTA00664435</span>
+      <span class="ex-meta">Stern → Epstein fwd chain · 18 Jul 2017</span>
+    </div>
+    <div class="ex-body">
+      <p><em>Forwarded email from:</em> <strong>Bill Winters, Group Chief Executive, Standard Chartered Bank</strong> · 18 July 2017:</p>
+      <div class="quote" style="margin:.6rem 0;font-size:.82rem">"Hi David, For all the obvious reasons, we are pretty careful to go about allocating internships and work experiences in a proper way — <strong>you will have seen the various cases of firms being sanctioned for using internships for children of clients as a form of bribery.</strong> If you send me a CV I can get it to our HR team and then can process it in an appropriate way."</div>
+      <p><em>Stern (15 Jul, follow-up):</em> "Sorry, for full disclosure — <strong>his mother is Ambassador to the UK.</strong>"</p>
+    </div>
+  </div>
+
+  <div class="sec-h">EFTA01039905 / EFTA01039908 — PEP Identification</div>
+  <div class="exhibit">
+    <div class="ex-head">
+      <span class="ex-bates">EFTA01039905 · EFTA01039908</span>
+      <span class="ex-meta">Internal Epstein correspondence · July 2017</span>
+    </div>
+    <div class="ex-body">
+      <p>Internal correspondence (19 July 2017) shows Stern requesting the CV of <strong>Edward Rød-Larsen</strong> for Standard Chartered, with Epstein relaying the request directly to the father <strong>Terje Rød-Larsen</strong> (former UN Under-Secretary-General). The mother, <strong>Mona Juul</strong>, was Norway's Ambassador to the UK. Both parents' roles establish Edward as a PEP family member under FCA / JMLSG definitions.</p>
+    </div>
+  </div>
+
+  <div class="sec-h">EFTA02238618 / EFTA02269722 — Concurrent Financial Inducements</div>
+  <div class="exhibit">
+    <div class="ex-head">
+      <span class="ex-bates">EFTA02238618 · EFTA02269722</span>
+      <span class="ex-meta">Decrypted ledger records · Mar 2018 &amp; Jan 2019</span>
+    </div>
+    <div class="ex-body">
+      <ul style="font-size:.8rem;line-height:1.8;padding-left:1rem;margin-top:.25rem">
+        <li><strong>March 2018 (EFTA02238618):</strong> Medical invoice payments by Epstein's office to Terje Rød-Larsen</li>
+        <li><strong>January 2019 (EFTA02269722):</strong> Apple product purchases by Epstein's office for the family's other children</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-h">EFTA01778968 — The Undeclared London Front</div>
+  <div class="exhibit">
+    <div class="ex-head">
+      <span class="ex-bates">EFTA01778968</span>
+      <span class="ex-meta">David Stern → Jeffrey Epstein · 10 Mar 2011</span>
+    </div>
+    <div class="ex-body">
+      <div class="quote" style="margin:.25rem 0;font-size:.82rem">"E&amp;S Investment office in London for European &amp; China deals … fronted/headed by me and <em>nobody knows you are behind it.</em>"<cite>David Stern · 10 March 2011</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATUS ══ -->
+<section class="page" id="page-status">
+  <div class="pg-tag">FCA Receipt &amp; Scope</div>
+  <h1 class="pg-title">FCA Status &amp; What This Does Not Claim</h1>
+  <p class="pg-sub">The FCA received and referred the report. This page states only that — and nothing more.</p>
+
+  <div class="fca-bar" style="margin-bottom:1rem">
+    <div class="dot"></div>
+    <span><strong>Case ref 00Db00K8yP.</strong> The FCA Supervision Hub confirmed receipt on 8 May 2026 and referred the information to the BoC (UK) supervisory team on 13 May 2026. No finding or enforcement action has been announced.</span>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <div class="card-t">FCA's Own Statement (Verbatim)</div>
+    <div class="quote" style="margin:0">"We'll generally not provide feedback on what action has been taken due to our policy on sharing information about regulated firms and individuals… there is no general right for members of the public to know the outcome of reports that they make."<cite>Andrew, Supervisor — FCA Supervision Hub · 8 May 2026</cite></div>
+  </div>
+
+  <div class="est-grid">
+    <div class="est yes">
+      <div class="est-label">✓ Documented</div>
+      <ul>
+        <li>Supervisory query filed citing six specific Bates-numbered DOJ documents</li>
+        <li>Two FCA named-officer replies received (8 May, 13 May 2026)</li>
+        <li>FCA confirmed information was referred to BoC (UK) supervisory team</li>
+        <li>EFTA00664435 exists in public corpus and contains the quoted Winters text verbatim</li>
+        <li>Bates-numbered documents are publicly verifiable from the DOJ Epstein corpus release</li>
+      </ul>
+    </div>
+    <div class="est no">
+      <div class="est-label">✗ Not Claimed Here</div>
+      <ul>
+        <li>That the FCA has opened a formal investigation</li>
+        <li>That any enforcement action has been taken or announced</li>
+        <li>That any individual or entity has been found to have committed misconduct</li>
+        <li>That the 2011 proposed London office was ever operational</li>
+        <li>That BoC (UK) lacked EDD records — only that none appear in the public corpus</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<button class="mob-btn" onclick="toggleSidebar()" aria-label="Open navigation">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (btn) btn.classList.add('on');
+  document.getElementById('main').scrollTop = 0;
+  if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open');
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function toggleTheme() {
+  const h = document.documentElement;
+  h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+</script>
+</body>
+</html>

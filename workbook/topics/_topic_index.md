@@ -3,6 +3,7 @@
 | Topic | Entries | Latest work | Open |
 | --- | ---: | --- | --- |
 | Buenos Aires Bond | 1 | 2026-05-27 | [open](buenos-aires-bond.md) |
+| FCA London Banking Conduct | 1 | 2026-05-27 | [open](fca-bank-of-china-stanchart.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [open](french-financial-corridor.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [open](remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [open](sec-ito-referral.md) |

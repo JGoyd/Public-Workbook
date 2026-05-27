@@ -25,6 +25,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | Work Date | Day | Topic | Type | Covers | What changed | Open |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-05-27 | Wed | Buenos Aires Bond | public writeup | 2018-04 to 2018-05 Southern Financial LLC / Deutsche Bank Buenos Aires bond public-record context | Buenos Aires Bond public HTML report with detached signature, checksum, and public key | [open](https://jgoyd.github.io/Public-Workbook/buenos-aires-bond/) |
+| 2026-05-27 | Wed | FCA London Banking Conduct | public writeup | 2026-05-08 to 2026-05-13 FCA Bank of China (UK) Limited / Standard Chartered correspondence sequence | FCA London Banking Conduct public HTML report, supporting packet README, unique EML anchors, checksums, and signatures | [open](https://jgoyd.github.io/Public-Workbook/fca-bank-of-china-stanchart/) |
 | 2026-05-26 | Tue | Valar / Southern Trust | source hardening | 2016-01 to 2019-09 Valar Global Fund III / Southern Trust source-document context | Valar / Southern Trust financial lane, source-PDF hardening, rendered page checks, and India-threshold framing | [open](https://jgoyd.github.io/Public-Workbook/valar-southern-trust/) |
 | 2026-05-26 | Tue | Zorro Ranch | packet | 2026-05-26 NM presence inquiry packet | Official NM presence inquiry packet, HTML version, detached signature, checksum, and public key | [open](workbook/outputs/2026/05/26/zorro-ranch/README.md) |
 | 2026-05-25 | Mon | RemoteRAT / RATtrap | public writeup | 2026-05-25 source EML and public repo artifacts | Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
@@ -45,6 +46,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | Topic | Entries | Latest work | Jump in |
 | --- | ---: | --- | --- |
 | Buenos Aires Bond | 1 | 2026-05-27 | [topic page](workbook/topics/buenos-aires-bond.md) |
+| FCA London Banking Conduct | 1 | 2026-05-27 | [topic page](workbook/topics/fca-bank-of-china-stanchart.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [topic page](workbook/topics/french-financial-corridor.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
