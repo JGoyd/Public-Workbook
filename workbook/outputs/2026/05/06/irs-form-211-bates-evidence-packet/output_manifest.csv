@@ -1,3 +1,4 @@
 filename,type,path,description
-IRS_Form_211_Bates_Evidence_Packet.pdf,other,workbook/private_holdback/2026/05/06/irs-form-211-bates-evidence-packet/IRS_Form_211_Bates_Evidence_Packet.pdf,Held back: sensitive/internal material.
-IRS_Form_211_Bates_Evidence_Packet.pdf.sha256,other,workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/other/IRS_Form_211_Bates_Evidence_Packet.pdf.sha256,SHA-256 fingerprint for held-back PDF packet
+IRS_Form_211_Bates_Evidence_Packet.pdf,report,workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/reports/IRS_Form_211_Bates_Evidence_Packet.pdf,IRS Form 211 Bates evidence packet PDF
+IRS_Form_211_Bates_Evidence_Packet.pdf.sha256,other,workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/other/IRS_Form_211_Bates_Evidence_Packet.pdf.sha256,SHA-256 fingerprint for PDF packet
+Joseph_Gs_Public_Key.asc,other,workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/other/Joseph_Gs_Public_Key.asc,Public key for repository verification material

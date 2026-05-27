@@ -19,7 +19,7 @@ Total entries: 14
 
 ## Latest Update
 
-Latest local update: added `IRS Form 211 Bates Evidence Packet` as a May 6 portal filing log with the PDF packet held back from public output.
+Latest local update: published `IRS Form 211 Bates Evidence Packet` as a May 6 portal filing log with the PDF packet as the primary public artifact.
 
 Latest committed checkpoint before this local update: `docs(workbook): log french authority hand delivery` on `main`.
 
@@ -31,7 +31,7 @@ May 27 entries are:
 
 May 6 backfill:
 
-- `IRS Form 211 Bates Evidence Packet` was added under the original 2026-05-06 filing date, not May 27.
+- `IRS Form 211 Bates Evidence Packet` was added under the original 2026-05-06 filing date, not May 27. Its root README open link points to the GitHub Pages PDF mirror.
 
 Latest active paths:
 
@@ -56,4 +56,4 @@ Both checks passed on 2026-05-27 after the IRS entry and index refresh.
 - New entries should start from `workbook/templates/entry_template.md` and land under `workbook/outputs/YYYY/MM/DD/<topic-slug>/`.
 - Public HTML mirrors currently live under `docs/<topic-slug>/` when an entry has a Pages route.
 - The French hand-delivery entry intentionally logs only the packet PDFs, verification files, and public key. Source build scripts, intermediate HTML, QA renders, assets, and second-reader notes were held back from the public workbook entry.
-- IRS Form 211 packet PDFs should stay under `workbook/private_holdback/` and remain ignored by git.
+- IRS Form 211 packet PDF is intentionally public in `workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/reports/` and mirrored under `docs/irs-form-211-bates-evidence-packet/`.
