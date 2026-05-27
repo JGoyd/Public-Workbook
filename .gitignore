@@ -3,3 +3,5 @@
 __pycache__/
 .venv/
 node_modules/
+tools/
+maltego_trojan_capture_*/

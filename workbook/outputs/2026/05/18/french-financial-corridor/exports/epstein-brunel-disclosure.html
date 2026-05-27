@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epstein / Brunel / MC2 — Public Disclosure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="dark"]{
+  --bg:#0d0e0f;--surface:#111315;--surface2:#161a1d;--surface3:#1c2026;
+  --border:#252b31;--divider:#1e242a;
+  --text:#d4d8dc;--muted:#7a8490;--faint:#3f4850;
+  --primary:#3fb8c4;--primary-dim:#1a3a3f;
+  --accent:#e8b23a;--accent-dim:#3a2e0a;
+  --warn:#e05c3a;--warn-dim:#3a1810;
+  --ok:#5fad6a;--ok-dim:#152318;
+  --shadow:0 2px 8px rgba(0,0,0,.45);
+  --font:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --xs:clamp(.7rem,.65rem + .2vw,.8rem);
+  --sm:clamp(.8rem,.75rem + .2vw,.9rem);
+  --base:clamp(.9rem,.85rem + .25vw,1rem);
+  --lg:clamp(1rem,.9rem + .5vw,1.25rem);
+  --xl:clamp(1.25rem,1rem + 1vw,1.75rem);
+  --2xl:clamp(1.6rem,1.2rem + 1.5vw,2.4rem);
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;
+  --s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;
+  --r:.25rem;--rm:.4rem;--rl:.6rem;
+}
+[data-theme="light"]{
+  --bg:#f4f5f6;--surface:#fff;--surface2:#f8f9fa;--surface3:#edf0f2;
+  --border:#d4d9de;--divider:#e2e6ea;
+  --text:#1a2028;--muted:#5a6570;--faint:#aab3bc;
+  --primary:#0d7b87;--primary-dim:#d5eff1;
+  --accent:#b8850a;--accent-dim:#fdf0cc;
+  --warn:#c0391a;--warn-dim:#fde8e2;
+  --ok:#2e7d38;--ok-dim:#d8f0da;
+  --shadow:0 2px 8px rgba(0,0,0,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:5rem}
+body{min-height:100dvh;font-family:var(--font);font-size:var(--base);color:var(--text);background:var(--bg);line-height:1.65}
+a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+p{text-wrap:pretty;max-width:72ch}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
+table{border-collapse:collapse;width:100%}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+code{font-family:var(--mono);font-size:.9em}
+::selection{background:oklch(from var(--primary) l c h / .22)}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:var(--r)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;
+  background:color-mix(in oklab,var(--bg) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 var(--s6)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:var(--s4);height:52px}
+.nav-logo{font-family:var(--mono);font-size:var(--sm);font-weight:500;color:var(--text);
+  display:flex;align-items:center;gap:var(--s2);flex-shrink:0}
+.nav-logo svg{color:var(--primary)}
+.nav-links{display:flex;gap:var(--s1);margin-left:var(--s4);flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.navl{font-size:var(--xs);font-weight:500;color:var(--muted);white-space:nowrap;
+  padding:var(--s1) var(--s3);border-radius:var(--r);
+  transition:color 150ms,background 150ms}
+.navl:hover,.navl.active{color:var(--text);background:var(--surface3);text-decoration:none}
+.nav-actions{margin-left:auto;flex-shrink:0}
+.btn-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--rm);border:1px solid var(--border);color:var(--muted);
+  transition:color 150ms,background 150ms}
+.btn-icon:hover{color:var(--text);background:var(--surface3);border-color:transparent}
+
+/* HERO */
+.hero{padding:var(--s12) var(--s6) var(--s10);
+  background:linear-gradient(to bottom,var(--surface),var(--bg));
+  border-bottom:1px solid var(--border)}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:var(--s2);
+  font-family:var(--mono);font-size:var(--xs);font-weight:500;
+  color:var(--primary);background:var(--primary-dim);
+  border:1px solid color-mix(in oklab,var(--primary) 30%,transparent);
+  padding:var(--s1) var(--s3);border-radius:var(--r);margin-bottom:var(--s5);
+  letter-spacing:.05em;text-transform:uppercase}
+.hero h1{font-size:var(--2xl);font-weight:600;color:var(--text);
+  margin-bottom:var(--s3);letter-spacing:-.01em}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero-sub{font-size:var(--base);color:var(--muted);max-width:66ch;margin-bottom:var(--s8)}
+.hero-notif{
+  display:flex;gap:var(--s4);flex-wrap:wrap;
+  background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--primary);
+  border-radius:0 0 var(--rl) var(--rl);
+  padding:var(--s5) var(--s6);
+}
+.notif-col{flex:1;min-width:180px}
+.notif-label{font-family:var(--mono);font-size:.68rem;font-weight:500;
+  color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--s2)}
+.notif-val{font-size:var(--sm);font-weight:500;color:var(--text)}
+.notif-val.mono{font-family:var(--mono);font-size:var(--xs);color:var(--primary)}
+.notif-sub{font-size:var(--xs);color:var(--muted);margin-top:2px}
+
+/* LAYOUT */
+.layout{max-width:1200px;margin:0 auto;padding:var(--s8) var(--s6);
+  display:grid;grid-template-columns:210px 1fr;gap:var(--s8);align-items:start}
+.sidebar{position:sticky;top:68px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:var(--s4)}
+.sb-label{font-family:var(--mono);font-size:.68rem;font-weight:500;
+  color:var(--faint);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:var(--s2);display:block}
+.sb-nav{display:flex;flex-direction:column;gap:2px}
+.sb-nav a{font-size:var(--xs);color:var(--muted);
+  padding:var(--s1) var(--s2);border-radius:var(--r);
+  display:flex;align-items:center;gap:var(--s2);
+  transition:color 150ms,background 150ms}
+.sb-nav a:hover{color:var(--text);background:var(--surface3);text-decoration:none}
+.sb-nav a.active{color:var(--primary);background:var(--primary-dim)}
+.sb-nav a svg{flex-shrink:0;opacity:.6}
+.sb-divider{height:1px;background:var(--divider);margin:var(--s3) 0}
+
+/* SECTIONS */
+.main{min-width:0}
+section{margin-bottom:var(--s12);scroll-margin-top:72px}
+.sec-hdr{display:flex;align-items:center;gap:var(--s3);
+  margin-bottom:var(--s6);padding-bottom:var(--s4);border-bottom:1px solid var(--border)}
+.sec-num{font-family:var(--mono);font-size:var(--xs);color:var(--faint);min-width:2rem}
+.sec-hdr h2{font-size:var(--lg);font-weight:600;color:var(--text)}
+.tag{font-family:var(--mono);font-size:var(--xs);padding:2px var(--s2);border-radius:var(--r);margin-left:auto}
+.tag-blue{background:var(--primary-dim);color:var(--primary)}
+.tag-orange{background:var(--accent-dim);color:var(--accent)}
+.tag-green{background:var(--ok-dim);color:var(--ok)}
+.tag-grey{background:var(--surface3);color:var(--muted)}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:var(--s5);margin-bottom:var(--s4);
+  box-shadow:var(--shadow);transition:border-color 150ms}
+.card:hover{border-color:color-mix(in oklab,var(--primary) 40%,var(--border))}
+.card-hdr{display:flex;align-items:flex-start;gap:var(--s3);margin-bottom:var(--s3)}
+.card-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  background:var(--surface3);border-radius:var(--rm);flex-shrink:0;color:var(--primary)}
+.card-title{font-size:var(--base);font-weight:600;color:var(--text)}
+.card-sub{font-family:var(--mono);font-size:var(--xs);color:var(--muted)}
+.card p{font-size:var(--sm);color:var(--muted)}
+
+/* EVIDENCE */
+.evblock{background:var(--surface2);border:1px solid var(--border);
+  border-left:3px solid var(--primary);border-radius:0 var(--rm) var(--rm) 0;
+  padding:var(--s4);margin-bottom:var(--s3)}
+.evref{font-family:var(--mono);font-size:var(--xs);font-weight:500;
+  color:var(--primary);margin-bottom:var(--s2);display:flex;align-items:center;gap:var(--s2)}
+.evquote{font-family:var(--mono);font-size:var(--xs);color:var(--text);
+  background:var(--surface3);border:1px solid var(--border);border-radius:var(--r);
+  padding:var(--s3);margin-bottom:var(--s2);white-space:pre-wrap;line-height:1.7}
+.evclaim{font-size:var(--xs);color:var(--muted);line-height:1.6}
+
+/* TABLE */
+.tw{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl);margin-bottom:var(--s4)}
+.dt{font-size:var(--xs)}
+.dt thead{background:var(--surface3)}
+.dt th{padding:var(--s3) var(--s4);text-align:left;font-family:var(--mono);font-weight:500;
+  font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;
+  border-bottom:1px solid var(--border);white-space:nowrap}
+.dt td{padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);
+  color:var(--muted);vertical-align:top}
+.dt tr:last-child td{border-bottom:none}
+.dt tr:hover td{background:var(--surface3)}
+.dt td.mono{font-family:var(--mono);color:var(--text)}
+.dt td.amt{font-family:var(--mono);color:var(--accent);font-weight:500;text-align:right}
+.dt td.dt{color:var(--primary);white-space:nowrap;font-family:var(--mono)}
+.dt td.bates{font-size:.68rem;color:var(--faint);font-family:var(--mono)}
+
+/* EMAIL THREAD */
+.thread{border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:var(--s6)}
+.msg{padding:var(--s5);border-bottom:1px solid var(--divider)}
+.msg:last-child{border-bottom:none}
+.msg.out{background:var(--surface2)}
+.msg.in{background:var(--surface)}
+.msg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s4);
+  font-size:var(--xs);color:var(--muted);margin-bottom:var(--s3)}
+.msg-from{font-weight:600;color:var(--text)}
+.msg-to{color:var(--primary)}
+.msg-date{margin-left:auto;color:var(--faint);white-space:nowrap;font-family:var(--mono)}
+.dir{font-family:var(--mono);font-size:.68rem;font-weight:500;
+  padding:2px var(--s2);border-radius:var(--r);text-transform:uppercase;letter-spacing:.06em}
+.dir-out{background:var(--ok-dim);color:var(--ok)}
+.dir-in{background:var(--surface3);color:var(--muted)}
+.msg-subject{font-size:var(--sm);font-weight:600;color:var(--text);margin-bottom:var(--s3)}
+.msg-body{font-size:var(--sm);color:var(--muted);line-height:1.75}
+.msg-body p{margin-bottom:var(--s3);max-width:none}
+.msg-body ol{padding-left:var(--s5);margin-bottom:var(--s3)}
+.msg-body li{margin-bottom:var(--s2)}
+.ref{display:inline-block;font-family:var(--mono);font-size:.68rem;
+  padding:1px var(--s2);border-radius:var(--r);margin-right:2px;
+  background:var(--primary-dim);color:var(--primary)}
+
+/* SOURCE GRID */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s3)}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rm);padding:var(--s4)}
+.sc-id{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--primary);margin-bottom:var(--s1)}
+.sc-role{font-size:var(--xs);color:var(--muted);margin-bottom:var(--s2)}
+.badge{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:.68rem;
+  padding:2px var(--s2);border-radius:var(--r)}
+.badge-blue{background:var(--primary-dim);color:var(--primary)}
+.badge-orange{background:var(--accent-dim);color:var(--accent)}
+.badge-grey{background:var(--surface3);color:var(--muted)}
+
+/* STATS */
+.stats{display:flex;flex-wrap:wrap;gap:var(--s4);margin-bottom:var(--s6)}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rm);
+  padding:var(--s4) var(--s5);flex:1;min-width:120px}
+.stat-v{font-size:var(--xl);font-weight:600;color:var(--primary);font-family:var(--mono);line-height:1}
+.stat-l{font-size:var(--xs);color:var(--muted);margin-top:2px}
+
+/* DIVIDER */
+.hr{height:1px;background:var(--divider);margin:var(--s5) 0}
+
+/* NOTE */
+.note{background:var(--surface3);border:1px solid var(--border);border-radius:var(--rm);
+  padding:var(--s4);font-size:var(--xs);color:var(--muted);line-height:1.7;margin-bottom:var(--s4)}
+.note strong{color:var(--text);font-weight:500}
+
+/* 2-col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:var(--s8) var(--s6);background:var(--surface)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:var(--s6)}
+.fc{flex:1;min-width:180px}
+.fl{font-family:var(--mono);font-size:.68rem;color:var(--faint);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--s3)}
+.ft{font-size:var(--xs);color:var(--muted);line-height:1.8}
+.fm{font-family:var(--mono);font-size:.68rem;color:var(--faint);word-break:break-all;line-height:1.9}
+
+/* RESPONSIVE */
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}}
+@media(max-width:640px){.hero{padding:var(--s8) var(--s4)}.layout{padding:var(--s6) var(--s4)}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14,2 14,8 20,8"/>
+      </svg>
+      Epstein / Brunel / MC2
+    </div>
+    <div class="nav-links">
+      <a href="#overview" class="navl">Overview</a>
+      <a href="#notified" class="navl">Who Was Notified</a>
+      <a href="#lead1" class="navl">Lead 1</a>
+      <a href="#lead2" class="navl">Lead 2</a>
+      <a href="#lead3" class="navl">Lead 3</a>
+      <a href="#addendum" class="navl">Addendum A</a>
+      <a href="#financial" class="navl">Financial</a>
+      <a href="#sources" class="navl">Sources</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" data-theme-toggle aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+      Public Disclosure · DOJ/EFTA Source Material
+    </div>
+    <h1>Epstein / Brunel / MC2<br><em>Financial Evidence — Public Record</em></h1>
+    <p class="hero-sub">
+      Source-controlled documentary leads drawn from the public DOJ/EFTA corpus.
+      Covers the Siad/Epstein logistics thread, Brunel/MC2 commission and payment lane,
+      Paris contact-facilitation pages, and the Gratitude America Ltd financial vehicle —
+      with Swedish and offshore banking references.
+    </p>
+
+    <!-- WHO WAS NOTIFIED PANEL -->
+    <div class="hero-notif">
+      <div class="notif-col">
+        <div class="notif-label">Notified Authority</div>
+        <div class="notif-val">Parquet National Financier</div>
+        <div class="notif-sub">Tribunal judiciaire de Paris<br>pr-financier.tj-paris@justice.fr</div>
+      </div>
+      <div class="notif-col">
+        <div class="notif-label">First Contact</div>
+        <div class="notif-val mono">2 May 2026</div>
+        <div class="notif-sub">Initial financial elements transmitted</div>
+      </div>
+      <div class="notif-col">
+        <div class="notif-label">PNF Responded</div>
+        <div class="notif-val mono">18 May 2026</div>
+        <div class="notif-sub">Requested Gratitude America ledger</div>
+      </div>
+      <div class="notif-col">
+        <div class="notif-label">Full Packet Sent</div>
+        <div class="notif-val mono">22 May 2026</div>
+        <div class="notif-sub">FR-SIAD-BRUNEL-MC2 transmitted with EFTA exhibits</div>
+      </div>
+      <div class="notif-col">
+        <div class="notif-label">Packet ID</div>
+        <div class="notif-val mono">FR-SIAD-BRUNEL-MC2</div>
+        <div class="notif-sub">DOJ/EFTA source-controlled</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <span class="sb-label">Contents</span>
+    <nav class="sb-nav">
+      <a href="#overview">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Overview
+      </a>
+      <a href="#notified">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Who Was Notified
+      </a>
+      <a href="#lead1">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Lead 1 — Siad/Epstein
+      </a>
+      <a href="#lead2">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Lead 2 — Payment/Brunel
+      </a>
+      <a href="#lead3">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Lead 3 — Paris/Groff
+      </a>
+      <a href="#addendum">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Addendum A — 2009/10
+      </a>
+      <a href="#financial">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        Financial Leads
+      </a>
+      <a href="#sources">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Source Index
+      </a>
+    </nav>
+    <div class="sb-divider"></div>
+    <span class="sb-label">Authority</span>
+    <div style="font-size:var(--xs);color:var(--muted);line-height:1.7">
+      DOJ / justice.gov<br>EFTA PDFs<br>DB-SDNY Bates records
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="sec-hdr">
+        <span class="sec-num">00</span>
+        <h2>Overview</h2>
+        <span class="tag tag-blue">DOJ/EFTA Public Corpus</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-v">5</div><div class="stat-l">Primary EFTA exhibits</div></div>
+        <div class="stat"><div class="stat-v">6</div><div class="stat-l">Addendum A exhibits</div></div>
+        <div class="stat"><div class="stat-v">3</div><div class="stat-l">Evidence lanes</div></div>
+        <div class="stat"><div class="stat-v">185</div><div class="stat-l">GA ledger lines</div></div>
+        <div class="stat"><div class="stat-v">123</div><div class="stat-l">Unique beneficiaries</div></div>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card-hdr">
+            <div class="card-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div><div class="card-title">Three Documentary Lanes</div><div class="card-sub">What the source pages show</div></div>
+          </div>
+          <p>Siad in DOJ/EFTA text touching France/Strasbourg, Paris, MC2 routing, expense/reimbursement language, Brunel/MC2 commission and payment language, and Swedish beneficiary banking details.</p>
+        </div>
+        <div class="card">
+          <div class="card-hdr">
+            <div class="card-icon" style="background:var(--ok-dim);color:var(--ok)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.5a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 15h1a2 2 0 0 1-.08.92z"/></svg>
+            </div>
+            <div><div class="card-title">Notified: Parquet National Financier</div><div class="card-sub">TJ-Paris · May 2026</div></div>
+          </div>
+          <p>The PNF (Paris financial prosecutor's office) was contacted on 2 May 2026 and confirmed receipt. They requested and received the Gratitude America ledger. The full evidence packet was transmitted 22 May 2026.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WAS NOTIFIED -->
+    <section id="notified">
+      <div class="sec-hdr">
+        <span class="sec-num">01</span>
+        <h2>Who Was Notified &amp; When</h2>
+        <span class="tag tag-green">Confirmed Contact</span>
+      </div>
+
+      <div class="tw">
+        <table class="dt">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Direction</th>
+              <th>From</th>
+              <th>To</th>
+              <th>What Was Sent / Said</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="dt">2 May 2026</td>
+              <td><span class="badge badge-blue">→ Outbound</span></td>
+              <td class="mono" style="font-size:.68rem">Esq.JG.legal@proton.me</td>
+              <td class="mono" style="font-size:.68rem">pr-financier.tj-paris@justice.fr</td>
+              <td>Initial financial disclosure: $1M Brunel wire (EFTA00028968), $5M trust (EFTA00082273), Bella Klein fiduciary role, racketeering allegation (EFTA00145666), Gratitude America Ltd vehicle. Notified that GA ledger (185 lines, 123 beneficiaries) and 1953 Trust beneficiary list available on request.</td>
+            </tr>
+            <tr>
+              <td class="dt">18 May 2026<br><span style="font-size:.68rem;color:var(--faint)">01:06</span></td>
+              <td><span class="badge badge-grey">← Inbound</span></td>
+              <td class="mono" style="font-size:.68rem">Permanence du PNF<br>pr-financier.tj-paris@justice.fr</td>
+              <td class="mono" style="font-size:.68rem">Esq.JG.legal@proton.me</td>
+              <td><strong style="color:var(--text)">PNF confirmed receipt</strong> and specifically requested: "Pourriez-vous nous transmettre pour étude le document « Grand livre Gratitude America Ltd » mentionné ?" — formal request for the Gratitude America ledger.</td>
+            </tr>
+            <tr>
+              <td class="dt">18 May 2026<br><span style="font-size:.68rem;color:var(--faint)">08:35–08:38</span></td>
+              <td><span class="badge badge-blue">→ Outbound</span></td>
+              <td class="mono" style="font-size:.68rem">Esq.JG.legal@proton.me</td>
+              <td class="mono" style="font-size:.68rem">pr-financier.tj-paris@justice.fr</td>
+              <td>Transmitted EFTA00027019 (Exhibit E, pp. 8–9 — Gratitude America MMDA transfer table with dates, counterparties, amounts, DB-SDNY Bates refs). Correction issued: the 185-line / 123-beneficiary count covers multiple Deutsche Bank transaction tables, not the GA table alone.</td>
+            </tr>
+            <tr>
+              <td class="dt">22 May 2026<br><span style="font-size:.68rem;color:var(--faint)">23:24</span></td>
+              <td><span class="badge badge-blue">→ Outbound</span></td>
+              <td class="mono" style="font-size:.68rem">Esq.JG.legal@proton.me</td>
+              <td class="mono" style="font-size:.68rem">pr-financier.tj-paris@justice.fr</td>
+              <td>Full packet <strong style="color:var(--text)">FR-SIAD-BRUNEL-MC2</strong> transmitted. Attached: SIAD_BRUNEL_MC2_EVIDENCE_PACKET.pdf (3.33 MB). Covers: EFTA01917017–01917018 (Siad/Epstein/Strasbourg/MC2), EFTA01986452–01986454 (commission/payment/Swedish banking), EFTA00413879/413635/413919 (Groff/Siad/Paris). Plus Addendum A: 2009–2010 scouting-fee/SWIFT dispute/Deutsche Bank thread.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:var(--base);font-weight:600;margin:var(--s6) 0 var(--s4);color:var(--muted)">Email Thread — Full Record</h3>
+
+      <div class="thread">
+
+        <div class="msg out">
+          <div class="msg-meta">
+            <span class="msg-from">Independent Researcher</span>
+            <span>→</span>
+            <span class="msg-to">TJ-PARIS / Parquet National Financier</span>
+            <span class="dir dir-out">Sent</span>
+            <span class="msg-date">2 May 2026 · 22:16</span>
+          </div>
+          <div class="msg-subject">Éléments financiers – Dossier Epstein / Brunel</div>
+          <div class="msg-body">
+            <p>Attn: Parquet National Financier – Enquête Epstein (volet financier)</p>
+            <p>Je suis un chercheur indépendant travaillant sur le corpus public américain DOJ/EFTA. Les éléments suivants, rattachés à des références Bates, concernent le volet financier de votre enquête.</p>
+            <ol>
+              <li><strong>VIREMENT D'UN MILLION DE DOLLARS À BRUNEL (2004)</strong> — <span class="ref">EFTA00028968 p73</span> Septembre 2004 : virement de 1 000 000 USD par Jeffrey Epstein vers un compte offshore de Jean-Luc Brunel, au moment de la création de MC2 Model Management. <span class="ref">EFTA00306919 p2</span> second document corroborant.</li>
+              <li><strong>BRUNEL BÉNÉFICIAIRE D'UN TRUST EPSTEIN (5 MILLIONS USD)</strong> — <span class="ref">EFTA00082273 p2</span></li>
+              <li><strong>BELLA KLEIN, TRUSTEE, AVEC POUVOIR FIDUCIAIRE SUR BRUNEL</strong> — <span class="ref">EFTA01297516</span> <span class="ref">EFTA01682446 p5</span> <span class="ref">EFTA00282489 p0</span></li>
+              <li><strong>ALLÉGATION DE RACKETEERING</strong> — <span class="ref">EFTA00145666 p11</span> Brunel / MC2 / Epstein / mineurs</li>
+              <li><strong>VÉHICULE FINANCIER COMMUN : GRATITUDE AMERICA LTD</strong> — Grand livre complet (DB-SDNY Bates 0003484–0008064) et liste des 27 bénéficiaires du 1953 Trust <span class="ref">EFTA01266204</span> disponibles sur demande.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="msg in">
+          <div class="msg-meta">
+            <span class="msg-from">Permanence du PNF</span>
+            <span>→</span>
+            <span class="msg-to">Independent Researcher</span>
+            <span class="dir dir-in">Received</span>
+            <span class="msg-date">18 May 2026 · 01:06</span>
+          </div>
+          <div class="msg-subject">RE: Éléments financiers – Dossier Epstein / Brunel</div>
+          <div class="msg-body">
+            <p>Monsieur,</p>
+            <p>Nous vous remercions pour votre mail.</p>
+            <p><strong>Pourriez-vous nous transmettre pour étude le document « Grand livre Gratitude America Ltd » mentionné ?</strong></p>
+            <p style="color:var(--faint);font-size:var(--xs);margin-top:var(--s4)">— Permanence du PNF · Tribunal judiciaire de Paris · Parvis Robert BADINTER, 75 859 PARIS Cedex 17</p>
+          </div>
+        </div>
+
+        <div class="msg out">
+          <div class="msg-meta">
+            <span class="msg-from">Independent Researcher</span>
+            <span>→</span>
+            <span class="msg-to">TJ-PARIS / Parquet National Financier</span>
+            <span class="dir dir-out">Sent</span>
+            <span class="msg-date">18 May 2026 · 08:35</span>
+          </div>
+          <div class="msg-subject">RE: Éléments financiers – Dossier Epstein / Brunel</div>
+          <div class="msg-body">
+            <p>Merci pour votre retour. Je vous transmets ci-joint le document source demandé ainsi que mon extraction de travail.</p>
+            <p><strong>Correction importante :</strong> ma formulation précédente était trop large. Le chiffre de 185 lignes / 123 bénéficiaires correspond à une extraction de travail couvrant plusieurs tableaux de transactions Deutsche Bank, et non uniquement au seul tableau Gratitude America Ltd.</p>
+            <p>Le document source pertinent est <span class="ref">EFTA00027019</span>. Le tableau Gratitude America figure dans l'Exhibit E, pages 8–9 du PDF — transferts Gratitude America MMDA avec dates, contreparties, montants et références Bates DB-SDNY.</p>
+          </div>
+        </div>
+
+        <div class="msg out">
+          <div class="msg-meta">
+            <span class="msg-from">Independent Researcher</span>
+            <span>→</span>
+            <span class="msg-to">TJ-PARIS / Parquet National Financier</span>
+            <span class="dir dir-out">Sent</span>
+            <span class="msg-date">22 May 2026 · 23:24</span>
+          </div>
+          <div class="msg-subject">RE: Éléments financiers – Dossier Epstein / Brunel</div>
+          <div class="msg-body">
+            <p>Suite à mon envoi du 18 mai 2026, je vous transmets ci-joint le paquet documentaire <strong>FR-SIAD-BRUNEL-MC2</strong>, constitué de pages DOJ/EFTA vérifiées.</p>
+            <p>Le paquet couvre trois ensembles principaux :</p>
+            <ol>
+              <li>Échange Siad/Epstein juillet 2014 — France/Strasbourg, Paris, logistique, orientation MC2 — <span class="ref">EFTA01917017–01917018</span></li>
+              <li>Fil commissions/paiements Siad/Brunel/MC2 avec coordonnées bancaires suédoises — <span class="ref">EFTA01986452–01986454</span></li>
+              <li>Pages Groff/Siad/Paris à titre de corroboration — <span class="ref">EFTA00413879</span> <span class="ref">EFTA00413635</span> <span class="ref">EFTA00413919</span></li>
+            </ol>
+            <p>Addendum joint : ensemble antécédent 2009–2010 (scouting-fee, différend SWIFT EUR 6 000, fil Deutsche Bank).</p>
+            <p><em style="color:var(--faint)">Attachments: SIAD_BRUNEL_MC2_EVIDENCE_PACKET.pdf (3.33 MB)</em></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEAD 1 -->
+    <section id="lead1">
+      <div class="sec-hdr">
+        <span class="sec-num">02</span>
+        <h2>Lead 1 — Siad / Epstein Logistics Thread</h2>
+        <span class="tag tag-blue">Primary · EFTA01917017–18</span>
+      </div>
+
+      <div class="note"><strong>DOJ DataSet:</strong> 105 pages · <strong>Date:</strong> July 24, 2014 · <strong>Thread:</strong> Siad ↔ Jeffrey Epstein</div>
+
+      <div class="evblock">
+        <div class="evref">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          EFTA01917017 · Thu 7/24/2014 9:51 PM · jeffrey E. → DanielSiad
+        </div>
+        <div class="evquote">"send her to New York with next or Mc2"
+"you will have the money monday"
+"you can send the girls"
+"the French girl from Strasbourg"</div>
+        <div class="evclaim">Source text joins possible New York/MC2 routing, money timing, and a France/Strasbourg reference in the same thread family.</div>
+      </div>
+
+      <div class="evblock">
+        <div class="evref">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          EFTA01917018 · Continuation — Scouting / Paris / Expenses
+        </div>
+        <div class="evquote">"scouting in Scandinavia"
+"Paris I found may be a new star"
+"The French her name is Luna she is fifteen"
+"I spend 2700.euro"
+"I will reimburse you of course for any expenses"
+"please send me the details of the girls names"</div>
+        <div class="evclaim">Thread contains scouting, Paris, age-indicating, expense, and reimbursement language in the same document sequence as the MC2/Strasbourg routing page.</div>
+      </div>
+    </section>
+
+    <!-- LEAD 2 -->
+    <section id="lead2">
+      <div class="sec-hdr">
+        <span class="sec-num">03</span>
+        <h2>Lead 2 — Siad / Brunel / MC2 Payment Thread</h2>
+        <span class="tag tag-orange">Financial · EFTA01986452–54</span>
+      </div>
+
+      <div class="note"><strong>DOJ DataSet:</strong> 103 pages · <strong>Use:</strong> Primary commission/payment thread</div>
+
+      <div class="evblock">
+        <div class="evref">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          EFTA01986452 · MC2 invoice / wire-processing
+        </div>
+        <div class="evclaim">Dominique Nameche / MC2 language: an invoice was needed before a wire could be sent and processed through accounting/payables.</div>
+      </div>
+
+      <div class="evblock">
+        <div class="evref">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          EFTA01986453 · Brunel commission dispute + U.S. Treasury reference
+        </div>
+        <div class="evclaim">Daniel Siad writes to Jean-Luc Brunel in the same commission thread referring to commissions due. Source text also references the American Embassy and a U.S. Treasury Department copy regarding tax fraud — language as it appears in the source thread.</div>
+      </div>
+
+      <div class="evblock">
+        <div class="evref">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          EFTA01986454 · Swedish beneficiary banking detail
+        </div>
+        <div class="evquote">Bank: Handelsbanken · Branch: 6101 Stockholm Gotagaten · SWIFT: HANDSES
+Beneficiary: AMAR SIAD
+[Full account/transfer fields on source page image]</div>
+        <div class="evclaim">Swedish beneficiary banking details appear in the commission/payment thread. Full fields are on the DOJ source page; not reproduced in full here.</div>
+      </div>
+    </section>
+
+    <!-- LEAD 3 -->
+    <section id="lead3">
+      <div class="sec-hdr">
+        <span class="sec-num">04</span>
+        <h2>Lead 3 — Groff / Siad / Tess / Paris</h2>
+        <span class="tag tag-blue">Supporting · EFTA00413879–919</span>
+      </div>
+
+      <div class="note"><strong>DOJ DataSet:</strong> 91 pages · <strong>Use:</strong> Paris contact-facilitation context</div>
+
+      <div class="tw">
+        <table class="dt">
+          <thead><tr><th>EFTA Ref</th><th>What It Shows</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="mono">EFTA00413879</td>
+              <td>Lesley Groff writes to Epstein; subject contains Daniel Siad; text refers to Tess coming to Paris and working out of Paris.</td>
+              <td><span class="badge badge-blue">Paris context</span></td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA00413635</td>
+              <td>Groff states she asked Daniel Siad several times to help facilitate contact.</td>
+              <td><span class="badge badge-blue">Facilitation</span></td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA00413919</td>
+              <td>Groff states she emailed Daniel Siad asking if he could help facilitate.</td>
+              <td><span class="badge badge-grey">Corroborative</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ADDENDUM A -->
+    <section id="addendum">
+      <div class="sec-hdr">
+        <span class="sec-num">05</span>
+        <h2>Addendum A — 2009–2010 Antecedent Thread</h2>
+        <span class="tag tag-orange">Addendum · 6 EFTA Exhibits</span>
+      </div>
+
+      <div class="note"><strong>DOJ DataSets:</strong> 9 / 119 · <strong>Content:</strong> Scouting-fee structure, SWIFT dispute, Deutsche Bank relay, Paris/New York modeling context</div>
+
+      <div class="tw">
+        <table class="dt">
+          <thead><tr><th>EFTA Ref</th><th>What It Shows</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="mono">EFTA00765388<br>EFTA00767847</td>
+              <td>Brunel-to-Epstein forwarded thread: EUR 3,000/month scouting language, six-month timing, 5% commission, written-agreement language.</td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA00765390<br>EFTA02431781</td>
+              <td>Dispute over alleged receipt of EUR 6,000; SWIFT/payment confirmation requests. EFTA02431781 adds Latvia trip and models-for-New-York language.</td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA00765068</td>
+              <td>Opens from Paris — references Jean Luc, MC2, casting/travel costs, continued scouting.</td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA02430885</td>
+              <td>Deutsche Bank relay language; accounting verification inside the thread. SWIFT/MT relay records.</td>
+            </tr>
+            <tr>
+              <td class="mono">EFTA00765389</td>
+              <td>Thailand beneficiary banking detail — full account/address fields on source page image only.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FINANCIAL -->
+    <section id="financial">
+      <div class="sec-hdr">
+        <span class="sec-num">06</span>
+        <h2>Financial Evidence — Key Reference Points</h2>
+        <span class="tag tag-orange">DOJ/EFTA · DB-SDNY</span>
+      </div>
+
+      <div class="note">All figures and characterizations are sourced from DOJ/EFTA and DB-SDNY (Deutsche Bank SDNY) Bates records as they appear in the public corpus.</div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div><div class="card-title">$1,000,000 Wire — Epstein → Brunel (Sept 2004)</div><div class="card-sub">EFTA00028968 p73 · EFTA00306919 p2</div></div>
+        </div>
+        <p>Wire from Jeffrey Epstein to a Jean-Luc Brunel offshore account at the time of MC2 Model Management's creation. Two independent EFTA pages corroborate the same transaction.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-icon" style="background:var(--accent-dim);color:var(--accent)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <div><div class="card-title">Brunel Listed as $5M Trust Beneficiary</div><div class="card-sub">EFTA00082273 p2</div></div>
+        </div>
+        <p>Brunel named as beneficiary of an Epstein trust for $5,000,000 contingent on surviving Epstein.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-icon" style="background:var(--warn-dim);color:var(--warn)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div><div class="card-title">Bella Klein — Trustee / Fiduciary Authority over Brunel</div><div class="card-sub">EFTA01297516 · EFTA01682446 · EFTA00282489</div></div>
+        </div>
+        <p>Kellerhals and Bella Klein as Trustees executed removal of "Ghislaine N. Maxwell / Jean Luc Brunel" from trust. Klein held formal fiduciary authority over Brunel's beneficiary status. FBI document (31E-NY-3027571) characterizes Klein as Authorized Agent / Employee / Associate of Epstein. Internal directory lists Klein alongside Brunel with account numbers and operational services.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-icon" style="background:var(--warn-dim);color:var(--warn)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div><div class="card-title">Racketeering Allegation — Brunel / MC2 / Epstein</div><div class="card-sub">EFTA00145666 p11</div></div>
+        </div>
+        <p>Source text: Jean-Luc Brunel, owner of MC2 Model Management, alleged to have participated in a criminal enterprise (racketeering) with Epstein involving minors.</p>
+      </div>
+
+      <h3 style="font-size:var(--base);font-weight:600;margin:var(--s6) 0 var(--s3);color:var(--muted)">Gratitude America Ltd — Selected Ledger Entries</h3>
+      <div class="note">
+        <strong>Source:</strong> EFTA00027019, Exhibit E pp. 8–9 — "Gratitude America MMDA" transfer table.
+        Full ledger: DB-SDNY Bates 0003484–0008064. The same financial vehicles (Gratitude America Ltd, 1953 Trust)
+        appear in flows documented toward Lithuania and Norway — currently under investigation by those countries' authorities.
+      </div>
+
+      <div class="tw">
+        <table class="dt">
+          <thead>
+            <tr><th>Date</th><th>Amount</th><th>Counterparty / Reference</th><th>Bates</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="dt">3/8/2016</td><td class="amt">$5,000,000</td><td>Gratitude America MMDA → Gratitude America Ltd. (Morgan Stanley)</td><td class="bates">DB-SDNY-0005334</td></tr>
+            <tr><td class="dt">2/22/2019</td><td class="amt">$7,000,000</td><td>The Haze Trust Checking ↔ Jeffrey Epstein Checking</td><td class="bates">DB-SDNY-0008063</td></tr>
+            <tr><td class="dt">2/19/2019</td><td class="amt">$12,608,253</td><td>The Haze Trust Brokerage</td><td class="bates">DB-SDNY-0008064</td></tr>
+            <tr><td class="dt">1/30/2018</td><td class="amt">$2,500,000</td><td>Gratitude America Checking → Gratitude America Ltd.</td><td class="bates">DB-SDNY-0006822</td></tr>
+            <tr><td class="dt">1/7/2016</td><td class="amt">$10,000,000</td><td>Ltd. (multiple corroborating entries)</td><td class="bates">DB-SDNY-0004999</td></tr>
+            <tr><td class="dt">4/17/2017</td><td class="amt">$22,500,000</td><td>LLC</td><td class="bates">DB-SDNY-0006113</td></tr>
+            <tr><td class="dt">12/17/2015</td><td class="amt">$10,000,000</td><td>Ltd.</td><td class="bates">DB-SDNY-0004999</td></tr>
+            <tr><td class="dt">4/25/2014</td><td class="amt">$10,000,000</td><td>Inc.</td><td class="bates">DB-SDNY-0003484</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:var(--xs);color:var(--faint);margin-top:var(--s2)">Selected entries. Full 185-line extraction available. EFTA00027019 is the controlling source — use source page images for exact amounts and full counterparty names.</p>
+    </section>
+
+    <!-- SOURCE INDEX -->
+    <section id="sources">
+      <div class="sec-hdr">
+        <span class="sec-num">07</span>
+        <h2>Source Index — All EFTA Exhibits</h2>
+        <span class="tag tag-green">DOJ / EFTA Controlled</span>
+      </div>
+
+      <h3 style="font-size:var(--sm);font-weight:600;margin-bottom:var(--s3);color:var(--muted)">Main Packet</h3>
+      <div class="sgrid" style="margin-bottom:var(--s6)">
+        <div class="sc"><div class="sc-id">EFTA01917017</div><div class="sc-role">July 2014 Siad/Epstein — MC2 routing, money, Strasbourg reference</div><span class="badge badge-blue">● Primary · DS 105</span></div>
+        <div class="sc"><div class="sc-id">EFTA01917018</div><div class="sc-role">Scouting / Paris / expenses / reimbursement continuation</div><span class="badge badge-blue">● Primary · DS 105</span></div>
+        <div class="sc"><div class="sc-id">EFTA01986452</div><div class="sc-role">MC2 invoice / wire-processing</div><span class="badge badge-blue">● Primary · DS 103</span></div>
+        <div class="sc"><div class="sc-id">EFTA01986453</div><div class="sc-role">Brunel commission dispute / U.S. Treasury language</div><span class="badge badge-blue">● Primary · DS 103</span></div>
+        <div class="sc"><div class="sc-id">EFTA01986454</div><div class="sc-role">Swedish beneficiary banking (Handelsbanken / HANDSES)</div><span class="badge badge-blue">● Primary · DS 103</span></div>
+        <div class="sc"><div class="sc-id">EFTA00413879</div><div class="sc-role">Groff/Siad/Tess/Paris — contact facilitation context</div><span class="badge badge-grey">○ Support · DS 91</span></div>
+        <div class="sc"><div class="sc-id">EFTA00413635</div><div class="sc-role">Groff/Siad — facilitation language</div><span class="badge badge-grey">○ Support · DS 91</span></div>
+        <div class="sc"><div class="sc-id">EFTA00413919</div><div class="sc-role">Groff/Siad — corroborative</div><span class="badge badge-grey">○ Support · DS 91</span></div>
+      </div>
+
+      <h3 style="font-size:var(--sm);font-weight:600;margin-bottom:var(--s3);color:var(--muted)">Addendum A — 2009–2010</h3>
+      <div class="sgrid">
+        <div class="sc"><div class="sc-id">EFTA00765068</div><div class="sc-role">Paris opener — Jean Luc / MC2 / casting/travel</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA00765388</div><div class="sc-role">Scouting-fee terms, commission, written-agreement, beneficiary banking</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA00765389</div><div class="sc-role">Thailand beneficiary banking (fields on source page only)</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA00765390</div><div class="sc-role">SWIFT confirmation request / disputed EUR 6,000</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA00767847</div><div class="sc-role">Earlier version of bank/scouting thread</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA02430885</div><div class="sc-role">Deutsche Bank relay language / accounting verification</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+        <div class="sc"><div class="sc-id">EFTA02431781</div><div class="sc-role">EUR 6,000 accounting / Latvia / models-for-New-York</div><span class="badge badge-orange">◆ Addendum · DS 9/119</span></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="fc">
+      <div class="fl">Packet</div>
+      <div class="fm">FR-SIAD-BRUNEL-MC2</div>
+      <div class="ft" style="margin-top:var(--s3)">Public disclosure — DOJ/EFTA public corpus</div>
+    </div>
+    <div class="fc">
+      <div class="fl">Notified</div>
+      <div class="ft">Parquet National Financier<br>Tribunal judiciaire de Paris<br>pr-financier.tj-paris@justice.fr<br><br>First contact: 2 May 2026<br>Confirmed receipt: 18 May 2026<br>Full packet sent: 22 May 2026</div>
+    </div>
+    <div class="fc">
+      <div class="fl">Authority</div>
+      <div class="ft">DOJ / justice.gov<br>EFTA PDFs (public corpus)<br>DB-SDNY Bates records</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  const ic=()=>d==='dark'
+    ?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+    :'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  if(t){t.innerHTML=ic();t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=ic();})}
+  const secs=document.querySelectorAll('section[id]');
+  const links=[...document.querySelectorAll('.sb-nav a,.navl')];
+  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))}})},{rootMargin:'-15% 0px -80% 0px'}).observe && secs.forEach(s=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))}})},{rootMargin:'-15% 0px -80% 0px'}).observe(s));
+})();
+</script>
+</body>
+</html>

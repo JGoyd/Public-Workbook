@@ -30,6 +30,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | 2026-05-25 | Mon | Thiel Reveal | research note | 2012-03 to 2017-12 source-document context | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
 | 2026-05-25 | Mon | Zorro Ranch | research note | 2009 to 2015 source-document context | Guest access, staff logistics, property operations, aviation, registration context | [open](workbook/outputs/2026/05/25/zorro-ranch/README.md) |
 | 2026-05-24 | Sun | U-Haul Evidence Transfer | manual transcription | 2025-02-27 to 2025-03-25 records-handling sequence | WFO-to-IMD transfer sequence, ERT photo logs, item-level transcription, and release-processing context | [open](workbook/outputs/2026/05/24/uhaul-evidence-transfer/README.md) |
+| 2026-05-18 | Mon | French Financial Corridor | packet | 2026-05-02 to 2026-05-23 French agency contact, first response, and packet transmission sequence | French agency response, Brunel/MC2 evidence packet, email-thread export, PGP header extract, and rendered Pages disclosure | [open](https://jgoyd.github.io/Public-Workbook/french-financial-corridor/) |
 | 2026-05-13 | Wed | SEC Ito Referral | supplement | 2026-05-13 supplement and 2026-05-14 receipt | Supplement 01, OMMS update PDF, receipt EML, and hashes for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/13/sec-ito-referral/README.md) |
 | 2026-05-06 | Wed | SEC Ito Referral | submission | 2026-05-06 SEC TCR submission | Initial SEC TCR evidence packet for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/06/sec-ito-referral/README.md) |
 <!-- work-timeline:end -->
@@ -41,6 +42,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 <!-- topic-index:start -->
 | Topic | Entries | Latest work | Jump in |
 | --- | ---: | --- | --- |
+| French Financial Corridor | 1 | 2026-05-18 | [topic page](workbook/topics/french-financial-corridor.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
