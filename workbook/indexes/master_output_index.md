@@ -10,4 +10,5 @@
 | 2026-05-24 | U-Haul Evidence Transfer | manual transcription | 2025-02-27 to 2025-03-25 records-handling sequence | [open](../outputs/2026/05/24/uhaul-evidence-transfer/README.md) | reports, tables |
 | 2026-05-18 | French Financial Corridor | packet | 2026-05-02 to 2026-05-23 French agency contact, first response, and packet transmission sequence | [open](../outputs/2026/05/18/french-financial-corridor/README.md) | reports, raw source files, HTML exports, verification files |
 | 2026-05-13 | SEC Ito Referral | supplement | 2026-05-13 supplement and 2026-05-14 receipt | [open](../outputs/2026/05/13/sec-ito-referral/README.md) | reports, raw source files, verification files |
+| 2026-05-12 | SEC KSA Bond 2016 Omega | submission | 2026-05-12 SEC TCR packet for 2016 KSA sovereign bond issue context | [open](../outputs/2026/05/12/sec-ksa-bond-2016-omega/README.md) | reports, verification files |
 | 2026-05-06 | SEC Ito Referral | submission | 2026-05-06 SEC TCR submission | [open](../outputs/2026/05/06/sec-ito-referral/README.md) | reports, verification files |

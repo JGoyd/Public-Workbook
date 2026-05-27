@@ -4,7 +4,7 @@ A running work timeline, organized by the date the work was done, submitted, or 
 Each entry keeps the findings, source context, tables, and related artifacts in one place.
 GitHub publish dates are housekeeping; they do not control the order here.
 
-_Last updated: 2026-05-26_
+_Last updated: 2026-05-27_
 
 ---
 
@@ -32,6 +32,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | 2026-05-24 | Sun | U-Haul Evidence Transfer | manual transcription | 2025-02-27 to 2025-03-25 records-handling sequence | WFO-to-IMD transfer sequence, ERT photo logs, item-level transcription, and release-processing context | [open](workbook/outputs/2026/05/24/uhaul-evidence-transfer/README.md) |
 | 2026-05-18 | Mon | French Financial Corridor | packet | 2026-05-02 to 2026-05-23 French agency contact, first response, and packet transmission sequence | French agency response, Brunel/MC2 evidence packet, email-thread export, PGP header extract, and rendered Pages disclosure | [open](https://jgoyd.github.io/Public-Workbook/french-financial-corridor/) |
 | 2026-05-13 | Wed | SEC Ito Referral | supplement | 2026-05-13 supplement and 2026-05-14 receipt | Supplement 01, OMMS update PDF, receipt EML, and hashes for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/13/sec-ito-referral/README.md) |
+| 2026-05-12 | Tue | SEC KSA Bond 2016 Omega | submission | 2026-05-12 SEC TCR packet for 2016 KSA sovereign bond issue context | SEC TCR packet and before-submission export for KSA Bond 2016 Omega | [open](workbook/outputs/2026/05/12/sec-ksa-bond-2016-omega/README.md) |
 | 2026-05-06 | Wed | SEC Ito Referral | submission | 2026-05-06 SEC TCR submission | Initial SEC TCR evidence packet for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/06/sec-ito-referral/README.md) |
 <!-- work-timeline:end -->
 
@@ -45,6 +46,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | French Financial Corridor | 1 | 2026-05-18 | [topic page](workbook/topics/french-financial-corridor.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
+| SEC KSA Bond 2016 Omega | 1 | 2026-05-12 | [topic page](workbook/topics/sec-ksa-bond-2016-omega.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
 | U-Haul Evidence Transfer | 1 | 2026-05-24 | [topic page](workbook/topics/uhaul-evidence-transfer.md) |
 | Valar / Southern Trust | 1 | 2026-05-26 | [topic page](workbook/topics/valar-southern-trust.md) |
