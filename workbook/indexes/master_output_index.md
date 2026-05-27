@@ -2,6 +2,7 @@
 
 | Work Date | Topic | Type | Covers | Entry | Main artifacts |
 | --- | --- | --- | --- | --- | --- |
+| 2026-05-27 | Buenos Aires Bond | public writeup | 2018-04 to 2018-05 Southern Financial LLC / Deutsche Bank Buenos Aires bond public-record context | [open](../outputs/2026/05/27/buenos-aires-bond/README.md) | HTML exports, verification files |
 | 2026-05-26 | Valar / Southern Trust | source hardening | 2016-01 to 2019-09 Valar Global Fund III / Southern Trust source-document context | [open](../outputs/2026/05/26/valar-southern-trust/README.md) | reports, tables, raw source files, JSON, screenshots, HTML exports, verification files |
 | 2026-05-26 | Zorro Ranch | packet | 2026-05-26 NM presence inquiry packet | [open](../outputs/2026/05/26/zorro-ranch/README.md) | reports, HTML exports, verification files |
 | 2026-05-25 | RemoteRAT / RATtrap | public writeup | 2026-05-25 source EML and public repo artifacts | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) | reports, IOC tables, raw source files, HTML exports, YARA |
