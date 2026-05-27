@@ -31,11 +31,11 @@ class UpdateIndexesTest(unittest.TestCase):
 
                     _Last updated: old_
 
-                    ## Daily Log
+                    ## Work Timeline
 
-                    <!-- daily-log:start -->
-                    old daily
-                    <!-- daily-log:end -->
+                    <!-- work-timeline:start -->
+                    old timeline
+                    <!-- work-timeline:end -->
 
                     ## By Topic
 
@@ -55,6 +55,7 @@ class UpdateIndexesTest(unittest.TestCase):
                     slug: remoterat-rattrap
                     title: RemoteRAT / RATtrap
                     headline: Public campaign write-up, IOC tables, YARA rule, and Pages export
+                    public_url: https://example.test/remoterat-rattrap/
                     tags: [security]
                     status: published
                     ---
@@ -92,12 +93,12 @@ class UpdateIndexesTest(unittest.TestCase):
 
             readme = (root / "README.md").read_text(encoding="utf-8")
             self.assertIn("_Last updated: 2026-05-26_", readme)
-            self.assertIn("| 2026-05-25 | Mon | RemoteRAT / RATtrap | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |", readme)
-            self.assertIn("| 2026-05-24 | Sun | Zorro Ranch | Guest access and ranch operations context | [open](workbook/outputs/2026/05/24/zorro-ranch/README.md) |", readme)
+            self.assertIn("| 2026-05-25 | Mon | RemoteRAT / RATtrap | entry | 2026-05-25 | Public campaign write-up, IOC tables, YARA rule, and Pages export | [open](https://example.test/remoterat-rattrap/) |", readme)
+            self.assertIn("| 2026-05-24 | Sun | Zorro Ranch | entry | 2026-05-24 | Guest access and ranch operations context | [open](workbook/outputs/2026/05/24/zorro-ranch/README.md) |", readme)
             self.assertIn("| RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |", readme)
 
             master = (root / "workbook" / "indexes" / "master_output_index.md").read_text(encoding="utf-8")
-            self.assertIn("| 2026-05-25 | RemoteRAT / RATtrap | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) |", master)
+            self.assertIn("| 2026-05-25 | RemoteRAT / RATtrap | entry | 2026-05-25 | [open](../outputs/2026/05/25/remoterat-rattrap/README.md) |", master)
             self.assertIn("verification files", master)
 
             topic_index = (root / "workbook" / "topics" / "_topic_index.md").read_text(encoding="utf-8")

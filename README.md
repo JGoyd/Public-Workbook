@@ -24,6 +24,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 <!-- work-timeline:start -->
 | Work Date | Day | Topic | Type | Covers | What changed | Open |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026-05-26 | Tue | Valar / Southern Trust | source hardening | 2016-01 to 2019-09 Valar Global Fund III / Southern Trust source-document context | Valar / Southern Trust financial lane, source-PDF hardening, rendered page checks, and India-threshold framing | [open](https://jgoyd.github.io/Public-Workbook/valar-southern-trust/) |
 | 2026-05-26 | Tue | Zorro Ranch | packet | 2026-05-26 NM presence inquiry packet | Official NM presence inquiry packet, HTML version, detached signature, checksum, and public key | [open](workbook/outputs/2026/05/26/zorro-ranch/README.md) |
 | 2026-05-25 | Mon | RemoteRAT / RATtrap | public writeup | 2026-05-25 source EML and public repo artifacts | Public campaign write-up, source EML, header export, IOC tables, YARA rule, and Pages export | [open](workbook/outputs/2026/05/25/remoterat-rattrap/README.md) |
 | 2026-05-25 | Mon | Thiel Reveal | research note | 2012-03 to 2017-12 source-document context | 2014 scheduling, Valar intro, later logistics, earlier attendee context | [open](workbook/outputs/2026/05/25/thiel-reveal/README.md) |
@@ -44,6 +45,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
 | U-Haul Evidence Transfer | 1 | 2026-05-24 | [topic page](workbook/topics/uhaul-evidence-transfer.md) |
+| Valar / Southern Trust | 1 | 2026-05-26 | [topic page](workbook/topics/valar-southern-trust.md) |
 | Zorro Ranch | 2 | 2026-05-26 | [topic page](workbook/topics/zorro-ranch.md) |
 <!-- topic-index:end -->
 

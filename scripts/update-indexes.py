@@ -28,6 +28,7 @@ class Entry:
     covers: str
     headline: str
     rel_path: str
+    public_url: str
     artifacts: str
 
 
@@ -191,6 +192,7 @@ def find_entries(root: Path) -> list[Entry]:
         entry_type = frontmatter_text(frontmatter, "entry_type", "entry")
         covers = coverage_text(frontmatter, entry_date)
         rel_path = readme.relative_to(root).as_posix()
+        public_url = frontmatter_text(frontmatter, "public_url")
         rows.append(
             Entry(
                 date=str(frontmatter.get("date") or entry_date),
@@ -201,6 +203,7 @@ def find_entries(root: Path) -> list[Entry]:
                 covers=covers,
                 headline=headline,
                 rel_path=rel_path,
+                public_url=public_url,
                 artifacts=artifact_summary(readme.parent),
             )
         )
@@ -216,9 +219,10 @@ def work_timeline_table(entries: list[Entry]) -> str:
         "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for entry in entries:
+        open_target = entry.public_url or entry.rel_path
         out.append(
             f"| {entry.date} | {entry.day} | {entry.title} | {entry.entry_type} | "
-            f"{entry.covers} | {entry.headline} | [open]({entry.rel_path}) |"
+            f"{entry.covers} | {entry.headline} | [open]({open_target}) |"
         )
     return "\n".join(out)
 

@@ -1,0 +1,13 @@
+date,payer,recipient,amount_usd,source_efta,bates_or_page,db_sdny_ref,notes
+2016-06-23,"Southern Trust Company, Inc.","Valar Global Fund III LP",250000,EFTA00027019,EFTA00027020,DB-SDNY-0005526,"Transaction table; OCR renders recipient as Valar Globaal Fund III LP."
+2016-08-18,"Southern Trust Company, Inc.","Valar Global Fund III LP",1250000,EFTA00027019,EFTA00027020,DB-SDNY-0005667,"Transaction table; supporting bank-statement hit also appears at EFTA01286359."
+2016-12-12,"Southern Trust Company, Inc.","Valar Global Fund III LP",3750000,EFTA00027019,EFTA00027020,DB-SDNY-0005932,"Transaction table; OCR also appears in duplicate table records."
+2017-04-20,"Southern Trust Company, Inc.","Valar Global Fund III LP",3000000,EFTA00027019,EFTA00027021,DB-SDNY-0006240,"Transaction table; capital-call approval email appears at EFTA00678950 and reply at EFTA01048671; bank-statement hit appears at EFTA01286817."
+2017-07-24,"Southern Trust Company, Inc.","Valar Global Fund III LP",4250000,EFTA00027019,EFTA00027021,DB-SDNY-0006407,"Transaction table; capital-call 6 request/approval appears at EFTA00635135 and EFTA00637297."
+2017-10-11,"Southern Trust Company, Inc.","Valar Global Fund III LP",2250000,EFTA00027019,EFTA00027021,DB-SDNY-0006652,"Transaction table; capital-call 7 request appears at EFTA00714098."
+2018-01-05,"Southern Trust Company, Inc.","Valar Global Fund III LP",1500000,EFTA00027019,EFTA00027021,DB-SDNY-0006901,"Transaction table."
+2018-02-15,"Southern Trust Company, Inc.","Valar Global Fund III LP",500000,EFTA00027019,EFTA00027021,DB-SDNY-0006985,"Transaction table."
+2018-06-01,"Southern Trust Company, Inc.","Valar Global Fund III LP",1750000,EFTA00027019,EFTA00027021,DB-SDNY-0007348,"Transaction table; supporting bank-statement hit appears at EFTA01287701."
+2019-01-08,"Southern Trust Company, Inc.","Valar Global Fund III LP",2500000,EFTA00027019,EFTA00027021,DB-SDNY-0007987,"Transaction table."
+2019-04-17,"Southern Trust Company, Inc.","Valar Global Fund III LP",1500000,EFTA00027019,EFTA00027021,DB-SDNY-0008222,"Transaction table."
+2017-04-04,"Southern Trust Company, Inc.","Valar Global Fund III LP",2500000,EFTA01435885,EFTA01435885/EFTA01435887,DB-SDNY-0028395,"Separate asset-movement/wire packet signed Darren Indyke; DB internal email at EFTA01387768 says Southern Trust is wiring 2.5mm; outgoing report at EFTA01299550 shows 2500000.00. Needs reconciliation against the 22.5M table total."

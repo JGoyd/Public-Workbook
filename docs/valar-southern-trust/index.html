@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epstein · Valar · Southern Trust — Investigative Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--surface:#111114;--surface2:#18181d;--border:rgba(255,255,255,0.07);--border-strong:rgba(255,255,255,0.14);--text:#e8e6e1;--muted:#888580;--faint:#4a4845;--red:#e05252;--red-bg:rgba(224,82,82,0.08);--amber:#d4a017;--amber-bg:rgba(212,160,23,0.09);--green:#4caf78;--green-bg:rgba(76,175,120,0.08);--blue:#5b8dd9;--blue-bg:rgba(91,141,217,0.08);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--r:6px;--r2:10px;--t:150ms ease}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#ffffff;--surface2:#f0efe9;--border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.16);--text:#1a1916;--muted:#6b6964;--faint:#b0aea8;--red:#c0392b;--red-bg:rgba(192,57,43,0.07);--amber:#9a6e00;--amber-bg:rgba(154,110,0,0.08);--green:#276b45;--green-bg:rgba(39,107,69,0.08);--blue:#2563b8;--blue-bg:rgba(37,99,184,0.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.mono,.efta{font-family:var(--mono);font-size:0.82em;background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:1px 5px;color:var(--amber)}
+.efta{display:block;margin-top:5px;color:var(--faint);background:transparent;border:none;padding:0;font-size:10px}
+
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--red),var(--amber));z-index:9999;width:0%;transition:width .1s linear}
+
+nav{position:fixed;top:2px;left:0;right:0;height:50px;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;z-index:100}
+.nav-logo{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--red);text-transform:uppercase;margin-right:auto}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);padding:5px 11px;border-radius:4px;transition:color var(--t),background var(--t)}
+.nav-links a:hover{color:var(--text);background:var(--surface2);text-decoration:none}
+#theme-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:13px;border-radius:5px;padding:4px 8px;cursor:pointer;margin-left:10px;transition:color var(--t),border-color var(--t)}
+#theme-btn:hover{color:var(--text);border-color:var(--border-strong)}
+
+.page{max-width:980px;margin:0 auto;padding:76px 22px 72px}
+section{margin-bottom:56px}
+.sec-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+h1{font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;letter-spacing:-.02em;color:var(--text);margin-bottom:6px}
+h2{font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-bottom:12px}
+.subtitle{font-size:14px;color:var(--muted);max-width:660px;line-height:1.6}
+hr{border:none;border-top:1px solid var(--border);margin:36px 0}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-top:24px}
+.stat{background:var(--surface);padding:16px 18px}
+.sv{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--text);letter-spacing:-.02em;display:block}
+.sl{font-size:11px;color:var(--muted);margin-top:2px;display:block}
+.sv.a{color:var(--amber)}.sv.g{color:var(--green)}.sv.b{color:var(--blue)}.sv.r{color:var(--red)}
+
+.emap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px 20px;overflow-x:auto}
+.flow{display:flex;align-items:center;flex-wrap:nowrap;min-width:680px}
+.node{flex-shrink:0;background:var(--surface2);border:1px solid var(--border-strong);border-radius:var(--r2);padding:11px 14px;text-align:center;min-width:120px}
+.nn{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text);display:block;margin-bottom:2px}
+.ns{font-size:10px;color:var(--muted);display:block}
+.nf{font-family:var(--mono);font-size:9px;color:var(--faint);display:block;margin-top:3px}
+.node.ubo{border-color:var(--red);background:var(--red-bg)}.node.ubo .nn{color:var(--red)}
+.node.key{border-color:var(--amber);background:var(--amber-bg)}.node.key .nn{color:var(--amber)}
+.node.fund{border-color:var(--blue);background:var(--blue-bg)}.node.fund .nn{color:var(--blue)}
+.arr{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 6px}
+.al{width:32px;height:1px;background:var(--border-strong);position:relative}
+.al::after{content:'';position:absolute;right:-1px;top:-3px;border-left:6px solid var(--border-strong);border-top:4px solid transparent;border-bottom:4px solid transparent}
+.alb{font-family:var(--mono);font-size:9px;color:var(--faint);white-space:nowrap}
+.snodes{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+.snode{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:5px 10px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.snode strong{color:var(--text);display:block;font-size:10px}
+
+.tbl{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{background:var(--surface2);border-bottom:1px solid var(--border-strong)}
+thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 14px;text-align:right;white-space:nowrap}
+thead th:first-child,thead th.la{text-align:left}
+tbody tr{border-bottom:1px solid var(--border);transition:background var(--t)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--surface2)}
+td{padding:10px 14px;vertical-align:top;color:var(--text);text-align:right;font-family:var(--mono);font-size:12px}
+td.la{text-align:left;font-family:var(--sans);font-size:13px}
+td.ef{font-family:var(--mono);font-size:10px;color:var(--faint);text-align:left;line-height:1.7}
+.trow{background:var(--surface2)!important;font-weight:600}
+.trow td{border-top:1px solid var(--border-strong);color:var(--amber)!important}
+.badge{display:inline-flex;align-items:center;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;padding:2px 5px;white-space:nowrap}
+.bv{background:var(--green-bg);color:var(--green);border:1px solid var(--green)}
+.bp{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber)}
+.bm{background:var(--red-bg);color:var(--red);border:1px solid var(--red)}
+.flag td{background:color-mix(in oklab,var(--amber-bg) 55%,var(--surface))!important}
+
+.tl{position:relative;padding-left:26px;display:flex;flex-direction:column}
+.tl::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border-strong)}
+.tli{position:relative;padding:12px 0 12px 14px;border-bottom:1px solid var(--border)}
+.tli:last-child{border-bottom:none}
+.tli::before{content:'';position:absolute;left:-21px;top:20px;width:7px;height:7px;border-radius:50%;background:var(--border-strong);border:2px solid var(--bg)}
+.tli.k::before{background:var(--amber)}
+.tli.f::before{background:var(--red)}
+.td{font-family:var(--mono);font-size:11px;color:var(--amber);margin-bottom:2px;font-weight:600}
+.tt{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.tb{font-size:13px;color:var(--muted);line-height:1.55}
+.te{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:3px}
+
+.pchain{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.pstep{background:var(--surface);display:grid;grid-template-columns:30px 1fr auto;gap:0;align-items:start;padding:14px 18px;transition:background var(--t)}
+.pstep:hover{background:var(--surface2)}
+.pn{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);padding-top:1px}
+.pt{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.pd{font-size:12px;color:var(--muted);line-height:1.5}
+.pe{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:3px}
+.ps{padding-top:2px;margin-left:14px}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.person{background:var(--surface);padding:14px 16px;transition:background var(--t)}
+.person:hover{background:var(--surface2)}
+.pname{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1px}
+.prole{font-size:12px;color:var(--muted);margin-bottom:6px}
+.panc{font-family:var(--mono);font-size:10px;color:var(--faint);line-height:1.7}
+
+.glist{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.gi{display:grid;grid-template-columns:32px 1fr auto;gap:0;align-items:start;padding:12px 18px;border-bottom:1px solid var(--border);transition:background var(--t)}
+.gi:last-child{border-bottom:none}
+.gi:hover{background:var(--surface2)}
+.gn{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);padding-top:1px}
+.gt{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.gd{font-size:12px;color:var(--muted);line-height:1.5}
+.gp{margin-left:10px;padding-top:2px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.hi{color:var(--red)}.med{color:var(--amber)}.op{color:var(--blue)}
+
+.fn{font-size:12px;color:var(--faint);border-top:1px solid var(--border);padding-top:18px;margin-top:36px;line-height:1.7}
+.fn strong{color:var(--muted)}
+
+@media(max-width:640px){.page{padding:66px 14px 54px}.nav-links{display:none}.stats{grid-template-columns:repeat(2,1fr)}thead th,td{padding:8px 10px}.pstep{grid-template-columns:26px 1fr}.ps{display:none}.pgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <div class="nav-logo">⬛ Epstein / Valar / STC</div>
+  <ul class="nav-links">
+    <li><a href="#ent">Entities</a></li>
+    <li><a href="#calls">Calls</a></li>
+    <li><a href="#tl">Timeline</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#persons">Persons</a></li>
+    <li><a href="#gaps">Gaps</a></li>
+    <li><a href="#anc">Anchors</a></li>
+  </ul>
+  <button id="theme-btn" aria-label="Toggle theme">☀</button>
+</nav>
+
+<div class="page">
+
+<section style="margin-bottom:36px">
+  <div class="sec-label">Investigative Report · SDNY Production Set · 2026-05-26</div>
+  <h1>Epstein → Southern Trust → Valar Global Fund III</h1>
+  <p class="subtitle">A $25M LP commitment by Southern Trust Company, Inc. (UBO: Jeffrey Epstein) to Valar Ventures GP III LLC — documented through 12 wire events in Deutsche Bank account records, Epstein approval emails, a signed wire authorization, and Deutsche Bank's own September 2019 presentation to SDNY.</p>
+  <div class="stats">
+    <div class="stat"><span class="sv a">$25,000,000</span><span class="sl">Total LP Commitment</span></div>
+    <div class="stat"><span class="sv">$22,500,000</span><span class="sl">SDNY Exhibit K (11 wires)</span></div>
+    <div class="stat"><span class="sv a">$2,500,000</span><span class="sl">Apr 4 Reconciliation Item</span></div>
+    <div class="stat"><span class="sv">12</span><span class="sl">Wire Events 2016–2019</span></div>
+    <div class="stat"><span class="sv g">7</span><span class="sl">Epstein "Yes" Approvals</span></div>
+    <div class="stat"><span class="sv">34.17%</span><span class="sl">STC K-1 Profit Share (2018)</span></div>
+  </div>
+</section>
+
+<hr>
+
+<section id="ent">
+  <div class="sec-label">§ 1 — Entity Structure</div>
+  <h2>Fund Participants & Control Flow</h2>
+  <div class="emap">
+    <div class="flow">
+      <div class="node ubo"><span class="nn">Jeffrey Epstein</span><span class="ns">UBO · Signatory</span><span class="nf">EFTA01681876</span></div>
+      <div class="arr"><div class="al"></div><span class="alb">approves calls</span></div>
+      <div class="node key"><span class="nn">Southern Trust Co., Inc.</span><span class="ns">LP · S-Corp · St. Thomas USVI</span><span class="nf">Acct 44-129-244 / N4G.Q23812</span></div>
+      <div class="arr"><div class="al"></div><span class="alb">wires via SVB</span></div>
+      <div class="node"><span class="nn">Deutsche Bank Trust Co. Americas</span><span class="ns">Custodian · 345 Park Ave NYC</span><span class="nf">DB-SDNY production set</span></div>
+      <div class="arr"><div class="al"></div><span class="alb">→ SVB ABA 121140399</span></div>
+      <div class="node fund"><span class="nn">Valar Global Fund III LP</span><span class="ns">SVB Acct 3301520427</span><span class="nf">GP: Valar Ventures GP III LLC</span></div>
+    </div>
+    <div style="margin-top:16px;font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Supporting Individuals</div>
+    <div class="snodes">
+      <div class="snode"><strong>Richard Kahn</strong>Forwards calls → Epstein</div>
+      <div class="snode"><strong>Darren Indyke</strong>Signed wire auth 04-04-2017</div>
+      <div class="snode"><strong>James Fitzgerald</strong>Valar GP Managing Member</div>
+      <div class="snode"><strong>Peter Thiel</strong>GP Member · 20% carry · veto</div>
+      <div class="snode"><strong>Zbynek "Ziggy" Kozelsky</strong>DB Director, Key Client Partners</div>
+      <div class="snode"><strong>Vahe Stepanian</strong>DB internal · NetX wire confirm</div>
+      <div class="snode"><strong>Ian O'Donnell</strong>Cooley LLP · Closing Counsel</div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section id="calls">
+  <div class="sec-label">§ 2 — Capital Call Ledger</div>
+  <h2>All 12 Wire Events — Southern Trust → Valar Global Fund III</h2>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:14px">The 11-row SDNY transaction table sums to $22.5M (EFTA01681889 Exhibit K). The ★ Apr 4 item is a separate wire packet signed by Darren Indyke — if additive, total reaches $25M.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th>#</th>
+        <th class="la">Call</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Running</th>
+        <th>Unfunded</th>
+        <th class="la">Approval</th>
+        <th class="la">Primary EFTA</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="la">Capital Call 1 · 1% of $25M</td><td>2016-06-23</td><td>$250,000</td><td style="color:var(--muted)">$250K</td><td>$24.75M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA00825074<br>EFTA01286240</td></tr>
+        <tr><td>2</td><td class="la">Capital Call 2</td><td>2016-08-18</td><td>$1,250,000</td><td style="color:var(--muted)">$1.5M</td><td>$23.5M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA00821145<br>EFTA01286359</td></tr>
+        <tr><td>3</td><td class="la">Capital Call 3 <span style="font-size:11px;color:var(--faint)">(inferred)</span></td><td>2016-12-12</td><td>$3,750,000</td><td style="color:var(--muted)">$5.25M</td><td>$19.75M</td><td class="la"><span class="badge bm">No notice</span></td><td class="ef">EFTA01286563</td></tr>
+        <tr class="flag"><td style="color:var(--amber)">★</td><td class="la" style="color:var(--amber);font-weight:500">Call 4 — Reconciliation Item</td><td style="color:var(--amber)">2017-04-04</td><td style="color:var(--amber)">$2,500,000</td><td style="color:var(--muted)">$7.75M</td><td>$17.25M</td><td class="la"><span class="badge bp">Indyke signed</span></td><td class="ef">EFTA01435885<br>EFTA01387768<br>EFTA01299550</td></tr>
+        <tr><td>5</td><td class="la">Capital Call 5 · 12% of $25M</td><td>2017-04-20</td><td>$3,000,000</td><td style="color:var(--muted)">$10.75M</td><td>$14.25M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA01048671<br>EFTA01286816</td></tr>
+        <tr><td>6</td><td class="la">Capital Call 6 · 17% of $25M</td><td>2017-07-24</td><td>$4,250,000</td><td style="color:var(--muted)">$15M</td><td>$10M</td><td class="la"><span class="badge bv">JEE approved</span></td><td class="ef">EFTA00637297<br>EFTA01286953</td></tr>
+        <tr><td>7</td><td class="la">Capital Call 7 · 9% of $25M</td><td>2017-10-11</td><td>$2,250,000</td><td style="color:var(--muted)">$17.25M</td><td>$7.75M</td><td class="la"><span class="badge bp">Kahn forwarded</span></td><td class="ef">EFTA00714098<br>EFTA01287138</td></tr>
+        <tr><td>8</td><td class="la">Capital Call 8 · 6% of $25M</td><td>2018-01-05</td><td>$1,500,000</td><td style="color:var(--muted)">$18.75M</td><td>$6.25M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA00920566<br>EFTA01287332</td></tr>
+        <tr><td>9</td><td class="la">Capital Call 9 · 2% of $25M</td><td>2018-02-15</td><td>$500,000</td><td style="color:var(--muted)">$19.25M</td><td>$5.75M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA00885189</td></tr>
+        <tr><td>10</td><td class="la">Capital Call 10 · 7% of $25M</td><td>2018-06-01</td><td>$1,750,000</td><td style="color:var(--muted)">$21M</td><td>$4M</td><td class="la"><span class="badge bv">JEE yes</span></td><td class="ef">EFTA01047837<br>EFTA01287701</td></tr>
+        <tr><td>11</td><td class="la">2019 Final Draw A</td><td>2019-01-08</td><td>$2,500,000</td><td style="color:var(--muted)">$23.5M</td><td>$1.5M</td><td class="la"><span class="badge bm">No notice</span></td><td class="ef">EFTA01288200</td></tr>
+        <tr><td>12</td><td class="la">2019 Final Draw B</td><td>2019-04-17</td><td>$1,500,000</td><td style="color:var(--muted)">$25M</td><td>$0</td><td class="la"><span class="badge bm">No notice</span></td><td class="ef">EFTA01288388</td></tr>
+        <tr class="trow"><td></td><td class="la" style="font-family:var(--mono);font-size:11px">SDNY TABLE TOTAL (11 rows)</td><td></td><td>$22,500,000</td><td></td><td></td><td colspan="2" class="ef" style="color:var(--amber)">Matches EFTA01681889 Exhibit K</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--faint);margin-top:8px;font-family:var(--mono)">★ Apr 4 item at EFTA01435885/EFTA01387768/EFTA01299550. Reconciliation required: additive vs. replaced instruction.</p>
+</section>
+
+<hr>
+
+<section id="tl">
+  <div class="sec-label">§ 3 — Event Timeline</div>
+  <h2>Key Events: 2016–2019</h2>
+  <div class="tl">
+    <div class="tli k"><div class="td">January 20, 2016</div><div class="tt">Fund Close — Valar Global Fund III LP</div><div class="tb">Cooley LLP (Ian O'Donnell) sends LP closing email. Southern Trust admitted as Limited Partner. James Fitzgerald signs as Managing Member of Valar Ventures GP III LLC, signing twice — as GP and as attorney-in-fact for all LPs.</div><div class="te">EFTA00836182 · EFTA00591747</div></div>
+    <div class="tli"><div class="td">June 21–23, 2016</div><div class="tt">Capital Call 1 — $250,000 · 1% of $25M</div><div class="tb">Kahn forwards notice to Epstein: "ok to fund?" Epstein replies "yes." Wire clears June 23 to SVB ABA 121140399 / Valar Global Fund III LP 3301520427.</div><div class="te">EFTA00825184 · EFTA00825074 · EFTA01286240 · DB-SDNY-0005526</div></div>
+    <div class="tli"><div class="td">August 9–18, 2016</div><div class="tt">Capital Call 2 — $1,250,000 · Running Total $1.5M</div><div class="tb">Kahn email: once paid, STC would have funded $1,500,000 of a $25,000,000 commitment. Epstein: "Yes." Wire clears August 18.</div><div class="te">EFTA00821145 · EFTA01286359 · DB-SDNY-0005667</div></div>
+    <div class="tli"><div class="td">December 12, 2016</div><div class="tt">Capital Call 3 — $3,750,000 (inferred from sequence)</div><div class="tb">DB statement shows $3,750,000 outgoing to SVB / Valar Global Fund III LP. No standalone call notice or Epstein approval email yet located. Call number inferred from running-total math.</div><div class="te">EFTA01286563 · DB-SDNY-0005932</div></div>
+    <div class="tli f"><div class="td">April 4, 2017 ★ — RECONCILIATION ITEM</div><div class="tt">Capital Call 4 — $2,500,000 · Darren Indyke Wire Authorization</div><div class="tb">DBAB asset-movement authorization: Southern Trust Company Inc., account N4G.Q23812, wire $2,500,000 to Silicon Valley Bank ABA 121140399, beneficiary Valar Global Fund III LP 3301520427, additional instruction "Southern Trust Company Inc. Capital Call." Signed: Darren Indyke, 04-04-2017. DB internal email (Stepanian → Kozelsky): "Southern Trust is wiring $2.5mm per attached instructions. Call Darren's cell — not through Richard Kahn." DB ACH/wire report confirms $2,500,000 outbound. April 30, 2017 asset summary lists "Valar III Capital Call 4 ($2,500,000)" explicitly.</div><div class="te">EFTA01435885 · EFTA01435887 · EFTA01387768 · EFTA01299550 · EFTA00811490</div></div>
+    <div class="tli k"><div class="td">April 20, 2017</div><div class="tt">Capital Call 5 — $3,000,000 · 12% of $25M · JEE "yes"</div><div class="tb">Kahn forwards notice. Epstein replies "yes" (EFTA01048671). Wire to SVB / Valar clears same day. Running total $10,750,000. Asset summary also lists this call separately from Call 4.</div><div class="te">EFTA00678950 · EFTA01048671 · EFTA01286816</div></div>
+    <div class="tli k"><div class="td">April 30, 2017</div><div class="tt">Asset Summary — Total Assets $454.9M</div><div class="tb">STC wealth-management summary: Cash $121.8M, Investments $52.5M. Cash activity line items: "Valar III Capital Call 4 ($2,500,000)" and "Valar III Capital Call 5 ($3,000,000)" — listed as separate cash outflows. Monthly spending $1.2M. Leon loan via BJAV to Plan D LLC $8M inbound. STC Fee–Leon $8M outbound.</div><div class="te">EFTA00811490 / EFTA00811491</div></div>
+    <div class="tli"><div class="td">July 24, 2017</div><div class="tt">Capital Call 6 — $4,250,000 · 17% · JEE approved</div><div class="tb">Call notice states after funding STC would have $10M unfunded remaining. Follow-up: "jee approved capital call." Wire clears to SVB / Valar.</div><div class="te">EFTA00635135 · EFTA00637297 · EFTA01286953</div></div>
+    <div class="tli"><div class="td">Oct 2017 – Jun 2018</div><div class="tt">Capital Calls 7–10 — $6,000,000 total</div><div class="tb">Four calls: $2,250,000 (Oct 11 2017), $1,500,000 (Jan 5 2018), $500,000 (Feb 15 2018), $1,750,000 (Jun 1 2018). JEE "yes" on Calls 8, 9, 10. Kahn-forwarded on Call 7, separate Epstein reply not yet located. All four wires DB-confirmed. Running total reaches $21,000,000.</div><div class="te">EFTA00714098 · EFTA00920566 · EFTA00885189 · EFTA01047837</div></div>
+    <div class="tli k"><div class="td">2018 Tax Year</div><div class="tt">Schedule K-1 — Partner #13 · Southern Trust Company, Inc.</div><div class="tb">K-1 for Valar Global Fund III LP: STC, 6100 Red Hook Quarter B3, St. Thomas VI 00802, partner #13, S-corporation, domestic. Profit/loss share 34.17%, capital 34.15%. Beginning capital $16,332,775; contributions 2018 $3,750,000; ending capital $19,436,311. Portfolio includes Brolly (UK), N26 (Germany), Coya (Germany), Spaceship (Australia). No India portfolio asset in pages reviewed.</div><div class="te">EFTA00810333 · EFTA00810335</div></div>
+    <div class="tli"><div class="td">January 8 & April 17, 2019</div><div class="tt">Final Draws — $2.5M + $1.5M · Commitment Complete</div><div class="tb">Two final transfers close out the commitment. No standalone call notices located. DB statements confirm outgoing transfers to SVB / Valar Global Fund III LP. Running total reaches $25M when the Apr 4 2017 item is treated as a replaced/netted instruction.</div><div class="te">EFTA01288200 · EFTA01288388 · DB-SDNY-0007987 · DB-SDNY-0008222</div></div>
+    <div class="tli k"><div class="td">September 12, 2019</div><div class="tt">Deutsche Bank Presentation to SDNY — Valar Exhibit K</div><div class="tb">DB presents STC account structures and UBO identifications to SDNY. Exhibit K (hedge fund investments): Valar Global Fund III LP, 11 transactions, $22,500,000, source entity Southern Trust Company Inc. Epstein identified as UBO. Signatories listed: Indyke, Brennan, Beller, Kahn, Barrett.</div><div class="te">EFTA01681865 · EFTA01681876 · EFTA01681889</div></div>
+  </div>
+</section>
+
+<hr>
+
+<section id="proof">
+  <div class="sec-label">§ 4 — Evidentiary Proof Architecture</div>
+  <h2>7-Step Chain: Commitment → SDNY Summary</h2>
+  <div class="pchain">
+    <div class="pstep"><div class="pn">01</div><div><div class="pt">LP Commitment — $25,000,000</div><div class="pd">Fund close Jan 20, 2016. Call 1 text: "1% of $25,000,000 commitment." Call 2 text: "$25,000,000 commitment." Cooley closing email confirms STC subscription accepted.</div><div class="pe">EFTA00836182 · EFTA00591747 · EFTA00825184 · EFTA00821145</div></div><div class="ps"><span class="badge bv">Verified</span></div></div>
+    <div class="pstep"><div class="pn">02</div><div><div class="pt">Capital Call Notices</div><div class="pd">Notices located for 8 of 12 events (Calls 1, 2, 5, 6, 7, 8, 9, 10). Calls 3 and 4 notice not located. 2019 Final Draws 11 and 12 have no standalone notice.</div><div class="pe">EFTA00593789 · EFTA00608737 · EFTA00591792 · EFTA00810356–360</div></div><div class="ps"><span class="badge bp">Partial</span></div></div>
+    <div class="pstep"><div class="pn">03</div><div><div class="pt">Epstein Approval Emails</div><div class="pd">Documented "yes" replies on Calls 1, 2, 5, 8, 9, 10. Call 6: "jee approved capital call" per follow-up. Calls 3, 4, 7, 11, 12: no approval email yet located. Pattern establishes Epstein as functional decision-maker on all STC investment activity.</div><div class="pe">EFTA00825074 · EFTA00821145 · EFTA01048671 · EFTA00637297 · EFTA00920566 · EFTA00885189 · EFTA01047837</div></div><div class="ps"><span class="badge bp">Partial</span></div></div>
+    <div class="pstep"><div class="pn">04</div><div><div class="pt">Wire Authorization / Bank Instructions</div><div class="pd">Call 4 is the most complete: signed DBAB form (N4G.Q23812 → SVB ABA 121140399 → Valar 3301520427), signed Darren Indyke 04-04-2017. DB internal email confirms "Southern Trust is wiring $2.5mm." Other calls authorized via Kahn→Epstein email chain as verbal authorization per standing auth form.</div><div class="pe">EFTA01435885 · EFTA01435886 · EFTA01435887 · EFTA01387768</div></div><div class="ps"><span class="badge bv">Verified (Call 4)</span></div></div>
+    <div class="pstep"><div class="pn">05</div><div><div class="pt">Bank Outflow Confirmation (Deutsche Bank Statements)</div><div class="pd">DB statements confirm outflows for Calls 1, 2, 5, 6, 7, 8, 10, 11, 12. ACH/wire report (04-04-2017) confirms Call 4 $2.5M outbound. Call 9 supported by transaction chart; standalone statement not yet located for that date.</div><div class="pe">EFTA01286240 · EFTA01286359 · EFTA01286563 · EFTA01286816 · EFTA01286953 · EFTA01299550 · EFTA01287332 · EFTA01287701 · EFTA01288200 · EFTA01288388</div></div><div class="ps"><span class="badge bv">Verified</span></div></div>
+    <div class="pstep"><div class="pn">06</div><div><div class="pt">K-1 Partnership Confirmation (2018)</div><div class="pd">Valar Global Fund III LP K-1: STC partner #13, S-corporation, domestic. Beginning capital $16,332,775, contributions $3,750,000, ending capital $19,436,311. 34.17% profit share.</div><div class="pe">EFTA00810333 · EFTA00810335</div></div><div class="ps"><span class="badge bv">Verified</span></div></div>
+    <div class="pstep"><div class="pn">07</div><div><div class="pt">SDNY Aggregate Summary — Deutsche Bank Exhibit K</div><div class="pd">DB's Sep 12, 2019 SDNY presentation, Exhibit K: Valar Global Fund III LP, 11 transactions, $22,500,000, source entity Southern Trust Company Inc. Government's own aggregation independently matches the transaction-table sum.</div><div class="pe">EFTA01681889</div></div><div class="ps"><span class="badge bv">Verified</span></div></div>
+  </div>
+</section>
+
+<hr>
+
+<section id="persons">
+  <div class="sec-label">§ 5 — Named Individuals</div>
+  <h2>Key Persons</h2>
+  <div class="pgrid">
+    <div class="person"><div class="pname">Jeffrey Epstein</div><div class="prole">UBO · Southern Trust · Approver</div><div class="panc">Approvals: EFTA00825074, 00821145, 01048671, 00637297, 00920566, 00885189, 01047837<br>UBO: EFTA01681876</div></div>
+    <div class="person"><div class="pname">Richard Kahn</div><div class="prole">Intermediary · Kahn → Epstein chain</div><div class="panc">CC on Calls 1–10<br>EFTA00825184, 00821145, 00678950, 00635135, 00714098</div></div>
+    <div class="person"><div class="pname">Darren Indyke</div><div class="prole">Attorney · Signed wire auth</div><div class="panc">Wire auth: EFTA01435887<br>DB acct signatory: EFTA01681876<br>"Call Darren — not Kahn"</div></div>
+    <div class="person"><div class="pname">James Fitzgerald</div><div class="prole">Valar Ventures GP III LLC — Managing Member</div><div class="panc">Signs LPA as GP & attorney-in-fact<br>EFTA00591747 · EFTA00609496</div></div>
+    <div class="person"><div class="pname">Peter Thiel</div><div class="prole">GP Member · 20% carry · veto rights</div><div class="panc">Not on inv. committee, not day-to-day<br>Retains veto on certain fund acts<br>EFTA00609506</div></div>
+    <div class="person"><div class="pname">Stewart Oldfield</div><div class="prole">Deutsche Bank · Personal Assistance</div><div class="panc">On Jan 2019, Jul/Dec 2017 statements<br>EFTA01288200, EFTA01286563</div></div>
+    <div class="person"><div class="pname">Zbynek "Ziggy" Kozelsky</div><div class="prole">DB Director, Key Client Partners–Americas</div><div class="panc">Wire-confirm email recipient<br>Authorized Darren's cell for verification<br>EFTA01387768</div></div>
+    <div class="person"><div class="pname">Vahe Stepanian</div><div class="prole">Deutsche Bank · Internal wire confirm</div><div class="panc">"Southern Trust is wiring $2.5mm"<br>Uploaded to NetX · EFTA01387768</div></div>
+    <div class="person"><div class="pname">Ian O'Donnell</div><div class="prole">Cooley LLP · Fund Closing Counsel</div><div class="panc">Closing email to all LPs Jan 21, 2016<br>415-693-2021 · EFTA00836182</div></div>
+  </div>
+</section>
+
+<hr>
+
+<section id="gaps">
+  <div class="sec-label">§ 6 — Open Questions</div>
+  <h2>Priority Evidence Gaps</h2>
+  <div class="glist">
+    <div class="gi"><div class="gn">G1</div><div><div class="gt">Apr 4 2017 $2.5M — Additive or Duplicate?</div><div class="gd">SDNY table (11 rows, $22.5M) has no Apr-4 row. The wire packet (EFTA01435885), DB email (EFTA01387768), and ACH report (EFTA01299550) document an Apr-4 $2,500,000 outbound. The April 30 asset summary lists Calls 4 and 5 as separate line items. If additive: SDNY table has a gap and total is $25M. If replaced/recalled: the Apr-4 wire was netted before settlement. Native bank ledger for Apr 3–5 must be pulled.</div></div><div class="gp hi">CRITICAL</div></div>
+    <div class="gi"><div class="gn">G2</div><div><div class="gt">Call 3 — No Notice or Approval Email</div><div class="gd">$3,750,000 wire on Dec 12, 2016 is bank-confirmed but no call notice or Epstein approval email located. Gap in the approval chain for the third-largest single wire.</div></div><div class="gp hi">HIGH</div></div>
+    <div class="gi"><div class="gn">G3</div><div><div class="gt">Calls 11 & 12 (2019) — No Notice or Approval</div><div class="gd">Final $4M drawn with no standalone notice or Epstein reply. These are the period leading to Epstein's July 2019 arrest. Question of who authorized final commitment funding.</div></div><div class="gp hi">HIGH</div></div>
+    <div class="gi"><div class="gn">G4</div><div><div class="gt">STC Subscription Agreement & Investor Questionnaire</div><div class="gd">The completed subscription form would contain source-of-funds disclosure, beneficial owner certification, AML attestations, and senior foreign political figure status. Template at EFTA01121910; no filled STC-specific form located.</div></div><div class="gp hi">HIGH</div></div>
+    <div class="gi"><div class="gn">G5</div><div><div class="gt">Full LP Schedule — Other Fund Partners</div><div class="gd">STC's 34.17% K-1 share implies ~$65–75M total LP capital at 2018 year-end against a $200M fund target. The other ~65% of LPs are not identified. Exhibit A partner schedule would list all co-investors.</div></div><div class="gp med">MEDIUM</div></div>
+    <div class="gi"><div class="gn">G6</div><div><div class="gt">Call 7 — Separate Epstein Approval Not Located</div><div class="gd">Kahn forwarded Call 7 ($2,250,000, Oct 2017). Separate Epstein "yes" reply not yet found. Wire executed and confirmed at EFTA01287138.</div></div><div class="gp med">MEDIUM</div></div>
+    <div class="gi"><div class="gn">G7</div><div><div class="gt">Distributions / Return of Capital</div><div class="gd">No distribution records from Valar Fund III to STC located. K-1 capital account shows funds at work but no return events documented. Full flow-of-funds picture incomplete without distribution records.</div></div><div class="gp med">MEDIUM</div></div>
+    <div class="gi"><div class="gn">G8</div><div><div class="gt">India / Foreign Party — No Hit in This Cluster</div><div class="gd">No Indian investor, entity, or India-linked party found in Valar/STC documents reviewed. Fund PPM includes India-resident notice language (EFTA00609553) and AML questionnaire places India on FATF list (EFTA01121947). The open question: do any filled subscription forms, side letters, or co-investor records name an Indian party?</div></div><div class="gp op">OPEN</div></div>
+  </div>
+</section>
+
+<hr>
+
+<section id="anc">
+  <div class="sec-label">§ 7 — Anti-Evasion Anchors</div>
+  <h2>Independently Checkable Fixed Facts</h2>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:14px">These facts are independently verifiable. Any narrative inconsistent with them requires an alternative explanation on the record.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th class="la" style="width:36%">Fact</th><th class="la" style="width:24%">Value</th><th class="la">Primary Anchor</th></tr></thead>
+      <tbody>
+        <tr><td class="la" style="font-weight:500">Total LP commitment</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">$25,000,000</td><td class="ef">EFTA00825184 (call 1) · EFTA00821145 (call 2)</td></tr>
+        <tr><td class="la" style="font-weight:500">SDNY Exhibit K documented total</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">$22,500,000 · 11 transactions</td><td class="ef">EFTA01681889</td></tr>
+        <tr><td class="la" style="font-weight:500">SVB beneficiary account</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">3301520427</td><td class="ef">EFTA01435885 · EFTA01299550</td></tr>
+        <tr><td class="la" style="font-weight:500">SVB ABA routing</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">121140399</td><td class="ef">EFTA01435885</td></tr>
+        <tr><td class="la" style="font-weight:500">DBAB account name & number</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">Southern Trust Co. Inc. · N4G.Q23812</td><td class="ef">EFTA01435885</td></tr>
+        <tr><td class="la" style="font-weight:500">Wire auth signer & date</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">Darren Indyke · 04-04-2017</td><td class="ef">EFTA01435887</td></tr>
+        <tr><td class="la" style="font-weight:500">K-1 partner number (2018)</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">#13</td><td class="ef">EFTA00810333</td></tr>
+        <tr><td class="la" style="font-weight:500">K-1 profit/loss share (2018)</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">34.17%</td><td class="ef">EFTA00810333</td></tr>
+        <tr><td class="la" style="font-weight:500">K-1 ending capital (2018)</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">$19,436,311</td><td class="ef">EFTA00810333</td></tr>
+        <tr><td class="la" style="font-weight:500">STC address on K-1</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">6100 Red Hook Quarter B3, St. Thomas VI 00802</td><td class="ef">EFTA00810333</td></tr>
+        <tr><td class="la" style="font-weight:500">Valar GP III LLC Managing Member</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">James Fitzgerald</td><td class="ef">EFTA00591747</td></tr>
+        <tr><td class="la" style="font-weight:500">Peter Thiel GP role</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">20% carry · veto · not inv. committee</td><td class="ef">EFTA00609506</td></tr>
+        <tr><td class="la" style="font-weight:500">DB/SDNY presentation date</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">September 12, 2019</td><td class="ef">EFTA01681865</td></tr>
+        <tr><td class="la" style="font-weight:500">Epstein UBO designation</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">UBO/signatory on STC accounts (DB)</td><td class="ef">EFTA01681876</td></tr>
+        <tr><td class="la" style="font-weight:500">Fund close date</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">January 20, 2016</td><td class="ef">EFTA00836182</td></tr>
+        <tr><td class="la" style="font-weight:500">Valar GP entity & address</td><td class="la" style="font-family:var(--mono);font-size:12px;color:var(--amber)">Valar Ventures GP III LLC · 915 Broadway NYC</td><td class="ef">EFTA00609489 PPM · EFTA00836182</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="fn">
+  <strong>Document Set:</strong> SDNY production set (EFTA prefix), Deutsche Bank SDNY production (DB-SDNY prefix), SDNY_GM prefix. All documents marked CONFIDENTIAL — PURSUANT TO FED. R. CRIM. P. 6(e). This report synthesizes indexed source documents only. Every stated fact traces to an EFTA anchor above.<br><br>
+  <strong>Signal discipline:</strong> India-side party finding: none in this cluster. No speculative connections drawn. <strong>Status:</strong> Working memo, 2026-05-26.
+</div>
+
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{const e=document.getElementById('progress-bar'),d=document.documentElement;e.style.width=Math.min(100,d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'});
+const btn=document.getElementById('theme-btn'),html=document.documentElement;
+btn.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',n);btn.textContent=n==='dark'?'☀':'☾'});
+</script>
+</body>
+</html>

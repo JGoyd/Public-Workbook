@@ -1,0 +1,13 @@
+efta,page_anchor,field,visual_check,status
+EFTA01435885,p1 / EFTA01435885,Wire authorization amount,"Visual page shows wire federal funds in amount of $2,500,000",confirmed
+EFTA01435885,p1 / EFTA01435885,Origin account/entity,Visual page shows DBAB Account Name: Southern Trust Company Inc.; account number N4G.Q23812,confirmed
+EFTA01435885,p1 / EFTA01435885,Beneficiary bank and account,"Visual page shows Silicon Valley Bank, ABA 121140399, beneficiary Valar Global Fund III LP, account 3301520427",confirmed
+EFTA01435885,p1 / EFTA01435885,Additional instructions,Visual page shows Southern Trust Company Inc. Capital Call,confirmed
+EFTA01435885,p3 / EFTA01435887,Signature/date,Visual page shows Darren Indyke and 04-04-2017 in signature block; handwritten signature/mark is visually present but OCR line is imperfect,confirmed_with_ocr_caveat
+EFTA01387768,p1 / EFTA01387768,DB internal email,"Visual page shows Vahe Stepanian to Zbynek Kozelsky, CC Stewart Oldfield, subject RE: STC wire (I), attachment DB_STC_Valar Global Fund III_4-04-2017.pdf",confirmed
+EFTA01387768,p1 / EFTA01387768,NetX / amount,Visual page says request + docs uploaded into NetX and Southern Trust is wiring $2.5mm per attached instructions,confirmed
+EFTA01387768,p1 / EFTA01387768,Callback control,"Visual page says call a number like Darren number listed on the account, not via Richard Kahn",confirmed
+EFTA01299550,p1 / EFTA01299550,ACH/wires report,Visual page dated 04/04/2017 lists Silicon Valley Bank / Southern Trust Company Inc Capital Call / Valar Global Fund III LP / 3301520427 / 2500000.00,confirmed
+EFTA00811490,p2 / EFTA00811491,Asset summary,"Visual page Summary of Assets - April 30, 2017 lists Valar III Capital Call 4 (2,500,000) and Valar III Capital Call 5 (3,000,000)",confirmed
+EFTA01288200,p1 / EFTA01288200,2019 final draw A,"Visual page shows 01-08 outgoing money transfer to Silicon Valley Bank account 3301520427 / Valar Global Fund III LP / (2,500,000.00)",confirmed
+EFTA01288388,p2 / EFTA01288389,2019 final draw B,"Visual page shows 04-17 outgoing money transfer to Silicon Valley Bank account 3301520427 / Valar Global Fund III LP / (1,500,000.00)",confirmed
