@@ -36,6 +36,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | 2026-05-18 | Mon | French Financial Corridor | packet | 2026-05-02 to 2026-05-23 French agency contact, first response, and packet transmission sequence | French agency response, Brunel/MC2 evidence packet, email-thread export, PGP header extract, and rendered Pages disclosure | [open](https://jgoyd.github.io/Public-Workbook/french-financial-corridor/) |
 | 2026-05-13 | Wed | SEC Ito Referral | supplement | 2026-05-13 supplement and 2026-05-14 receipt | Supplement 01, OMMS update PDF, receipt EML, and hashes for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/13/sec-ito-referral/README.md) |
 | 2026-05-12 | Tue | SEC KSA Bond 2016 Omega | submission | 2026-05-12 SEC TCR packet for 2016 KSA sovereign bond issue context | SEC TCR packet and before-submission export for KSA Bond 2016 Omega | [open](workbook/outputs/2026/05/12/sec-ksa-bond-2016-omega/README.md) |
+| 2026-05-06 | Wed | IRS Form 211 Bates Evidence Packet | portal filing log | 2026-05-06 user-reported IRS Form 211 portal filing | User-reported IRS Form 211 portal filing log with packet held back and SHA-256 fingerprint | [open](workbook/outputs/2026/05/06/irs-form-211-bates-evidence-packet/README.md) |
 | 2026-05-06 | Wed | SEC Ito Referral | submission | 2026-05-06 SEC TCR submission | Initial SEC TCR evidence packet for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/06/sec-ito-referral/README.md) |
 <!-- work-timeline:end -->
 
@@ -50,6 +51,7 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | FCA London Banking Conduct | 1 | 2026-05-27 | [topic page](workbook/topics/fca-bank-of-china-stanchart.md) |
 | French Authority Packet Hand Delivery | 1 | 2026-05-27 | [topic page](workbook/topics/french-authority-packet-hand-delivery.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [topic page](workbook/topics/french-financial-corridor.md) |
+| IRS Form 211 Bates Evidence Packet | 1 | 2026-05-06 | [topic page](workbook/topics/irs-form-211-bates-evidence-packet.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
 | SEC KSA Bond 2016 Omega | 1 | 2026-05-12 | [topic page](workbook/topics/sec-ksa-bond-2016-omega.md) |

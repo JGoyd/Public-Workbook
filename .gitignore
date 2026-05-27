@@ -5,3 +5,4 @@ __pycache__/
 node_modules/
 tools/
 maltego_trojan_capture_*/
+workbook/private_holdback/
