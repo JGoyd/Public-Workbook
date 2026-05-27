@@ -1,0 +1,11 @@
+﻿# Output Manifest
+
+| Type | File | Bytes | Description |
+| --- | --- | ---: | --- |
+| entry | [README.md](README.md) | 3372 | README |
+| pdf packet | [raw/source_pdfs/FRENCH_AUTHORITY_PACKET_OFFICIAL.pdf](raw/source_pdfs/FRENCH_AUTHORITY_PACKET_OFFICIAL.pdf) | 4384571 | printed authority packet |
+| pdf receipt | [raw/source_pdfs/FRENCH_AUTHORITY_PACKET_SIGNATURE_RECEIPT.pdf](raw/source_pdfs/FRENCH_AUTHORITY_PACKET_SIGNATURE_RECEIPT.pdf) | 56617 | printable signature receipt |
+| signature | [other/FRENCH_AUTHORITY_PACKET_OFFICIAL.pdf.asc](other/FRENCH_AUTHORITY_PACKET_OFFICIAL.pdf.asc) | 537 | existing detached signature for official packet |
+| checksum | [other/FRENCH_AUTHORITY_PACKET_OFFICIAL.sha256.txt](other/FRENCH_AUTHORITY_PACKET_OFFICIAL.sha256.txt) | 104 | existing SHA-256 sidecar for official packet |
+| checksum | [other/FRENCH_AUTHORITY_PACKET_SIGNATURE_RECEIPT.pdf.sha256](other/FRENCH_AUTHORITY_PACKET_SIGNATURE_RECEIPT.pdf.sha256) | 113 | SHA-256 sidecar for receipt PDF |
+| public key | [other/Joseph_Gs_Public_Key.asc](other/Joseph_Gs_Public_Key.asc) | 7319 | public key for verification |
