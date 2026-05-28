@@ -38,6 +38,8 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | 2026-05-12 | Tue | SEC KSA Bond 2016 Omega | submission | 2026-05-12 SEC TCR packet for 2016 KSA sovereign bond issue context | SEC TCR packet and before-submission export for KSA Bond 2016 Omega | [open](workbook/outputs/2026/05/12/sec-ksa-bond-2016-omega/README.md) |
 | 2026-05-06 | Wed | IRS Form 211 Bates Evidence Packet | portal filing log | 2026-05-06 user-reported IRS Form 211 portal filing | User-reported IRS Form 211 portal filing log with public PDF packet and SHA-256 fingerprint | [open](https://jgoyd.github.io/Public-Workbook/irs-form-211-bates-evidence-packet/IRS_Form_211_Bates_Evidence_Packet.pdf) |
 | 2026-05-06 | Wed | SEC Ito Referral | submission | 2026-05-06 SEC TCR submission | Initial SEC TCR evidence packet for submission 17780-976-067-126 | [open](workbook/outputs/2026/05/06/sec-ito-referral/README.md) |
+| 2026-05-04 | Mon | Singapore CPIB FormSG Submission | portal receipt | 2026-05-04 04:47:29 UTC / 12:47:27 PM Singapore time CPIB FormSG submission and confirmation | Singapore CPIB FormSG response ID PDF, confirmation EML, supplied signature, and timestamp | [open](https://jgoyd.github.io/Public-Workbook/singapore-cpib-formsg-submission/CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf) |
+| 2026-04-30 | Thu | Lithuania Panevezys Prosecutor Update | agency update | 2026-04-30 letter stating submitted information was attached to criminal case materials and forwarded for evaluation, with 2026-05-22 update and 2026-05-23 reply context | Lithuania prosecutor April 30 letter stating submitted information was attached to criminal case materials, with later May 22 update context | [open](https://jgoyd.github.io/Public-Workbook/lithuania-panevezys-prosecutor-update/LT_Panevezys_Prosecutor_letter_2026-04-30.pdf) |
 <!-- work-timeline:end -->
 
 ---
@@ -52,9 +54,11 @@ This table follows the work/submission date. The `Covers` column shows the real-
 | French Authority Packet Hand Delivery | 1 | 2026-05-27 | [topic page](workbook/topics/french-authority-packet-hand-delivery.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [topic page](workbook/topics/french-financial-corridor.md) |
 | IRS Form 211 Bates Evidence Packet | 1 | 2026-05-06 | [topic page](workbook/topics/irs-form-211-bates-evidence-packet.md) |
+| Lithuania Panevezys Prosecutor Update | 1 | 2026-04-30 | [topic page](workbook/topics/lithuania-panevezys-prosecutor-update.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [topic page](workbook/topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [topic page](workbook/topics/sec-ito-referral.md) |
 | SEC KSA Bond 2016 Omega | 1 | 2026-05-12 | [topic page](workbook/topics/sec-ksa-bond-2016-omega.md) |
+| Singapore CPIB FormSG Submission | 1 | 2026-05-04 | [topic page](workbook/topics/singapore-cpib-formsg-submission.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [topic page](workbook/topics/thiel-reveal.md) |
 | U-Haul Evidence Transfer | 1 | 2026-05-24 | [topic page](workbook/topics/uhaul-evidence-transfer.md) |
 | Valar / Southern Trust | 1 | 2026-05-26 | [topic page](workbook/topics/valar-southern-trust.md) |

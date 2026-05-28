@@ -7,9 +7,11 @@
 | French Authority Packet Hand Delivery | 1 | 2026-05-27 | [open](french-authority-packet-hand-delivery.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [open](french-financial-corridor.md) |
 | IRS Form 211 Bates Evidence Packet | 1 | 2026-05-06 | [open](irs-form-211-bates-evidence-packet.md) |
+| Lithuania Panevezys Prosecutor Update | 1 | 2026-04-30 | [open](lithuania-panevezys-prosecutor-update.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [open](remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [open](sec-ito-referral.md) |
 | SEC KSA Bond 2016 Omega | 1 | 2026-05-12 | [open](sec-ksa-bond-2016-omega.md) |
+| Singapore CPIB FormSG Submission | 1 | 2026-05-04 | [open](singapore-cpib-formsg-submission.md) |
 | Thiel Reveal | 1 | 2026-05-25 | [open](thiel-reveal.md) |
 | U-Haul Evidence Transfer | 1 | 2026-05-24 | [open](uhaul-evidence-transfer.md) |
 | Valar / Southern Trust | 1 | 2026-05-26 | [open](valar-southern-trust.md) |

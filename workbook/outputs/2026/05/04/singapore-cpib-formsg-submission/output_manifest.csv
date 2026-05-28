@@ -1,0 +1,7 @@
+filename,type,path,description
+CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf,report,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/reports/CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf,CPIB / FormSG response-ID PDF
+CPIB_Confirmation_of_Complaint_Submission_2026-05-04.eml,raw,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/raw/email/CPIB_Confirmation_of_Complaint_Submission_2026-05-04.eml,FormSG confirmation email
+CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.asc,other,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/other/CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.asc,Supplied detached PGP signature for PDF
+CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.ots,other,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/other/CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.ots,Supplied OpenTimestamps file for PDF
+CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.sha256,other,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/other/CPIB_Response_ID_69f824dfe5ef7daf3b78ccee.pdf.sha256,SHA-256 fingerprint for PDF
+CPIB_Confirmation_of_Complaint_Submission_2026-05-04.eml.sha256,other,workbook/outputs/2026/05/04/singapore-cpib-formsg-submission/other/CPIB_Confirmation_of_Complaint_Submission_2026-05-04.eml.sha256,SHA-256 fingerprint for confirmation EML
