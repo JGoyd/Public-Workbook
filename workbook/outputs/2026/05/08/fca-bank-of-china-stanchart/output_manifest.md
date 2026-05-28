@@ -2,7 +2,7 @@
 
 | Type | File | Bytes | Description |
 | --- | --- | ---: | --- |
-| entry | [README.md](README.md) | 7463 | README |
+| entry | [README.md](README.md) | 7679 | README |
 | source export | [exports/fca-london-banking-conduct.html](exports/fca-london-banking-conduct.html) | 46732 | public HTML report |
 | raw email | [raw/email/fca-boc-stanchart-2026-05-08-substantive-reply.eml](raw/email/fca-boc-stanchart-2026-05-08-substantive-reply.eml) | 19945 | 2026-05-08 FCA reply |
 | raw email | [raw/email/fca-boc-stanchart-2026-05-11-supplement.eml](raw/email/fca-boc-stanchart-2026-05-11-supplement.eml) | 25155 | 2026-05-11 outbound supplement |

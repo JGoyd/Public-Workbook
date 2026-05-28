@@ -10,7 +10,7 @@ A running rollup of entries about the FCA London Banking Conduct report lane.
 
 | Date | Day | Headline | Open |
 | --- | --- | --- | --- |
-| 2026-05-27 | Wed | FCA London Banking Conduct public HTML report, supporting packet README, unique EML anchors, checksums, and signatures | [open](../outputs/2026/05/27/fca-bank-of-china-stanchart/README.md) |
+| 2026-05-08 | Fri | FCA May 8 named-officer substantive reply recognizing and routing the Bank of China / Standard Chartered report, with later supplement context | [open](../outputs/2026/05/08/fca-bank-of-china-stanchart/README.md) |
 
 ---
 

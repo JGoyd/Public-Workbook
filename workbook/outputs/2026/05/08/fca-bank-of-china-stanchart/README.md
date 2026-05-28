@@ -1,11 +1,11 @@
 ---
-date: 2026-05-27
+date: 2026-05-08
 slug: fca-bank-of-china-stanchart
 title: FCA London Banking Conduct
-entry_type: public writeup
-covers: 2026-05-08 to 2026-05-13 FCA Bank of China (UK) Limited / Standard Chartered correspondence sequence
+entry_type: agency recognition log
+covers: 2026-05-08 FCA named-officer substantive reply, with 2026-05-11 supplement and 2026-05-13 follow-up context
 date_range: 2026-05-08 to 2026-05-13
-headline: FCA London Banking Conduct public HTML report, supporting packet README, unique EML anchors, checksums, and signatures
+headline: FCA May 8 named-officer substantive reply recognizing and routing the Bank of China / Standard Chartered report, with later supplement context
 tags: [fca, bank-of-china, standard-chartered, london-banking, public-records]
 status: signed
 public_url: https://jgoyd.github.io/Public-Workbook/fca-bank-of-china-stanchart/
@@ -13,18 +13,19 @@ sources:
   - https://www.fca.org.uk/
 ---
 
-# 2026-05-27 - FCA London Banking Conduct
+# 2026-05-08 - FCA London Banking Conduct
 
 Public workbook entry for the FCA London Banking Conduct report lane.
 
-This entry preserves the supplied public HTML report, mirrors it to GitHub Pages, and catalogs the selected FCA correspondence artifacts from the hardcopy collection without publishing duplicate EML copies or local source-path manifests.
+This entry is dated by the first formal FCA named-officer substantive reply on 2026-05-08. It preserves the supplied public HTML report, mirrors it to GitHub Pages, and catalogs the selected FCA correspondence artifacts from the hardcopy collection without publishing duplicate EML copies or local source-path manifests.
 
 ## Snapshot
 
 | Field | Value |
 | --- | --- |
 | Topic | FCA London Banking Conduct |
-| Work date | 2026-05-27 |
+| Work date | 2026-05-08 |
+| Date basis | First FCA named-officer substantive reply recognizing and routing the report |
 | Correspondence window | 2026-05-08 to 2026-05-13 |
 | Rendered public report | [GitHub Pages report](https://jgoyd.github.io/Public-Workbook/fca-bank-of-china-stanchart/) |
 | Workbook HTML export | [fca-london-banking-conduct.html](exports/fca-london-banking-conduct.html) |

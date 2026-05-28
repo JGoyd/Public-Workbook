@@ -3,7 +3,7 @@
 | Topic | Entries | Latest work | Open |
 | --- | ---: | --- | --- |
 | Buenos Aires Bond | 1 | 2026-05-27 | [open](buenos-aires-bond.md) |
-| FCA London Banking Conduct | 1 | 2026-05-27 | [open](fca-bank-of-china-stanchart.md) |
+| FCA London Banking Conduct | 1 | 2026-05-08 | [open](fca-bank-of-china-stanchart.md) |
 | French Authority Packet Hand Delivery | 1 | 2026-05-27 | [open](french-authority-packet-hand-delivery.md) |
 | French Financial Corridor | 1 | 2026-05-18 | [open](french-financial-corridor.md) |
 | Gates, Falconwood and Harvard: Two Trails Tell 1 Story | 1 | 2026-05-27 | [open](gates-falconwood-harvard-two-trails.md) |
