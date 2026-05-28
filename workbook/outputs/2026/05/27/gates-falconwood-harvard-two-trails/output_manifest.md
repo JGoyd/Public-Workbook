@@ -1,0 +1,18 @@
+﻿# Output Manifest
+
+| Type | File | Bytes | Description |
+| --- | --- | ---: | --- |
+| entry | [README.md](README.md) | 5116 | README |
+| source export | [exports/index.html](exports/index.html) | 5111 | main landing page |
+| source export | [exports/gates-boris-yuri.html](exports/gates-boris-yuri.html) | 7836 | Trail One branch HTML report |
+| source export | [exports/falconwood-harvard.html](exports/falconwood-harvard.html) | 5610 | Trail Two branch HTML report |
+| source export support | [exports/assets/](exports/assets/) | 15536751 | CSS, JavaScript, screenshots, and source PDFs referenced by HTML pages |
+| source export support | [exports/data/](exports/data/) | 37269 | CSV and JSON support files referenced by HTML pages |
+| source export support | [exports/downloads/](exports/downloads/) | 33961790 | PDF and packet downloads linked from HTML pages |
+| signature | [other/index.html.asc](other/index.html.asc) | 537 | detached signature for landing page |
+| checksum | [other/index.html.sha256](other/index.html.sha256) | 78 | SHA-256 sidecar for landing page |
+| signature | [other/gates-boris-yuri.html.asc](other/gates-boris-yuri.html.asc) | 537 | detached signature for Trail One |
+| checksum | [other/gates-boris-yuri.html.sha256](other/gates-boris-yuri.html.sha256) | 89 | SHA-256 sidecar for Trail One |
+| signature | [other/falconwood-harvard.html.asc](other/falconwood-harvard.html.asc) | 537 | detached signature for Trail Two |
+| checksum | [other/falconwood-harvard.html.sha256](other/falconwood-harvard.html.sha256) | 91 | SHA-256 sidecar for Trail Two |
+| public key | [other/Joseph_Gs_Public_Key.asc](other/Joseph_Gs_Public_Key.asc) | 7205 | public key for verification |
