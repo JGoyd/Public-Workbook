@@ -9,6 +9,7 @@
 | Gates, Falconwood and Harvard: Two Trails Tell 1 Story | 1 | 2026-05-27 | [open](../topics/gates-falconwood-harvard-two-trails.md) |
 | IRS Form 211 Bates Evidence Packet | 1 | 2026-05-06 | [open](../topics/irs-form-211-bates-evidence-packet.md) |
 | Lithuania Panevezys Prosecutor Update | 1 | 2026-04-30 | [open](../topics/lithuania-panevezys-prosecutor-update.md) |
+| OLAF Mandelson / Carbyne Acknowledgement Request | 1 | 2026-05-04 | [open](../topics/olaf-mandelson-carbyne-acknowledgement-request.md) |
 | RemoteRAT / RATtrap | 1 | 2026-05-25 | [open](../topics/remoterat-rattrap.md) |
 | SEC Ito Referral | 2 | 2026-05-13 | [open](../topics/sec-ito-referral.md) |
 | SEC KSA Bond 2016 Omega | 1 | 2026-05-12 | [open](../topics/sec-ksa-bond-2016-omega.md) |
