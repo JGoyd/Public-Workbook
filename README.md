@@ -1,5 +1,8 @@
 # Public Workbook
 
+**[Status: Verified Disclosure]**
+
+
 A running work timeline, organized by the date the work was done, submitted, or finalized.
 Each entry keeps the findings, source context, tables, and related artifacts in one place.
 GitHub publish dates are housekeeping; they do not control the order here.
